@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/JohnnyOhall/critique_it/issues"
   },
-  "homepage": "https://github.com/JohnnyOhall/critique_it#readme"
+  "homepage": "https://github.com/JohnnyOhall/critique_it#readme",
+  "devDependencies": {
+    "node-sass": "^8.0.0",
+    "sass": "^1.57.1"
+  }
 }
