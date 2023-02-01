@@ -9,7 +9,7 @@ const App = () => {
       <header>
 
         <div className='logo'>
-          <h1>cr<font color="#b22222">IT</font>ique<font color="#b22222">🖉</font></h1>
+          <h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1>
         </div>
 
         <div className='user'>
@@ -98,7 +98,7 @@ const App = () => {
       </section>
 
       <footer>
-        <h1><h1>cr<font color="#b22222">IT</font>ique<font color="#b22222">🖉</font></h1></h1>
+        <h1><h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1></h1>
       </footer>
 
     </body>

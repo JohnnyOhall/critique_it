@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+.pencil {
+  font-family: 'Noto Sans Symbols 2', sans-serif;
+}
+
 .App {
   text-align: center;
   height: 100vh;
@@ -162,7 +166,6 @@
 
   .about-us {
     height: 20rem;
-    width: 100%;
     background-color: #25234A;
     color: whitesmoke;
     display: flex;
@@ -177,8 +180,8 @@
 
   footer {
     background-color: whitesmoke;
-    padding: 1em 0 .2em;
-    font-size: 100px;
+    padding: 1.5em 0 .2em;
+    font-size: 5.25vw;
     font-family: 'Itim', cursive;
   }
 }
