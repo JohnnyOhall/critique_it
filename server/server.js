@@ -14,10 +14,13 @@ app.use( express.urlencoded({ extended: true }));
 app.use( express.json());
 
 // Separated Routes for each Resource
-const showRoutes = require('./routes/showRoutes');
+const pageRoutes = require('./routes/pageRoutes');
+const userRoutes = require('./routes/userRoutes');
+
 
 // Mount all resource routes
-app.use('/shows', showRoutes);
+app.use('/pages', pageRoutes);
+app.use('/users', userRoutes);
 
 
 app.listen( port, () => {
