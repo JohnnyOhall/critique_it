@@ -14,11 +14,21 @@ const Nav = props => {
 
   return (
     <nav>
-      <div className="link-nav"><img src={ rateImg }    /></div>
-      <div className="link-nav"><img src={ statsImg }   /></div>
-      <div className="link-nav"><img src={ exploreImg } /></div>
-      <div className="link-nav"><img src={ profileImg } /></div>
-      <div className="link-nav"><img src={ aboutImg }   /></div>
+      <a href="#nav-critique">
+        <div className="link-nav"><img src={ rateImg } /></div>
+      </a>
+      <a href="#nav-stats">
+        <div className="link-nav"><img src={ statsImg } /></div>
+      </a>
+      <a href="#nav-explore">
+        <div className="link-nav"><img src={ exploreImg } /></div>
+      </a>
+      <a href="#nav-profile">
+        <div className="link-nav"><img src={ profileImg } /></div>
+      </a>
+      <a href="#nav-about">
+        <div className="link-nav"><img src={ aboutImg } /></div>
+      </a>
     </nav>
   );
 };

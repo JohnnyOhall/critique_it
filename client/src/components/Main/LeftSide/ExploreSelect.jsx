@@ -9,7 +9,7 @@ const ExploreSelect = props => {
 
   return (
     <section className="explore-left">
-      <div className="explore-select">
+      <div className="explore-select" id="nav-explore">
 
       </div>
     </section>

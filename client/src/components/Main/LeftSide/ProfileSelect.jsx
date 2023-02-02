@@ -10,7 +10,7 @@ const ProfileSelect = props => {
 
   return (
     <section className="profile-left">
-      <div className="profile-select">
+      <div className="profile-select" id="nav-profile">
 
       </div>
     </section>

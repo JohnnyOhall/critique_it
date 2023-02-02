@@ -9,7 +9,7 @@ const About = props => {
 
 
   return (
-    <section className='about-us'>
+    <section className='about-us' id="nav-about">
       <div className="about-top">
         <p>ABOUT</p>
         <p>US</p>
