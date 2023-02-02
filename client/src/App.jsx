@@ -98,16 +98,19 @@ const App = () => {
       </section>
 
       <footer>
+
         <div className="footer-nav">
-          <div className="footer-link">words</div>
-          <div className="footer-link">words</div>
-          <div className="footer-link">words</div>
-          <div className="footer-link">words</div>
-          <div className="footer-link">words</div>
+          <div className="footer-link"><a href="#">TBD</a></div>
+          <div className="footer-link"><a href="#">TBD</a></div>
+          <div className="footer-link"><a href="#">TBD</a></div>
+          <div className="footer-link"><a href="#">FAQ</a></div>
+          <div className="footer-link"><a href="#">Contact</a></div>
         </div>
+
         <div>
           <h1><h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1></h1>
         </div>
+
       </footer>
 
     </body>
