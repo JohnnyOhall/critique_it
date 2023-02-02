@@ -1,6 +1,10 @@
 // External imports
 import React from "react";
 
+// Styling
+import './Nav.scss';
+
+
 const Nav = props => {
   const rateImg = "https://www.svgrepo.com/show/91435/star.svg",
   statsImg = "http://cdn.onlinewebfonts.com/svg/img_238648.png",

@@ -1,6 +1,9 @@
 // External imports
 import React from "react";
 
+// Styling
+import './CritiqueDisplay.scss';
+
 
 const CritiqueDisplay = props => {
 

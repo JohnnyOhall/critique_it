@@ -1,0 +1,22 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15em;
+  padding: 0 5%;
+  background-color: whitesmoke;
+
+  .logo {
+    background-color: fire;
+    font-size: 65px;
+    font-family: 'Itim', cursive;
+  }
+
+  button {
+    background-color: transparent;
+    border: transparent;
+    font-size: 25px;
+    font-family: 'Noto Sans Display', sans-serif;
+    cursor: pointer;
+  }
+}

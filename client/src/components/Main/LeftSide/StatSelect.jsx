@@ -1,6 +1,9 @@
 // External imports
 import React from "react";
 
+// Styling
+import './StatSelect.scss';
+
 
 const StatSelect = props => {
 

@@ -7,6 +7,9 @@ import StatSelect from "./StatSelect";
 import ExploreSelect from "./ExploreSelect";
 import ProfileSelect from "./ProfileSelect";
 
+// Styling
+import './LeftSide.scss';
+
 
 const LeftSide = props => {
 
