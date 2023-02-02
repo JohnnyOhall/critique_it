@@ -21,4 +21,17 @@ nav {
       height: 100%;
     }
   }
+
+  .link-nav:hover {
+    background-color: #3E505C;
+    border-style: dotted;
+
+    .about-text {
+      color: white;
+      font-size: 4em;
+      font-family: 'Noto Sans Display', sans-serif;
+      text-decoration: none;
+    }
+  }
+
 }
