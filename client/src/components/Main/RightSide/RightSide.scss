@@ -1,15 +1,15 @@
 .right-side {
-  width: 100%;
+  display: flex;
   justify-content: center;
   flex-direction: column;
-  display: flex;
+  width: 100%;
 
   .critique-right {
     background-color: #738580;
 
     .critique-display {
-      margin: 3em;
       height: 100vh;
+      margin: 3em;
       border-style: solid;
       border-color: black;
     }
@@ -19,8 +19,8 @@
     background-color: cornflowerblue;
 
     .stat-display {
-      margin: 3em;
       height: 100vh;
+      margin: 3em;
       border-style: solid;
       border-color: black;
     }
@@ -29,8 +29,8 @@
   .explore-right {
     background-color: coral;
     .explore-display {
-      margin: 3em;
       height: 100vh;
+      margin: 3em;
       border-style: solid;
       border-color: black;
     }
@@ -40,8 +40,8 @@
     background-color: grey;
 
     .profile-display {
-      margin: 3em;
       height: 100vh;
+      margin: 3em;
       border-style: solid;
       border-color: black;
     }

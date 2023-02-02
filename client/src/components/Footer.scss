@@ -2,39 +2,35 @@ footer {
   padding-top: 5em;
   background-color: whitesmoke;
 
-  .bouncing-letters {
-    position: relative;
+  .letters {
     display: flex;
     justify-content: center;
-    font-size: 15vw;
+    position: relative;
+    font-size: 17vw;
     font-family: 'Itim', cursive;
   }
 
-  .bouncing-letters:hover {
+  // Specifies animation steps and styles for different animation points on Y axis
+  .letters:hover {
     @keyframes bounce {
       0% {
         transform: translateY(0);
       }
-      10% {
-        transform: translateY(0);
-      }
-      30% {
+      20% {
         transform: translateY(-50px);
       }
       50% {
         transform: translateY(0);
       }
-      60% {
-        transform: translateY(-10px);
-      }
       70% {
-        transform: translateY(0);
+        transform: translateY(-10px);
       }
       100% {
         transform: translateY(0);
       }
     }
   
+    // Name, duration, timing, iteration count, delay
     .c { animation: bounce 2.5s ease infinite;
     }
     .r {

@@ -7,7 +7,7 @@ import './Footer.scss';
 
 const Footer = props => (
   <footer>
-    <div class="bouncing-letters">
+    <div class="letters">
       <div class="c">c</div>
       <div class="r">r</div>
       <div class="i"><font color="#b22222">I</font></div>

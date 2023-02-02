@@ -1,20 +1,20 @@
 nav {
-  height: 30em;
-  background-color: #B8390E;
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  height: 30em;
+  background-color: #B8390E;
 
   .link-nav {
-    background-color: burlywood;
     height: 17em;
     width: 17em;
     overflow: hidden;
+    background-color: burlywood;
     border-radius: 50%;
-    text-align: center;
-    line-height: 18em;
     border-style: ridge;
     border-color: #B8390E;
+    text-align: center;
+    line-height: 18em;
     
     img {
       width: 100%;
