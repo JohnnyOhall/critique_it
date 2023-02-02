@@ -8,20 +8,23 @@ const app = express();
 const port = process.env.PORT || 54321;
 
 //Cookie - encryption
-const cookieSession = require("cookie-session");
+const cookieSession = require( 'cookie-session' );
 
 // Middleware
 app.use( morgan( 'dev' ));
 app.use( express.urlencoded({ extended: true }));
 app.use( express.json());
-app.use(express.static('public'));
+app.use(express.static( 'public' ));
 
+// Cookie Session
 app.use(cookieSession({
+
   name: 'session',
-  keys: ['charmander', 'squirtle', 'bulbasaur', 'pikachu'],
+  keys: [ 'charmander', 'squirtle', 'bulbasaur', 'pikachu' ],
 
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
+
 }));
 
 

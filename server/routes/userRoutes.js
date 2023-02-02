@@ -51,7 +51,7 @@ router.patch( '/:id/reactivate', ( req, res ) => {
     const values = [ user.id ];
 
     if ( Number( req.params.id ) !== user.id ) {
-      return res.send( 'Invalid Request ...' )
+      return res.send( 'Invalid Request ...' );
     };
 
     return db.query( enableUser, values )
