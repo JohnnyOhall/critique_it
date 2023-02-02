@@ -3,47 +3,4 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-
-  .critique-right {
-    background-color: #738580;
-
-    .critique-display {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .stat-right {
-    background-color: cornflowerblue;
-
-    .stat-display {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .explore-right {
-    background-color: coral;
-    .explore-display {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .profile-right {
-    background-color: grey;
-
-    .profile-display {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
 }

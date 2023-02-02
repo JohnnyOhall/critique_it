@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './RightSide.scss';
+import './ProfileDisplay.scss';
 
 
 const ProfileDisplay = prop => {

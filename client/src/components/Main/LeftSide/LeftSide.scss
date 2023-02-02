@@ -3,48 +3,4 @@
   justify-content: center;
   flex-direction: column;
   width: 100%;
-
-  .critique-left {
-    background-color: #E7D2CC;
-
-    .critique-select {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .stat-left {
-    background-color: lavender;
-
-    .stat-select {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .explore-left {
-    background-color: beige;
-
-    .explore-select {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
-
-  .profile-left {
-    background-color: olive;
-
-    .profile-select {
-      height: 100vh;
-      margin: 3em;
-      border-style: solid;
-      border-color: black;
-    }
-  }
 }

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './RightSide.scss';
+import './CritiqueDisplay.scss';
 
 
 const CritiqueDisplay = props => {
