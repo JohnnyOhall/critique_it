@@ -1,97 +1,216 @@
-const express = require('express');
+const express = require( 'express' );
 const router  = express.Router();
-const db = require('../db/connection');
+const db = require( '../db/connection' );
+
 
 //Routes
-router.delete('/:id/deactivate', (req, res) => {
-  const disableUsers = function (user) {
+router.delete( '/:id/deactivate', ( req, res ) => {
+
+  const disableUsers = user => {
 
     const disableUser = `
     UPDATE users
-    SET active = FALSE
+    SET active = FALSE,
+    updated = (to_timestamp(${ Date.now() } / 1000.0))
     WHERE id = $1;
-    `
+    `;
 
-    const values = [user.id]
+    const values = [ user.id ];
 
-    if (Number(req.params.id) !== user.id) {
-      return res.send('Invalid Request ...')
-    }
+    if ( Number( req.params.id ) !== user.id ) {
+      return res.send( 'Invalid Request ...' )
+    };
 
-    return db.query(disableUser, values)
-      .then(() => res.send('User Deactivated!'))
-      .catch((err) => {
-        console.log(err.message);
+    return db.query( disableUser, values )
+      .then(() => {
+        res.send( 'User Deactivated!' )
+        req.session = null;
+        // console.log( 'logged-out?:', req.session )
       })
-  }
+      .catch(( err ) => console.log( err.message ));
 
-    disableUsers(req.body)
-})
+  };
 
-router.patch('/:id/reactivate', (req, res) => {
-  const enableUsers = function (user) {
+  disableUsers( req.body );
+
+});
+
+
+router.patch( '/:id/reactivate', ( req, res ) => {
+
+  const enableUsers = user => {
 
     const enableUser = `
     UPDATE users
-    SET active = TRUE
-    WHERE id = $1;
-    `
+    SET active = TRUE,
+    updated = (to_timestamp(${ Date.now() } / 1000.0))
+    WHERE id = $1
+    RETURNING *;
+    `;
 
-    const values = [user.id]
+    const values = [ user.id ];
 
-    if (Number(req.params.id) !== user.id) {
-      return res.send('Invalid Request ...')
-    }
+    if ( Number( req.params.id ) !== user.id ) {
+      return res.send( 'Invalid Request ...' );
+    };
 
-    return db.query(enableUser, values)
-      .then(() => res.send('User Reactivatred!'))
-      .catch((err) => {
-        console.log(err.message);
+    return db.query( enableUser, values )
+      .then(( data ) => {
+
+        const { email, id } = data.rows[ 0 ];
+
+        req.session.userID = id;
+        res.json({ email });
+
       })
-  }
+      .catch(( err ) => console.log( err.message ));
 
-  enableUsers(req.body)
-})
+  };
 
-router.get('/', (req, res) => {
+  enableUsers( req.body );
+
+});
+
+
+router.patch( '/:id/update', ( req, res ) => {
+
+  const enableUsers = user => {
+
+    const enableUser = `
+    UPDATE users
+    SET email = $1,
+    updated = (to_timestamp(${ Date.now() } / 1000.0))
+    WHERE id = $2
+    RETURNING *;
+    `;
+
+    const values = [ user.email, user.id ];
+
+    if ( Number( req.params.id ) !== user.id ) {
+      return res.send( 'Invalid Request ...' );
+    };
+
+    return db.query( enableUser, values )
+      .then(( data ) => {
+        const email = data.rows[ 0 ].email;
+        res.json({ email });
+      })
+      .catch(( err ) => {
+        console.log( err.message );
+      });
+
+  };
+
+  enableUsers( req.body );
+
+});
+
+
+router.get( '/', ( req, res ) => {
+
   const userQuery = `
   SELECT * FROM users;
-  `
+  `;
 
-  db.query(userQuery)
-  .then(data => {
+  db.query( userQuery )
+  .then( data => {
     const userData = data.rows;
-    console.log('back-end:', userData)
-    res.json({userData})
+    res.json({ userData })
   })
-  .catch(err => {
+  .catch( err => {
     res
-      .status(500)
+      .status( 500 )
       .json({ error: err.message });
   });
 
-})
+});
 
-router.post('/register', (req, res) => {
 
-  const addUser = function (user) {
+router.get( '/:id', ( req, res ) => {
+
+  const userQuery = `
+  SELECT * FROM users
+  WHERE id = $1;
+  `;
+
+  values = [ req.body.id ];
+
+  if ( Number( req.params.id ) !== req.body.id ) {
+    return res.send( 'Invalid Request ...' );
+  };
+
+  db.query( userQuery, values )
+  .then( data => {
+    const userData = data.rows[ 0 ];
+    !userData.active ? 
+      res.send( 'User Inactive!' ) :
+      res.json({ userData });
+  })
+  .catch( err => {
+    res
+      .status( 500 )
+      .json({ error: err.message });
+  });
+
+});
+
+
+router.post( '/register', ( req, res ) => {
+
+  const addUser = user => {
 
     const registerUser = `
     INSERT INTO users (email)
     VALUES ($1)
     RETURNING *;
     `;
-    const values = [user.email]
 
-    return db.query(registerUser, values)
-      .then(() => res.send('Registration Successful'))
-      .catch((err) => {
-        console.log(err.message);
+    const values = [ user.email ];
+
+    return db.query( registerUser, values )
+      .then(( data ) => {
+        const email = data.rows[ 0 ].email;
+        req.session.userID = data.rows[ 0 ].id;
+        res.json({ email });
       })
-  }
+      .catch(( err ) => console.log( err.message ));
 
-  addUser(req.body)
-})
+  };
+
+  addUser( req.body );
+
+});
+
+
+router.post( '/login', async ( req, res ) => {
+
+  const queryString = `
+  SELECT * FROM users
+  WHERE email = '${ req.body.email }';
+  `;
+
+  try {
+    const data = await db.query( queryString );
+    const { email, id, active } = data.rows[ 0 ];
+
+    if (!active) return res.send( 'User Inactive!' );
+
+    req.session.userID = id;
+    res.json({ email });
+  } 
+  catch ( err ) { 
+    res.status( 500 ).json({ error: err.message });
+  };
+
+});
+
+
+router.post( '/logout', ( req, res ) => {
+
+  req.session = null;
+  res.send( 'Logged-out Successfully!' )
+
+});
 
 
 module.exports = router;
