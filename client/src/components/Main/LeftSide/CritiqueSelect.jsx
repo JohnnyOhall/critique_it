@@ -8,8 +8,8 @@ import './CritiqueSelect.scss';
 const CritiqueSelect = props => {
 
   return (
-    <section className="critique-left">
-      <div className="critique-select" id="nav-critique">
+    <section className="critique-left" id="nav-critique">
+      <div className="critique-select">
 
       </div>
     </section>

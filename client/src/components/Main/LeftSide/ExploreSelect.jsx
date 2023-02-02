@@ -8,8 +8,8 @@ import './ExploreSelect.scss';
 const ExploreSelect = props => {
 
   return (
-    <section className="explore-left">
-      <div className="explore-select" id="nav-explore">
+    <section className="explore-left" id="nav-explore">
+      <div className="explore-select">
 
       </div>
     </section>

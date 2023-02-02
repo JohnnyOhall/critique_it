@@ -8,8 +8,8 @@ import './StatSelect.scss';
 const StatSelect = props => {
 
   return (
-    <section className="stat-left">
-      <div className="stat-select" id="nav-stats">
+    <section className="stat-left" id="nav-stats">
+      <div className="stat-select">
 
       </div>
     </section>
