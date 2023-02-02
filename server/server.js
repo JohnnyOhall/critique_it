@@ -1,5 +1,5 @@
 // load .env data into process.env
-require('dotenv').config();
+require( 'dotenv' ).config();
 
 const express = require( 'express' );
 const morgan = require( 'morgan' );
@@ -13,14 +13,15 @@ app.use( morgan( 'dev' ));
 app.use( express.urlencoded({ extended: true }));
 app.use( express.json());
 
+
 // Separated Routes for each Resource
-const pageRoutes = require('./routes/pageRoutes');
-const userRoutes = require('./routes/userRoutes');
+const pageRoutes = require( './routes/pageRoutes' );
+const userRoutes = require( './routes/userRoutes' );
 
 
 // Mount all resource routes
-app.use('/pages', pageRoutes);
-app.use('/users', userRoutes);
+app.use( '/pages', pageRoutes );
+app.use( '/users', userRoutes );
 
 
 app.listen( port, () => {

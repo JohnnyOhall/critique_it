@@ -98,7 +98,6 @@ const App = () => {
       </section>
 
       <footer>
-
         <div className="footer-nav">
           <div className="footer-link"><a href="#">TBD</a></div>
           <div className="footer-link"><a href="#">TBD</a></div>
@@ -110,7 +109,7 @@ const App = () => {
         <div>
           <h1><h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1></h1>
         </div>
-
+        
       </footer>
 
     </body>
