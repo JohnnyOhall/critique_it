@@ -1,6 +1,72 @@
 footer {
-  padding-top: 1em;
+  padding-top: 5em;
   background-color: whitesmoke;
-  font-size: 9vw;
-  font-family: 'Itim', cursive;
+
+  .bouncing-letters {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    font-size: 15vw;
+    font-family: 'Itim', cursive;
+  }
+
+  .bouncing-letters:hover {
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      10% {
+        transform: translateY(0);
+      }
+      30% {
+        transform: translateY(-50px);
+      }
+      50% {
+        transform: translateY(0);
+      }
+      60% {
+        transform: translateY(-10px);
+      }
+      70% {
+        transform: translateY(0);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+  
+    .c { animation: bounce 2.5s ease infinite;
+    }
+    .r {
+      animation: bounce 2.5s ease infinite .1s;
+    }
+    .i {
+      animation: bounce 2.5s ease infinite .2s;
+    }
+    .t {
+      animation: bounce 2.5s ease infinite .3s;
+    }
+    .i {
+      animation: bounce 2.5s ease infinite .4s;
+    }
+    .q {
+      animation: bounce 2.5s ease infinite .5s;
+    }
+    .u {
+      animation: bounce 2.5s ease infinite .6s;
+    }
+    .e {
+      animation: bounce 2.5s ease infinite .7s;
+    }
+    .pencil-icon {
+      animation: bounce 2.5s infinite .8s;
+    }
+  }
 }
+
+
+// Code from prior to the bouncing hover effect. To go back to original code, remove everything in footer above and replace with this:
+// padding-top: 1em;
+// background-color: whitesmoke;
+// font-size: 9vw;
+// font-family: 'Itim', cursive;
