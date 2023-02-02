@@ -180,8 +180,19 @@
 
   footer {
     background-color: whitesmoke;
-    padding-top: 2.5em;
     font-size: 5.25vw;
     font-family: 'Itim', cursive;
+
+    .footer-nav {
+      display: flex;
+      justify-content: space-around;
+      padding-top: 0.5em;
+      padding-bottom: 1.5em;
+
+      .footer-link {
+        font-size: 0.4em;
+        font-family: 'Noto Sans Display', sans-serif;
+      }
+    }
   }
 }

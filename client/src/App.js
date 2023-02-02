@@ -98,7 +98,16 @@ const App = () => {
       </section>
 
       <footer>
-        <h1><h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1></h1>
+        <div className="footer-nav">
+          <div className="footer-link">words</div>
+          <div className="footer-link">words</div>
+          <div className="footer-link">words</div>
+          <div className="footer-link">words</div>
+          <div className="footer-link">words</div>
+        </div>
+        <div>
+          <h1><h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1></h1>
+        </div>
       </footer>
 
     </body>
