@@ -2,13 +2,57 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
 
-// POSTMAN for fake posts
-
-//PUT - replaces a  resource completely
-//PATCH - repalces a peice of resource
-//POST - resource creation
-
 //Routes
+router.delete('/:id/deactivate', (req, res) => {
+  const disableUsers = function (user) {
+
+    const disableUser = `
+    UPDATE users
+    SET active = FALSE
+    WHERE id = $1;
+    `
+
+    const values = [user.id]
+
+    if (Number(req.params.id) !== user.id) {
+      return res.send('Invalid Request ...')
+    }
+
+    return db.query(disableUser, values)
+      .then(() => res.send('User Deactivated!'))
+      .catch((err) => {
+        console.log(err.message);
+      })
+  }
+
+    disableUsers(req.body)
+})
+
+router.patch('/:id/reactivate', (req, res) => {
+  const enableUsers = function (user) {
+
+    const enableUser = `
+    UPDATE users
+    SET active = TRUE
+    WHERE id = $1;
+    `
+
+    const values = [user.id]
+
+    if (Number(req.params.id) !== user.id) {
+      return res.send('Invalid Request ...')
+    }
+
+    return db.query(enableUser, values)
+      .then(() => res.send('User Reactivatred!'))
+      .catch((err) => {
+        console.log(err.message);
+      })
+  }
+
+  enableUsers(req.body)
+})
+
 router.get('/', (req, res) => {
   const userQuery = `
   SELECT * FROM users;

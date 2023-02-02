@@ -2,16 +2,10 @@ const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
 
-// POSTMAN for fake posts
-
-//PUT - replaces a  resource completely
-//PATCH - repalces a peice of resource
-//POST - resource creation
-
 router.get('/', (req, res) => {
   const pageQuery = `
   SELECT * FROM pages;
-  `
+  `;
 
   db.query(pageQuery)
   .then(data => {
@@ -36,6 +30,7 @@ router.post('/create', (req, res) => {
     VALUES ($1, $2, $3, $4)
     RETURNING *;
     `;
+
     const values = [page.showID, page.seasonID, page.episodeID, page.userID]
 
     return db.query(buildPage, values)
@@ -46,6 +41,6 @@ router.post('/create', (req, res) => {
   }
 
   createPage(req.body)
-})
+});
 
 module.exports = router;
