@@ -1,0 +1,36 @@
+.about-us {
+  height: 20rem;
+  background-color: #25234A;
+  color: whitesmoke;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 2em;
+  padding-bottom: 2em;
+  font-size: 100px;
+  font-weight: bolder;
+  font-family: 'Noto Sans Display', sans-serif;
+
+  .about-top {
+    padding: 10%;
+  }
+
+  .about-bottom {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding-top: 0.25em;
+    background-color: whitesmoke;
+  
+    .about-link {
+      font-size: 0.4em;
+      font-family: 'Noto Sans Display', sans-serif;
+
+      a {
+        color:black;
+        font-weight: bold;
+      }
+    }
+  }
+}

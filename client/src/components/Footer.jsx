@@ -1,6 +1,9 @@
 //External imports
 import React from "react";
 
+// Styling
+import './Footer.scss';
+
 
 const Footer = props => (
   <footer>

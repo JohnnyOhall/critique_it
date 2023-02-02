@@ -1,6 +1,10 @@
 // External imports
 import React from "react"
 
+// Styling
+import './Header.scss';
+
+
 const Header = props => {
   //🔒
 

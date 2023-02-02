@@ -7,6 +7,9 @@ import ExploreDisplay from "./ExploreDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 import StatDisplay from "./StatDisplay";
 
+// Styling
+import './RightSide.scss';
+
 
 const RightSide = props => {
 

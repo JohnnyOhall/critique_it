@@ -1,0 +1,50 @@
+.left-side {
+  width: 100%;
+  justify-content: center;
+  flex-direction: column;
+  display: flex;
+
+  .critique-left {
+    background-color: #E7D2CC;
+
+    .critique-select {
+      margin: 3em;
+      height: 100vh;
+      border-style: solid;
+      border-color: black;
+    }
+  }
+
+  .stat-left {
+    background-color: lavender;
+
+    .stat-select {
+      margin: 3em;
+      height: 100vh;
+      border-style: solid;
+      border-color: black;
+    }
+  }
+
+  .explore-left {
+    background-color: beige;
+
+    .explore-select {
+      margin: 3em;
+      height: 100vh;
+      border-style: solid;
+      border-color: black;
+    }
+  }
+
+  .profile-left {
+    background-color: olive;
+
+    .profile-select {
+      margin: 3em;
+      height: 100vh;
+      border-style: solid;
+      border-color: black;
+    }
+  }
+}

@@ -1,6 +1,9 @@
 // External imports
 import React from "react";
 
+// Styling
+import './LeftSide.scss';
+
 
 const CritiqueSelect = props => {
 

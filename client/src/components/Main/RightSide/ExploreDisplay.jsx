@@ -1,6 +1,9 @@
 // External Imports
 import React from "react";
 
+// Styling
+import './RightSide.scss';
+
 
 const ExploreDisplay = prop => {
 

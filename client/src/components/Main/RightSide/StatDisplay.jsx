@@ -1,6 +1,9 @@
 // External imports
 import React from "react";
 
+// Styling
+import './RightSide.scss';
+
 
 const StatDisplay = props => {
 
