@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import axios from "axios"; 
+import axios from "axios";
+import Cookies from "js-cookie";
 
 // Styling
 import './Login.scss';
@@ -12,17 +13,17 @@ const Login = props => {
     password: ""
   });
 
+  
   const submitRequest = ( data ) => {
-    console.log('here')
-
     axios.post( '/users/login', data )
       .then(res => {
-        console.log(res.data.email)
         props.setEmail(res.data.email)
+        Cookies.set('email', res.data.email)
         props.update(props.state)
       })
   }
-
+  
+  
   return (
     <div className='user'>
       <form autoComplete="off" onSubmit={ e => e.preventDefault( )} >
@@ -44,6 +45,7 @@ const Login = props => {
         </div>
         <div>
           <button className="login-button" type="submit" onClick={ () => submitRequest( login ) }>Login</button>
+          <button className="login-button" type="submit" onClick={ props.back }>Cancel</button>
         </div>
       </form>
     </div>
