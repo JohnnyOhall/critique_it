@@ -47,8 +47,18 @@ const CritiqueSelectAdd = props => {
       .catch(console.error);
   };
 
+  // Starts building page in database when user selects the show, then transitions to the main page
+  const selectShow = ( data ) => {
+    axios.post( '/pages/create', data )
+      .then(res => {
+        props.onSelect();
+      })
+      .catch(console.error);
+  }
+
   return (
     <div className="critique-select">
+
       <form onSubmit={ e => e.preventDefault( )}>
         <input 
           placeholder="Enter Show Name"  
@@ -58,6 +68,7 @@ const CritiqueSelectAdd = props => {
         />
         <button onClick={ e => findShow( search ) }>Search</button>
       </form>
+
       <p>Show Title: { show.name }</p>
       <p>Show ID: { show.id }</p>
       <p>Rating: { show.rating } / 10</p>
@@ -65,6 +76,21 @@ const CritiqueSelectAdd = props => {
       <img src={ show.image } />
       <p>Seasons: { show.seasons }</p>
       <p>Episodes: { show.episodes }</p>
+
+      <img
+        className="select-button"
+        src="images/add.png"
+        alt="Select"
+        onClick={ () => selectShow( show ) }
+      />
+
+      <img
+        className="close-button"
+        src="images/close.png"
+        alt="Close"
+        onClick={ props.onClose }
+      />
+
     </div>
   );
 };

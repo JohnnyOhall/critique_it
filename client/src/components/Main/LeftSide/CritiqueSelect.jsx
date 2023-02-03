@@ -8,7 +8,7 @@ import CritiqueSelectAdd from "./CritiqueSelectAdd";
 import './CritiqueSelect.scss';
 
 
-const MAIN = "MAIN", ADD = "ADD"
+const MAIN = "MAIN", ADD = "ADD";
 
 
 const CritiqueSelect = props => {
@@ -18,7 +18,12 @@ const CritiqueSelect = props => {
   return (
     <section className="critique-left" id="nav-critique">
       { mode === MAIN && <CritiqueSelectMain onAdd={() => transition( ADD )} /> }
-      { mode === ADD && <CritiqueSelectAdd />}
+      { mode === ADD && 
+        <CritiqueSelectAdd 
+          onClose={() => transition( back )} 
+          onSelect={() => transition( MAIN )} 
+        /> 
+      }
     </section>
   );
 };
