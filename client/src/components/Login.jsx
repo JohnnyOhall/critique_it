@@ -2,6 +2,9 @@ import React from "react";
 import { useState } from "react";
 import axios from "axios"; 
 
+// Styling
+import './Login.scss';
+
 
 const Login = props => {
   const [ login, setLogin ] = useState({
@@ -23,7 +26,7 @@ const Login = props => {
   return (
     <div className='user'>
       <form autoComplete="off" onSubmit={ e => e.preventDefault( )} >
-        <div>
+        <div className="login-username">
           <input 
             placeholder="username"
             type="text" 
@@ -31,7 +34,7 @@ const Login = props => {
             onChange={ e => setLogin({ ...login, email: e.target.value })}
           />
         </div>
-        <div>
+        <div className="login-password">
           <input 
             placeholder="****" 
             type="password" 
@@ -39,7 +42,9 @@ const Login = props => {
             onChange={ e => setLogin({ ...login, password: e.target.value })}
           />
         </div>
-        <div><button type="submit" onClick={ () => submitRequest( login ) }>Login</button></div>
+        <div>
+          <button className="login-button" type="submit" onClick={ () => submitRequest( login ) }>Login</button>
+        </div>
       </form>
     </div>
   )

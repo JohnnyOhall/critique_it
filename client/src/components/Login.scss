@@ -1,0 +1,40 @@
+@keyframes popup {
+  0% {
+      transform: scale(0.2);
+      opacity: 0;
+  }
+  100% {
+      transform: scale(1);
+      opacity: 1;
+  }
+}
+
+.user {
+  input {
+    width: 14em;
+    padding: 0.75em;
+    border-radius: 0.8em;
+    border: none;
+    outline: none;
+    background-color: rgb(234, 238, 241);
+    box-shadow: 0px 3px 7px rgb(195, 203, 208);
+    font-size: 1em;
+  }
+
+  .login-username, .login-password {
+    padding: 0.5em;
+  }
+
+  .login-button {
+    margin-top: 0.2em;
+    padding: 0.15em 0.9em 0.3em 0.9em;
+    border-radius: 1em;
+    background-color: #1b1857;
+    color: white;
+    text-align: center;
+  }
+
+  .login-button:hover {
+    background-color: #5b5885;
+  }
+}
