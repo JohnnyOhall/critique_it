@@ -16,13 +16,13 @@ const App = () => {
 
 
   return (
-    <body className="App">
+    <div className="App">
       <Header />
       <Nav />
       <Main />
       <About />
       <Footer />
-    </body>
+    </div>
   );
 };
 
