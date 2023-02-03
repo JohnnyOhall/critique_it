@@ -3,7 +3,7 @@ import React from "react"
 import { useState, useEffect } from "react";
 
 //Components
-import useVisualMode from "../hooks/useVisualMode";
+import useLoginVisualMode from "../hooks/useLoginVisualMode";
 import SignedOut from "./SignedOut";
 import Login from "./Login";
 import SignedIn from "./SignedIn";
@@ -15,7 +15,7 @@ const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 
 
 const Header = props => {
-  const { mode, transition, back } = useVisualMode(SIGNED_OUT);
+  const { mode, transition, back } = useLoginVisualMode(SIGNED_OUT);
 
   const [email, setEmail] = useState("")
 

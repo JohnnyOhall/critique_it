@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-export default function useVisualMode( initial ) {
+export default function useCritiqueSelectVisualMode( initial ) {
   const [ mode, setMode ] = useState( initial ),
     [ history, setHistory ] = useState([ initial ]);
 
