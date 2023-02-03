@@ -70,7 +70,7 @@ router.post( '/create', ( req, res ) => {
       page.showID,
       page.seasonID,
       page.episodeID,
-      page.userID //add req.session.userID for production
+      req.session.userID //add req.session.userID for production
     ];
 
     return db.query( buildPage, values )
