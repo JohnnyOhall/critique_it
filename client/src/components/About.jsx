@@ -11,15 +11,9 @@ const About = props => {
   return (
     <section className='about-us' id="nav-about">
 
-      <div className="about-body">
-        <div className="about-top">
-          <p>ABOUT</p>
-          <p>US</p>
-        </div>
-
-        <div className="about-content">
-          About content
-        </div>
+      <div className="about-top">
+        <p>ABOUT</p>
+        <p>US</p>
       </div>
 
       <div className="about-bottom">
