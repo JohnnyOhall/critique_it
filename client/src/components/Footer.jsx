@@ -7,16 +7,16 @@ import './Footer.scss';
 
 const Footer = props => (
   <footer>
-    <div class="letters">
-      <div class="c">c</div>
-      <div class="r">r</div>
-      <div class="i"><font color="#b22222">I</font></div>
-      <div class="t"><font color="#b22222">T</font></div>
-      <div class="i">i</div>
-      <div class="q">q</div>
-      <div class="u">u</div>
-      <div class="e">e</div>
-      <div class="pencil-icon">
+    <div className="letters">
+      <div className="c">c</div>
+      <div className="r">r</div>
+      <div className="i"><font color="#b22222">I</font></div>
+      <div className="t"><font color="#b22222">T</font></div>
+      <div className="i">i</div>
+      <div className="q">q</div>
+      <div className="u">u</div>
+      <div className="e">e</div>
+      <div className="pencil-icon">
         <font className="pencil" color="#b22222">🖉</font>
       </div>
     </div>
