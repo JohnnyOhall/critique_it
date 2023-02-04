@@ -17,11 +17,11 @@ const CritiqueSelect = props => {
 
   return (
     <section className="critique-left" id="nav-critique">
-      { mode === MAIN && <CritiqueSelectMain onAdd={() => transition( ADD )} /> }
+      { mode === MAIN && <CritiqueSelectMain onAdd={ () => transition( ADD ) } /> }
       { mode === ADD && 
         <CritiqueSelectAdd 
-          onClose={() => transition( back )} 
-          onSelect={() => transition( MAIN )} 
+          onClose={ () => transition( back ) } 
+          onSelect={ () => transition( MAIN ) } 
         /> 
       }
     </section>
