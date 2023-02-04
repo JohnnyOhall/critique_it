@@ -49,15 +49,19 @@ const CritiqueSelectMain = props => {
 
   return (
     <div className="critique-select">
-      <img
-        className="add-button"
-        src="images/add.png"
-        alt="Add"
-        onClick={props.onAdd}
-      />
-      <section className="user-shows">
-        <ul className="show-list">{ showItem }</ul>
-      </section>
+      <div className="main">
+        <section className="main-add-button">
+          <img
+            className="add-button"
+            src="images/add.png"
+            alt="Add"
+            onClick={ props.onAdd }
+          />
+        </section>
+        <section className="user-shows">
+          <ul className="show-list">{ showItem }</ul>
+        </section>
+      </div>
     </div>
     
   )

@@ -2,17 +2,22 @@
 import React from "react";
 
 const ShowListItem = props => {
-  const { show_id, name, img } = props;
+  const { name, img } = props;
 
   return (
     <li className="show-item">
-      <p>{ show_id }</p>
-      <p>{ name }</p>
-      <img
-        src={img}
-        height="100px"
-        width="100px"
-      />
+      <div className="show-img">
+        <img
+          src={img}
+          height="100px"
+          width="100px"
+        />
+      </div>
+      <div className="show-name">
+        <button>
+          { name }
+        </button>
+      </div>
     </li>
   );
 };
