@@ -67,7 +67,7 @@ router.post( '/create', ( req, res ) => {
     `; 
 
     const values = [ 
-      page.showID,
+      page.id,
       page.seasonID,
       page.episodeID,
       req.session.userID //add req.session.userID for production
