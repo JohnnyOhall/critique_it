@@ -10,7 +10,7 @@ const StatSelect = props => {
   return (
     <section className="stat-left" id="nav-stats">
       <div className="stat-select">
-
+        
       </div>
     </section>
   );
