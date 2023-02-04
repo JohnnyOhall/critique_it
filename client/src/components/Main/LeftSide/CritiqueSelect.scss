@@ -6,5 +6,16 @@
     margin: 3em;
     border-style: solid;
     border-color: black;
+
+    .add {
+      display: flex;
+      width: 100%; // change based on the need
+      height: 100%; // change based on the need
+      flex-wrap: wrap;
+
+      .box {
+        flex-basis: 50%;
+      }
+    }
   }
 }

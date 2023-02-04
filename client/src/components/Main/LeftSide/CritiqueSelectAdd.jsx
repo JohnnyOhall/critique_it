@@ -47,8 +47,7 @@ const CritiqueSelectAdd = props => {
       .catch( console.error );
   };
 
-  // what to do if show is already in the database?
-  // how to add creator id? 
+  // prevent duplicate logic needs to be added
   const selectShow = data => {
     axios.post( '/pages/create', data )
       .then( () => props.onSelect() )
@@ -58,51 +57,55 @@ const CritiqueSelectAdd = props => {
   return (
     <div className="critique-select">
 
-      <div className="show-search-info">
-        <form className="search" onSubmit={ e => e.preventDefault() }>
-          <input
-            placeholder="Enter Show Name"
-            type="text"
-            value={ search }
-            onChange={ e => setSearch(e.target.value) }
-          />
-          <button onClick={ e => findShow( search ) }>Search</button>
-        </form>
-        <div className="info">
-          <p>Show Title: { show.name }</p>
-          <p>Show ID: { show.id }</p>
-          <p>Rating: { show.rating } / 10</p>
-          <p>Seasons: { show.seasons }</p>
-          <p>Episodes: { show.episodes }</p>
-          <p>{ show.summary }</p>
+      <div className="add">
+
+        <div className="show-search-info box">
+          <form className="search" onSubmit={ e => e.preventDefault() }>
+            <input
+              placeholder="Enter Show Name"
+              type="text"
+              value={ search }
+              onChange={ e => setSearch(e.target.value) }
+            />
+            <button onClick={ e => findShow( search ) }>Search</button>
+          </form>
+          <div className="info">
+            <p>Show Title: { show.name }</p>
+            <p>Show ID: { show.id }</p>
+            <p>Rating: { show.rating } / 10</p>
+            <p>Seasons: { show.seasons }</p>
+            <p>Episodes: { show.episodes }</p>
+            <p>{ show.summary }</p>
+          </div>
         </div>
-      </div>
 
-      <div className="show-image">
-        <img src={ show.image } />
-      </div>
+        <div className="show-image box">
+          <img src={ show.image } />
+        </div>
 
-      <div className="show-buttons">
-        <img
-          className="select-button"
-          src="images/add.png"
-          alt="Select"
-          onClick={ () => selectShow(show) }
-        />
-        <img
-          className="close-button"
-          src="images/close.png"
-          alt="Close"
-          onClick={ props.onClose }
-        />
-      </div>
+        <div className="show-buttons box">
+          <img
+            className="select-button"
+            src="images/add.png"
+            alt="Select"
+            onClick={ () => selectShow(show) }
+          />
+          <img
+            className="close-button"
+            src="images/close.png"
+            alt="Close"
+            onClick={ props.onClose }
+          />
+        </div>
 
-      <div className="show-stats">
-        <p>Show Stats</p>
-        <p>Users who added this show:</p>
-        <p>Average rating:</p>
-        <p>Average episodes critiqued:</p>
-        <p>Times searched:</p>
+        <div className="show-stats box">
+          <p>Show Stats</p>
+          <p>Users who added this show:</p>
+          <p>Average rating:</p>
+          <p>Average episodes critiqued:</p>
+          <p>Times searched:</p>
+        </div>
+
       </div>
 
     </div>
