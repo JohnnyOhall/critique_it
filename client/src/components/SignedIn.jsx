@@ -13,13 +13,11 @@ const SignedIn = props => {
   }
 
   return (
-      <div className="Signed-in" >
-      <div>{props.email}🔒</div>
-      <br/>
-      <div><button className="login-button" type="submit" onClick={ signOut }>Sign-Out</button></div>
-      </div>
-      
-
+    <div className="Signed-in" >
+    <div>{props.email}🔒</div>
+    <br/>
+    <div><button className="login-button" type="submit" onClick={ signOut }>Sign-Out</button></div>
+    </div>
   )
 }
 

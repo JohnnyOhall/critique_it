@@ -1,22 +1,24 @@
-INSERT INTO users ( email )
+INSERT INTO users ( email, password )
 VALUES
-( 'jacqui@telus.com' ),
-( 'john@telus.com' )
+( 'jacqui@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m' ),
+( 'john@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m' )
 ;
 
 
 INSERT INTO pages 
 ( 
   show_id,
+  show_title,
+  show_img,
   season_id,
   episode_id,
   creator_id
 )
 VALUES
-( 1825, 9017, 203920, 2 ),
-( 1825, 30914, 946020, 2 ),
-( 53647, 120562, 2382723, 1 ),
-( 914, 3961, 86382, 1 )
+( 1825, 'The Expanse', 'https://static.tvmaze.com/uploads/images/original_untouched/380/951122.jpg', 9017, 203920, 2 ),
+( 1825, 'The Expanse', 'https://static.tvmaze.com/uploads/images/original_untouched/380/951122.jpg', 30914, 946020, 2 ),
+( 53647, 'Wednesday', 'https://static.tvmaze.com/uploads/images/original_untouched/433/1082578.jpg', 120562, 2382723, 1 ),
+( 914, 'The Bachelor', 'https://static.tvmaze.com/uploads/images/original_untouched/442/1107419.jpg', 3961, 86382, 1 )
 ;
 
 
@@ -29,3 +31,11 @@ VALUES
 ( 'Wish you were here', 'Missing a character who died or maybe belongs in this episode, vote them in!', 'img.jpg' )
 ;
 -- Dynamic DUO, McDreamy, best fight? (Champ), Hide yo wife, hide you husband, Leyroy Jenkins
+
+
+-- INSERT INTO a (column1, column2)
+-- SELECT column1, column2 FROM b
+-- UNION
+-- SELECT column1, column2 FROM c
+-- EXCEPT
+-- SELECT column1, column2 FROM a;

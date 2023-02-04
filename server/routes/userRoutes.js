@@ -1,7 +1,7 @@
 const express = require( 'express' );
 const router  = express.Router();
 const db = require( '../db/connection' );
-
+const bcrypt = require('bcryptjs');
 
 //Routes
 router.delete( '/:id/deactivate', ( req, res ) => {
@@ -25,7 +25,6 @@ router.delete( '/:id/deactivate', ( req, res ) => {
       .then(() => {
         res.send( 'User Deactivated!' )
         req.session = null;
-        // console.log( 'logged-out?:', req.session )
       })
       .catch(( err ) => console.log( err.message ));
 
@@ -159,22 +158,28 @@ router.post( '/register', ( req, res ) => {
 
   const addUser = user => {
 
-    const registerUser = `
-    INSERT INTO users (email)
-    VALUES ($1)
-    RETURNING *;
-    `;
+    bcrypt.genSalt( 10, ( err, salt ) => {
 
-    const values = [ user.email ];
+      bcrypt.hash( user.password, salt, ( err, hash ) => {
+      
+        const registerUser = `
+          INSERT INTO users (email, password)
+          VALUES ($1, $2)
+          RETURNING *;
+        `;
 
-    return db.query( registerUser, values )
-      .then(( data ) => {
-        const email = data.rows[ 0 ].email;
-        req.session.userID = data.rows[ 0 ].id;
-        res.json({ email });
-      })
-      .catch(( err ) => console.log( err.message ));
+        const values = [ user.email, hash ];
 
+        return db.query( registerUser, values )
+          .then(( data ) => {
+            const email = data.rows[ 0 ].email;
+            req.session.userID = data.rows[ 0 ].id;
+            res.json({ email });
+          })
+          .catch(( err ) => console.log( err.message ));
+
+      });
+    });
   };
 
   addUser( req.body );
@@ -191,12 +196,17 @@ router.post( '/login', async ( req, res ) => {
 
   try {
     const data = await db.query( queryString );
-    const { email, id, active } = data.rows[ 0 ];
+    const { email, id, active, password } = data.rows[ 0 ];
 
-    if (!active) return res.send( 'User Inactive!' );
+    if ( !active ) return res.status( 401 ).send( 'User Inactive!' );
 
-    req.session.userID = id;
-    res.json({ email });
+    bcrypt.compare( req.body.password, password ).then(( result ) => {
+      if ( !result ) return res.status( 401 ).send( 'invalid password!' );
+    
+      req.session.userID = id;
+      res.json({ email });
+    });
+
   } 
   catch ( err ) { 
     res.status( 500 ).json({ error: err.message });

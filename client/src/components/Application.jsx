@@ -1,5 +1,5 @@
 // External imports
-import React from 'react';
+import React, { createContext, useState } from 'react';
 
 // Components
 import Header from './Header';
@@ -11,18 +11,22 @@ import Footer from './Footer';
 // Styling
 import './Application.scss';
 
+export const GlobalContext = createContext();
 
-const App = () => {
-
+const App = () => { 
+  const [loggedIn, setLoggedIn] = useState(false);
 
   return (
-    <div className="App">
-      <Header />
-      <Nav />
-      <Main />
-      <About />
-      <Footer />
-    </div>
+    <GlobalContext.Provider value={{loggedIn, setLoggedIn}}>
+      <div className="App">
+        <Header />
+        <Nav />
+        <Main />
+        <About />
+        <Footer />
+      </div>
+    </GlobalContext.Provider>
+
   );
 };
 

@@ -7,9 +7,7 @@ import CritiqueSelectAdd from "./CritiqueSelectAdd";
 // Styling
 import './CritiqueSelect.scss';
 
-
 const MAIN = "MAIN", ADD = "ADD";
-
 
 const CritiqueSelect = props => {
 

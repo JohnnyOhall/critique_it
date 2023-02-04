@@ -23,22 +23,19 @@ router.get( '/', ( req, res ) => {
 });
 
 
-router.get( '/:id', ( req, res ) => {
+router.get( '/main', ( req, res ) => {
 
   const pageQuery = `
   SELECT * FROM pages
-  WHERE id = $1;
+  WHERE creator_id = $1;
   `;
 
-  values = [ req.body.id ];
+  values = [ req.session.userID ];
 
-  if ( Number( req.params.id ) !== req.body.id ) {
-    return res.send( 'Invalid Request ...' );
-  };
 
   db.query( pageQuery, values )
   .then( data => {
-    const pageData = data.rows[ 0 ];
+    const pageData = data.rows;
     res.json({ pageData })
   })
   .catch( err => {
@@ -57,20 +54,24 @@ router.post( '/create', ( req, res ) => {
     const buildPage = `
     INSERT INTO pages 
     (
-      show_id, 
+      show_id,
+      show_title,
+      show_img,
       season_id, 
       episode_id, 
       creator_id
     )
-    VALUES ($1, $2, $3, $4)
+    VALUES ($1, $2, $3, $4, $5, $6)
     RETURNING *;
     `; 
 
     const values = [ 
       page.id,
+      page.name,
+      page.image,
       page.seasonID,
       page.episodeID,
-      req.session.userID //add req.session.userID for production
+      req.session.userID
     ];
 
     return db.query( buildPage, values )
