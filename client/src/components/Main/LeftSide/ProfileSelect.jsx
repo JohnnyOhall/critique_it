@@ -7,7 +7,6 @@ import './ProfileSelect.scss';
 
 const ProfileSelect = props => {
 
-
   return (
     <section className="profile-left" id="nav-profile">
       <div className="profile-select">

@@ -5,19 +5,17 @@ import axios from "axios";
 
 const CritiqueSelectAdd = props => {
 
-  const [ show, setShow ] = useState( {} );
-  const [ search, setSearch ] = useState( '' );
+  const [ show, setShow ] = useState({});
+  const [ search, setSearch ] = useState('');
 
-  const removeHTMLTags = string => {
-    return string.replace( /(<([^>]+)>)/ig, '' );
-  };
+  const removeHTMLTags = string => string.replace(/(<([^>]+)>)/ig, '');
 
   const findShow = showName => {
     let showData;
 
-    axios.get(`http://api.tvmaze.com/search/shows?q=${encodeURIComponent(showName)}`)
-      .then(res => {
-        let { name, id, image, rating, summary } = res.data[0].show;
+    axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( showName )}` )
+      .then( res => {
+        let { name, id, image, rating, summary } = res.data[ 0 ].show;
 
         image = image.original;
         rating = rating.average;
@@ -33,13 +31,13 @@ const CritiqueSelectAdd = props => {
           episodes: 0
         };
 
-        return axios.get(`http://api.tvmaze.com/shows/${id}/seasons`);
+        return axios.get( `http://api.tvmaze.com/shows/${id}/seasons` );
       })
-      .then(res => {
+      .then( res => {
         showData.seasons = res.data.length;
 
         for ( const season of res.data ) {
-          showData.episodes += season.episodeOrder
+          showData.episodes += season.episodeOrder;
         };
 
         setShow( showData );
@@ -107,7 +105,6 @@ const CritiqueSelectAdd = props => {
             <h2>Show Summary</h2>
             <p>{ show.summary }</p>
           </div>
-
         </div>
       
 
@@ -123,32 +120,31 @@ const CritiqueSelectAdd = props => {
           <p>Times searched:</p>
         </div>
 
+
         <div className="show-buttons box">
           <div className="add-button">
-          <img
-            className="select-button"
-            src="images/add.png"
-            alt="Select"
-            onClick={ () => selectShow(show) }
-          /><h2>add</h2>
+            <img
+              className="select-button"
+              src="images/add.png"
+              alt="Select"
+              onClick={ () => selectShow(show) }
+            />
+            <h2>add</h2>
           </div>
           <div className="close-button">
-          <img
-            className="close-button"
-            src="images/cancel.png"
-            alt="Close"
-            width="64px" height="64px"
-            onClick={ props.onClose }
-          /> <h2>close</h2>
+            <img
+              className="close-button"
+              src="images/cancel.png"
+              alt="Close"
+              width="64px" height="64px"
+              onClick={ props.onClose }
+            /> 
+            <h2>close</h2>
           </div>
-          
-          
         </div>
 
-        
 
       </div>
-
     </div>
   );
 };

@@ -7,7 +7,6 @@ import './About.scss';
 
 const About = props => {
 
-
   return (
     <section className='about-us' id="nav-about">
 

@@ -1,21 +1,25 @@
+//External Imports
 const express = require( 'express' );
 const router  = express.Router();
-const db = require( '../db/connection' );
 const bcrypt = require('bcryptjs');
 
-//Routes
+// Internal Helper function
+const db = require( '../db/connection' );
+
+
+//Route to deactive user (will set active to false) - Not in production yet
 router.delete( '/:id/deactivate', ( req, res ) => {
 
   const disableUsers = user => {
 
     const disableUser = `
-    UPDATE users
-    SET active = FALSE,
-    updated = (to_timestamp(${ Date.now() } / 1000.0))
-    WHERE id = $1;
+      UPDATE users
+      SET active = FALSE,
+      updated = (to_timestamp(${ Date.now() } / 1000.0))
+      WHERE id = $1;
     `;
 
-    const values = [ user.id ];
+    const values = [ user.id ]; // set this to req.session.userID (or the other 1)
 
     if ( Number( req.params.id ) !== user.id ) {
       return res.send( 'Invalid Request ...' )
@@ -31,23 +35,23 @@ router.delete( '/:id/deactivate', ( req, res ) => {
   };
 
   disableUsers( req.body );
-
 });
 
 
+//Route to reactivate user (will set active to true) - Not in production yet
 router.patch( '/:id/reactivate', ( req, res ) => {
 
   const enableUsers = user => {
 
     const enableUser = `
-    UPDATE users
-    SET active = TRUE,
-    updated = (to_timestamp(${ Date.now() } / 1000.0))
-    WHERE id = $1
-    RETURNING *;
+      UPDATE users
+      SET active = TRUE,
+      updated = (to_timestamp(${ Date.now() } / 1000.0))
+      WHERE id = $1
+      RETURNING *;
     `;
 
-    const values = [ user.id ];
+    const values = [ user.id ]; // set this to req.session.userID (or the other 1)
 
     if ( Number( req.params.id ) !== user.id ) {
       return res.send( 'Invalid Request ...' );
@@ -67,10 +71,10 @@ router.patch( '/:id/reactivate', ( req, res ) => {
   };
 
   enableUsers( req.body );
-
 });
 
 
+// Allows to update user information - currently just email / not in production
 router.patch( '/:id/update', ( req, res ) => {
 
   const enableUsers = user => {
@@ -87,7 +91,7 @@ router.patch( '/:id/update', ( req, res ) => {
 
     if ( Number( req.params.id ) !== user.id ) {
       return res.send( 'Invalid Request ...' );
-    };
+    }; // set this to req.session.userID (or the other 1)
 
     return db.query( enableUser, values )
       .then(( data ) => {
@@ -101,15 +105,13 @@ router.patch( '/:id/update', ( req, res ) => {
   };
 
   enableUsers( req.body );
-
 });
 
 
+// Get list of all users - for testing only (not for production)
 router.get( '/', ( req, res ) => {
 
-  const userQuery = `
-  SELECT * FROM users;
-  `;
+  const userQuery = `SELECT * FROM users;`;
 
   db.query( userQuery )
   .then( data => {
@@ -125,6 +127,7 @@ router.get( '/', ( req, res ) => {
 });
 
 
+//Get specific user ID (not for production - testing only)
 router.get( '/:id', ( req, res ) => {
 
   const userQuery = `
@@ -154,6 +157,7 @@ router.get( '/:id', ( req, res ) => {
 });
 
 
+// Route to register a new user - not yet in production
 router.post( '/register', ( req, res ) => {
 
   const addUser = user => {
@@ -183,10 +187,10 @@ router.post( '/register', ( req, res ) => {
   };
 
   addUser( req.body );
-
 });
 
 
+// Route to login with existing user
 router.post( '/login', async ( req, res ) => {
 
   const queryString = `
@@ -215,10 +219,11 @@ router.post( '/login', async ( req, res ) => {
 });
 
 
+// Route to logout of current session
 router.post( '/logout', ( req, res ) => {
 
   req.session = null;
-  res.send( 'Logged-out Successfully!' )
+  res.send( 'Logged-out Successfully!' );
 
 });
 

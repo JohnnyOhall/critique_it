@@ -1,7 +1,7 @@
 // External imports
 import React, { createContext, useState } from 'react';
 
-// Components
+// Components & hooks
 import Header from './Header';
 import Nav from './Nav';
 import Main from './Main';
@@ -11,13 +11,15 @@ import Footer from './Footer';
 // Styling
 import './Application.scss';
 
+// Global Variables
 export const GlobalContext = createContext();
 
+
 const App = () => { 
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [ loggedIn, setLoggedIn ] = useState( false );
 
   return (
-    <GlobalContext.Provider value={{loggedIn, setLoggedIn}}>
+    <GlobalContext.Provider value={{ loggedIn, setLoggedIn }}>
       <div className="App">
         <Header />
         <Nav />

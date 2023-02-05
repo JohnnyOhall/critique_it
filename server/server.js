@@ -1,8 +1,10 @@
 // load .env data into process.env
 require( 'dotenv' ).config();
 
+//External Imports
 const express = require( 'express' );
 const morgan = require( 'morgan' );
+
 
 const app = express();
 const port = process.env.PORT || 54321;
@@ -10,11 +12,13 @@ const port = process.env.PORT || 54321;
 //Cookie - encryption
 const cookieSession = require( 'cookie-session' );
 
+
 // Middleware
 app.use( morgan( 'dev' ));
 app.use( express.urlencoded({ extended: true }));
 app.use( express.json());
 app.use(express.static( 'public' ));
+
 
 // Cookie Session
 app.use(cookieSession({

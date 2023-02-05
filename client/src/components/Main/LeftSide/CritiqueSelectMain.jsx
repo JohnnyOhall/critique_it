@@ -1,7 +1,11 @@
+// External imports
 import React, { useEffect, useState, useContext } from "react";
 import axios from "axios";
+
+//Components & Hooks
 import ShowListItem from "./ShowListItem";
 import { GlobalContext } from "../../Application";
+
 
 const CritiqueSelectMain = props => {
   const [ showDisplay, setShowDisplay ] = useState([]);
@@ -10,26 +14,27 @@ const CritiqueSelectMain = props => {
   useEffect( () => {
     if ( loggedIn ) {
       axios.get( '/pages/main' )
-      .then( res => {
-        const data = res.data.pageData
-        const unique = [...new Set( data.map( item => item.show_id ))]
-        const array = []
-  
-        for (const show of unique) {
-  
-          const extract = data.find( item => item.show_id === show );
-          const showObj = {
-            id: show,
-            name: extract.show_title,
-            img: extract.show_img
-          };
-  
-          array.push( showObj );
-        }
+        .then( res => {
+          const data = res.data.pageData
+          const uniqueItems = [...new Set( data.map( item => item.show_id ))]
+          const showArr = []
+        
+          for ( const show of uniqueItems ) {
+          
+            const extract = data.find( item => item.show_id === show );
 
-        setShowDisplay( array ); 
-      });
-      
+            const showObj = {
+              id: show,
+              name: extract.show_title,
+              img: extract.show_img
+            };
+          
+            showArr.push( showObj );
+          }
+
+          setShowDisplay( showArr ); 
+        });
+
     } else {
       setShowDisplay([]);
     };
@@ -64,7 +69,8 @@ const CritiqueSelectMain = props => {
       </div>
     </div>
     
-  )
-}
+  );
+};
+
 
 export default CritiqueSelectMain;

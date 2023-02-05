@@ -1,4 +1,6 @@
+//External Imports
 import React from "react";
+
 
 const SignedOut = props => {
 
@@ -12,7 +14,8 @@ const SignedOut = props => {
         <button>Register 📋</button>
       </div>
     </div>
-  )
-}
+  );
+};
+
 
 export default SignedOut;

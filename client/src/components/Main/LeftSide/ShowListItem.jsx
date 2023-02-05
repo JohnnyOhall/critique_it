@@ -1,5 +1,6 @@
-// ------------- EXTERNAL IMPORTS --------------- //
+// External Imports
 import React from "react";
+
 
 const ShowListItem = props => {
   const { name, img } = props;
@@ -8,7 +9,7 @@ const ShowListItem = props => {
     <li className="show-item">
       <div className="show-img">
         <img
-          src={img}
+          src={ img }
           height="100px"
           width="100px"
         />

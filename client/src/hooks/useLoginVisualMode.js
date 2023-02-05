@@ -1,8 +1,11 @@
+//External Imports
 import { useState } from "react";
 
+
 export default function useLoginVisualMode( initial ) {
-  const [ mode, setMode ] = useState( initial ),
-    [ history, setHistory ] = useState([ initial ]);
+
+  const [ mode, setMode ] = useState( initial );
+  const [ history, setHistory ] = useState([ initial ]);
 
   const transition = ( mode, replace = false ) => {
     if ( replace ) {

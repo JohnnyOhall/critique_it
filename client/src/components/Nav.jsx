@@ -1,6 +1,7 @@
 // External imports
 import React, { useContext } from "react";
 
+//Components and Hooks
 import { GlobalContext } from "./Application";
 
 // Styling
@@ -8,17 +9,19 @@ import './Nav.scss';
 
 
 const Nav = props => {
-  const { loggedIn } = useContext( GlobalContext )
 
-  const rateImg = "https://www.svgrepo.com/show/91435/star.svg",
-  statsImg = "http://cdn.onlinewebfonts.com/svg/img_238648.png",
-  exploreImg = "https://cdn-icons-png.flaticon.com/512/4406/4406266.png",
-  profileImg = "http://cdn.onlinewebfonts.com/svg/img_453063.png",
-  aboutImg = "https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/about-us-22.png";
+  const { loggedIn } = useContext( GlobalContext );
+
+  //Navbar button images
+  const rateImg = "https://www.svgrepo.com/show/91435/star.svg";
+  const statsImg = "http://cdn.onlinewebfonts.com/svg/img_238648.png";
+  const exploreImg = "https://cdn-icons-png.flaticon.com/512/4406/4406266.png";
+  const profileImg = "http://cdn.onlinewebfonts.com/svg/img_453063.png";
+  const aboutImg = "https://icons.veryicon.com/png/o/education-technology/radio-and-tv-cloud/about-us-22.png";
 
   return (
     <nav>
-      {loggedIn && 
+      { loggedIn && 
         <a href="#nav-critique">
           <div className="link-nav">
             <img src={ rateImg } />
@@ -41,7 +44,7 @@ const Nav = props => {
         </div>
       </a>
 
-      {loggedIn &&
+      { loggedIn &&
         <a href="#nav-profile">
           <div className="link-nav">
             <img src={ profileImg } />
@@ -59,7 +62,6 @@ const Nav = props => {
 
     </nav>
   );
-
 };
 
 

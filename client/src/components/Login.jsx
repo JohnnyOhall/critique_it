@@ -1,3 +1,4 @@
+//External Imports
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
@@ -8,21 +9,20 @@ import './Login.scss';
 
 
 const Login = props => {
+
   const [ login, setLogin ] = useState({
     email: "",
     password: ""
   });
 
-  
   const submitRequest = ( data ) => {
     axios.post( '/users/login', data )
-      .then(res => {
-        props.setEmail(res.data.email)
-        Cookies.set('email', res.data.email)
-        props.update(props.state)
-      })
-  }
-  
+      .then( res => {
+        props.setEmail( res.data.email )
+        Cookies.set( 'email', res.data.email )
+        props.update( props.state )
+      });
+  };
   
   return (
     <div className='user'>
@@ -39,7 +39,7 @@ const Login = props => {
           <input 
             placeholder="****" 
             type="password" 
-            value={login.password}
+            value={ login.password }
             onChange={ e => setLogin({ ...login, password: e.target.value })}
           />
         </div>
@@ -49,7 +49,8 @@ const Login = props => {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
+
 
 export default Login;

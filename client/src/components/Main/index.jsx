@@ -1,5 +1,7 @@
+//External Imports
 import React from "react";
 
+//components & hooks
 import LeftSide from "./LeftSide";
 import RightSide from "./RightSide";
 

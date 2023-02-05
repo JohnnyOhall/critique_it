@@ -1,8 +1,10 @@
+//External Imports
 const express = require( 'express' );
 const router  = express.Router();
 const db = require( '../db/connection' );
 
 
+// Route to get all pages created in DB (helper not production)
 router.get( '/', ( req, res ) => {
 
   const pageQuery = `
@@ -23,6 +25,7 @@ router.get( '/', ( req, res ) => {
 });
 
 
+// Route to get all shows by user when cookie is set
 router.get( '/main', ( req, res ) => {
 
   const pageQuery = `
@@ -32,21 +35,21 @@ router.get( '/main', ( req, res ) => {
 
   values = [ req.session.userID ];
 
-
   db.query( pageQuery, values )
-  .then( data => {
-    const pageData = data.rows;
-    res.json({ pageData })
-  })
-  .catch( err => {
-    res
-      .status( 500 )
-      .json({ error: err.message });
-  });
+    .then( data => {
+      const pageData = data.rows;
+      res.json({ pageData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
 
 });
 
 
+// Route to create a new page or add a show with null valus
 router.post( '/create', ( req, res ) => {
 
   const createPage = page => {
@@ -81,10 +84,10 @@ router.post( '/create', ( req, res ) => {
   };
 
   createPage( req.body );
-
 });
 
 
+// Page to update an existing page record already in DB (or null recorded from add)
 router.patch( '/:id/update', ( req, res ) => {
 
   const createPage = page => {
@@ -119,21 +122,21 @@ router.patch( '/:id/update', ( req, res ) => {
   };
 
   createPage( req.body );
-
 });
 
 
+// Route to delete existing pages (not implimented yet)
 router.delete ( '/:id/delete', ( req, res ) => {
 
   const deletePages = page => {
 
     const deletePage = `
-    DELETE FROM pages
-    WHERE id = $1 
-    AND creator_id = $2;
+      DELETE FROM pages
+      WHERE id = $1 
+      AND creator_id = $2;
     `;
 
-    values = [ page.id, page.userID ]; //add req.session.userID for production
+    values = [ page.id, req.session.userID ];
 
     if ( page.id !== Number( req.params.id )) {
       return res.send( 'Invalid request...' );
@@ -146,7 +149,6 @@ router.delete ( '/:id/delete', ( req, res ) => {
   };
 
   deletePages( req.body );
-
 });
 
 

@@ -3,20 +3,22 @@ import React from "react"
 import { useState, useEffect, useContext } from "react";
 import Cookies from 'js-cookie';
 
-//Components
+//Components & hooks
 import useLoginVisualMode from "../hooks/useLoginVisualMode";
 import SignedOut from "./SignedOut";
 import Login from "./Login";
 import SignedIn from "./SignedIn";
+import { GlobalContext } from "./Application";
 
 // Styling
 import './Header.scss';
-import { GlobalContext } from "./Application";
 
+//Global Variables and modes
 const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 
+
 const Header = props => {
-  const { setLoggedIn } = useContext(GlobalContext);
+  const { setLoggedIn } = useContext( GlobalContext );
 
   useEffect(() => {
     setEmail(Cookies.get( 'email' ))
@@ -24,11 +26,11 @@ const Header = props => {
 
   const { mode, transition, back } = useLoginVisualMode( Cookies.get( 'email' ) ? SIGNED_IN : SIGNED_OUT );
 
-  const [ email, setEmail ] = useState( Cookies.get('name') || '' )
+  const [ email, setEmail ] = useState( Cookies.get( 'name' ) || '' );
 
   useEffect(() => {
-    setLoggedIn(mode === SIGNED_IN ? true : false)
-  }, [mode]);
+    setLoggedIn( mode === SIGNED_IN ? true : false )
+  }, [ mode ]);
 
   return (
     <header>
@@ -41,5 +43,6 @@ const Header = props => {
     </header>
   );
 };
+
 
 export default Header;

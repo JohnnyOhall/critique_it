@@ -7,7 +7,6 @@ import './ProfileDisplay.scss';
 
 const ProfileDisplay = prop => {
 
-
   return (
     <section className="profile-right">
       <div className="profile-display">
