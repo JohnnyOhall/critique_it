@@ -28,7 +28,6 @@ const Header = props => {
   const { mode, transition, back } = useLoginVisualMode( Cookies.get( 'email' ) ? SIGNED_IN : SIGNED_OUT );
 
   const [ email, setEmail ] = useState( Cookies.get( 'name' ) || '' );
-
   const [ avatar, setAvatar ] = useState( Cookies.get( 'name' ) || '' );
 
   useEffect(() => {

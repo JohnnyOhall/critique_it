@@ -26,7 +26,7 @@ const Login = props => {
 
         props.update( props.state );
       });
-  };
+  }
   
   return (
     <div className='user'>

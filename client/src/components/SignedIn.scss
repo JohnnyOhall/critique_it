@@ -1,0 +1,32 @@
+.Signed-in {
+  display: flex;
+  align-items: center;
+
+  .email-signout {
+    display: flex;
+    flex-direction: column;
+    font-family: 'Noto Sans Display', sans-serif;
+
+    .email {
+      font-size: 1em;
+      padding: 0.5em;
+    }
+
+    .login-button {
+      padding: 0.5em;
+      text-shadow: 1px 1px 2px grey;
+      font-size: 25px;
+    }
+  }
+
+  .avatar-image {
+    display: flex;
+    align-items: center;
+    padding-bottom: 1em;
+    padding-left: 1em;
+
+    img {
+      border-radius: 50%;
+    }
+  }
+}
