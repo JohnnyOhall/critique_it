@@ -200,7 +200,7 @@ router.post( '/login', async ( req, res ) => {
 
   try {
     const data = await db.query( queryString );
-    const { email, id, active, password } = data.rows[ 0 ];
+    const { email, id, active, password, avatar } = data.rows[ 0 ];
 
     if ( !active ) return res.status( 401 ).send( 'User Inactive!' );
 
@@ -208,7 +208,7 @@ router.post( '/login', async ( req, res ) => {
       if ( !result ) return res.status( 401 ).send( 'invalid password!' );
     
       req.session.userID = id;
-      res.json({ email });
+      res.json({ email, avatar });
     });
 
   } 
