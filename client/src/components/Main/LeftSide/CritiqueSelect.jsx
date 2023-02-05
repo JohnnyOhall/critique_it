@@ -4,6 +4,7 @@ import useCritiqueSelectVisualMode from "../../../hooks/useCritiqueSelectVisualM
 import CritiqueSelectMain from "./CritiqueSelectMain";
 import CritiqueSelectAdd from "./CritiqueSelectAdd";
 
+
 // Styling
 import './CritiqueSelect.scss';
 
@@ -12,6 +13,7 @@ const MAIN = "MAIN", ADD = "ADD";
 const CritiqueSelect = props => {
 
   const { mode, transition, back } = useCritiqueSelectVisualMode( MAIN )
+
 
   return (
     <section className="critique-left" id="nav-critique">

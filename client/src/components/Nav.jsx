@@ -1,11 +1,14 @@
 // External imports
-import React from 'react';
+import React, { useContext } from "react";
+
+import { GlobalContext } from "./Application";
 
 // Styling
 import './Nav.scss';
 
 
 const Nav = props => {
+  const { loggedIn } = useContext( GlobalContext )
 
   const rateImg = "https://www.svgrepo.com/show/91435/star.svg",
   statsImg = "http://cdn.onlinewebfonts.com/svg/img_238648.png",
@@ -15,13 +18,14 @@ const Nav = props => {
 
   return (
     <nav>
-
-      <a href="#nav-critique">
-        <div className="link-nav">
-          <img src={ rateImg } />
-          <span className="about-text">Critique</span>
-        </div>
-      </a>
+      {loggedIn && 
+        <a href="#nav-critique">
+          <div className="link-nav">
+            <img src={ rateImg } />
+            <span className="about-text">Critique</span>
+          </div>
+        </a>
+      }
 
       <a href="#nav-stats">
         <div className="link-nav">
@@ -37,12 +41,14 @@ const Nav = props => {
         </div>
       </a>
 
-      <a href="#nav-profile">
-        <div className="link-nav">
-          <img src={ profileImg } />
-          <span className="about-text">Profile</span>
-        </div>
-      </a>
+      {loggedIn &&
+        <a href="#nav-profile">
+          <div className="link-nav">
+            <img src={ profileImg } />
+            <span className="about-text">Profile</span>
+          </div>
+        </a>
+      }
 
       <a href="#nav-about">
         <div className="link-nav">
