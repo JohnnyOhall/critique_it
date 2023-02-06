@@ -13,7 +13,7 @@ const avatarImages = {
   3: "",
   4: "",
   5: "",
-  6: "images/add.png"
+  6: ""
 }
 
 
@@ -23,8 +23,7 @@ const SignedIn = props => {
     axios.post( '/users/logout' )
       .then(() => {
         props.update( props.state );
-        Cookies.remove( 'email' );
-        Cookies.remove( 'avatar' );
+        Cookies.remove( 'user' );
       });
   };
 
