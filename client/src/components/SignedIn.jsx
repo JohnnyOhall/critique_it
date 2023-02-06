@@ -31,16 +31,15 @@ const SignedIn = props => {
   const avatarImage = avatarImages[props.avatar];
 
   return (
-    <div className="Signed-in" >
+    <div className="signed-in" >
       <div className="email-signout">
-        <div className="email">{ props.email }🔒</div>
+        <div className="email">{ props.email } 🔒</div>
         <div>
-          <button className="login-button" type="submit" onClick={ signOut }>Sign-Out</button>
+          <button className="signout-button" type="submit" onClick={ signOut }>Sign-Out</button>
         </div>
       </div>
       <div className="avatar-image">
-        <img src={ avatarImage } width="100px" height="100px">
-        </img>
+        <img src={ avatarImage } width="100px" height="100px"></img>
       </div>
     </div>
   );
