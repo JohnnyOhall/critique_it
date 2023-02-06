@@ -18,7 +18,7 @@ const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 
 
 const Header = props => {
-  const { setLoggedIn } = useContext( GlobalContext );
+  const { setLoggedIn, setRegister } = useContext( GlobalContext );
 
   useEffect(() => {
     setEmail(Cookies.get( 'email' ))
@@ -37,7 +37,7 @@ const Header = props => {
       <div className='logo'>
         <h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1>
       </div>
-      { mode === SIGNED_OUT && <SignedOut onLogin={ () => transition( LOGIN )} />}
+      { mode === SIGNED_OUT && <SignedOut onLogin={ () => transition( LOGIN )} onRegister={ () => setRegister( true ) }/>}
       { mode === LOGIN && <Login update={ transition } state={ SIGNED_IN } setEmail={ setEmail } back={ back } /> }
       { mode === SIGNED_IN && <SignedIn email={ email } update={ transition } state={ SIGNED_OUT } /> }
     </header>

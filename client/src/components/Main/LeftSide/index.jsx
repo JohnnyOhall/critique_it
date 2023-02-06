@@ -13,7 +13,7 @@ import './LeftSide.scss';
 
 
 const LeftSide = props => {
-  const { loggedIn } = useContext( GlobalContext );
+  const { loggedIn, register } = useContext( GlobalContext );
 
   return (
     <section className="left-side">
@@ -21,6 +21,7 @@ const LeftSide = props => {
       <StatSelect />
       <ExploreSelect />
       { loggedIn && <ProfileSelect /> }
+      { register && <ProfileSelect /> }
     </section>
   );
 };
