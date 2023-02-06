@@ -20,4 +20,8 @@ header {
     font-family: 'Noto Sans Display', sans-serif;
     cursor: pointer;
   }
+
+  button:active {
+    transform: scale(0.95);
+  }
 }

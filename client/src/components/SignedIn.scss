@@ -26,6 +26,10 @@
       border-radius: 1em;
       background-color: whitesmoke;
     }
+
+    .signout-button:active {
+      transform: scale(0.95);
+    }
   }
 
   .avatar-image {

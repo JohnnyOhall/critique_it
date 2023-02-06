@@ -52,6 +52,10 @@
               appearance: none;
               background-color: inherit;
             }
+
+            button:active {
+              transform: scale(0.95);
+            }
           }
         }
 
@@ -116,14 +120,13 @@
           cursor: pointer;
         }
 
-        .add-button {
+        .add-button, .close-button {
           display: flex;
           align-items: center;
         }
 
-        .close-button {
-          display: flex;
-          align-items: center;
+        .add-button:active, .close-button:active {
+          transform: scale(0.95);
         }
       }
 
@@ -142,6 +145,10 @@
     .main {
       display: flex;
       flex-direction: column;
+
+      .add-button:active {
+        transform: scale(0.95);
+      }
 
       .user-shows {
         display: flex;
@@ -162,6 +169,10 @@
               font-size: x-large;
               font-weight: bold;
               color: rgb(82, 7, 7);
+            }
+
+            button:active {
+              transform: scale(0.95);
             }
           }
 
