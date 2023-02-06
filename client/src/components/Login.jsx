@@ -18,7 +18,7 @@ const Login = props => {
   const submitRequest = ( data ) => {
     axios.post( '/users/login', data )
       .then( res => {
-        props.setEmail( res.data.email )
+        props.setEmail( res.data.email)
         Cookies.set( 'email', res.data.email )
         props.update( props.state )
       });
