@@ -28,7 +28,8 @@ const ShowListItem = props => {
       }
       { select &&
         <div className="slider-season">
-          <span>{ season }</span>
+          <span className="season-title">Season</span>
+          <span className="season-number">{ season }</span>
           <input
             type="range"
             min={ 1 }

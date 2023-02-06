@@ -158,11 +158,38 @@
         .show-item {
           display: flex;
           padding: 1em;
+          align-items: center;
 
-          .slider-seasons {
+          .slider-season {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             font-family: sans-serif;
             text-align: center;
-            margin-top: 50px;
+            align-items: center;
+
+            .season-title {
+              font-family: 'Noto Sans Display', sans-serif;
+              font-weight: bold;
+              color: rgb(82, 7, 7);
+            }
+
+            .season-number {
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              height: 100px;
+              width: 100px;
+              background-color: rgb(82, 7, 7);
+              color: whitesmoke;
+              font-weight: bold;
+              font-size: 2em;
+              border-radius: 50%;
+            }
+
+            input {
+              padding-top: 0.7em;
+            }
 
             input[type="range"] {
               // -webkit-appearance: none;
@@ -228,7 +255,6 @@
               box-shadow: 0px 6px 12px rgb(3, 3, 3);
               border: none;
               outline: none;
-              
             }
           }
         }
