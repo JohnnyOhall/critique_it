@@ -20,13 +20,17 @@ const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 const Header = props => {
   const { setLoggedIn, setRegister } = useContext( GlobalContext );
 
+  const { mode, transition, back } = useLoginVisualMode( Cookies.get('email') ? SIGNED_IN : SIGNED_OUT );
+  const [ userCookie, setUserCookie ] = useState({});
+
   useEffect( () => {
-    setUserCookie( Cookies.get( 'user' ) );
+    setUserCookie({
+      ...userCookie, 
+      email: Cookies.get( 'email' ), 
+      username: Cookies.get( 'username' ), 
+      avatar: Cookies.get( 'avatar' ) 
+    });
   }, []);
-
-  const { mode, transition, back } = useLoginVisualMode( Cookies.get( 'user' ) ? SIGNED_IN : SIGNED_OUT );
-
-  const [ userCookie, setUserCookie ] = useState( Cookies.get( 'user' ) || {} );
 
   useEffect(() => {
     setLoggedIn( mode === SIGNED_IN ? true : false )

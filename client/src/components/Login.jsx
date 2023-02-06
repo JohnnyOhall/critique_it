@@ -19,17 +19,14 @@ const Login = props => {
     axios.post( '/users/login', data )
       .then( res => {
         props.setUserCookie( {
-          ...props.cookie,
           email: res.data.email,
           avatar: res.data.avatar,
           username: res.data.username
         } );
 
-        Cookies.set( 'user', {
-          email: res.data.email,
-          avatar: res.data.avatar,
-          username: res.data.username
-        } );
+        Cookies.set( 'email', res.data.email);
+        Cookies.set( 'avatar', res.data.avatar);
+        Cookies.set( 'username', res.data.username);
 
         props.update( props.state );
       });

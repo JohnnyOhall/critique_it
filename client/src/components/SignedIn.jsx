@@ -31,7 +31,9 @@ const SignedIn = props => {
     axios.post( '/users/logout' )
       .then(() => {
         props.update( props.state );
-        Cookies.remove( 'user' );
+        Cookies.remove( 'email' );
+        Cookies.remove( 'username' );
+        Cookies.remove( 'avatar' );
       });
   };
 
