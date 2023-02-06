@@ -11,7 +11,9 @@ const SignedOut = props => {
       </div>
       <br />
       <div className='register'>
-        <button>Register 📋</button>
+        <a href="#nav-profile">
+          <button onClick={ props.onRegister}>Register 📋</button>
+        </a>
       </div>
     </div>
   );

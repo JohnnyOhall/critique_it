@@ -13,7 +13,7 @@ import './RightSide.scss';
 
 
 const RightSide = props => {
-  const { loggedIn } = useContext( GlobalContext );
+  const { loggedIn, register } = useContext( GlobalContext );
 
   return (
     <section className="right-side">
@@ -21,6 +21,7 @@ const RightSide = props => {
       <StatDisplay />
       <ExploreDisplay />
       { loggedIn && <ProfileDisplay /> }
+      { register && <ProfileDisplay /> }
     </section>
   );
 };
