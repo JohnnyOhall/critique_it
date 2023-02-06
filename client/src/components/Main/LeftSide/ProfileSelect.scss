@@ -34,8 +34,8 @@
 
       .bio-input {
         margin-top: 1em;
-        width: 50em;
-        height: 15em;
+        width: 30em;
+        height: 7em;
       }
     }
     button {
@@ -44,20 +44,24 @@
     .avatar-select{
       display: flex;
       justify-content: center;
-      padding: 3em;
+      padding: 2em;
       border-radius: 2em;
+      align-items: center;
+      flex-direction: column;
 
-      .avatar-item {
+      .avatar-row {
         display: flex;
-        flex-direction: column;
-        img {
-          padding-bottom: 0.75em;
+        
+        .avatar-item {
+          display: flex;
+          flex-direction: column;
+          img {
+            padding: 1em;
+          }
         }
       }
 
-      img {
-        padding: 0 1em;
-      }
+      
     }
   }
 }

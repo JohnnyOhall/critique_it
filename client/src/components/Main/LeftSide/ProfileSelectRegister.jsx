@@ -9,20 +9,26 @@ import { GlobalContext } from "../../Application";
 const ProfileSelectRegister = props => {
 
   const { setRegister } = useContext( GlobalContext );
-  const [ match, setMatch ] = useState( false );
+  const [ passMatch, setPassMatch ] = useState( false );
+  const [ emailMatch, setEmailMatch ] = useState( false );
   const [ userInfo, setUserInfo ] = useState({
-    name: '',
+    username: '',
     email: '',
+    emailConfirm: '',
     password: '', 
-    confirm: '',
-    avatar: 1,
+    PassConfirm: '',
+    avatar: null,
     bio: ''
   });
 
   useEffect(() => {
-    setMatch( false );
-    userInfo.confirm === userInfo.password ? setMatch( true ) : setMatch( false );
+    setPassMatch( false );
+    setEmailMatch( false );
+    userInfo.PassConfirm === userInfo.password ? setPassMatch( true ) : setPassMatch( false );
+    userInfo.emailConfirm === userInfo.email ? setEmailMatch( true ) : setEmailMatch( false );
+    
   },);
+
 
   const submitRequest = ( data ) => {
     axios.post( '/users/register', data )
@@ -42,19 +48,19 @@ const ProfileSelectRegister = props => {
       
       <form onSubmit={ e => e.preventDefault() }>
         <div className="form-item">
-          <label for='name'>Name</label>
+          <label for='username'>Username</label>
           <input 
-            id='name' 
+            id='username' 
             type="text" 
-            placeholder='Enter a user name'
-            value={ userInfo.name }
-            onChange={ e => setUserInfo({ ...userInfo, name: e.target.value })}
+            placeholder='Enter a username'
+            value={ userInfo.username }
+            onChange={ e => setUserInfo({ ...userInfo, username: e.target.value })}
           />
         </div>
 
-
-        <div className="form-item">
-          <label for='email'>Email</label>
+        <div className="password-box">
+          <span>Email</span>
+          <br/>
           <input 
             id='email' 
             type="email" 
@@ -62,8 +68,16 @@ const ProfileSelectRegister = props => {
             value={ userInfo.email }
             onChange={ e => setUserInfo({ ...userInfo, email: e.target.value })}
           />
+          <input 
+            id='confirm' 
+            type="email" 
+            placeholder='Confirm email address'
+            value={ userInfo.emailConfirm }
+            onChange={ e => setUserInfo({ ...userInfo, emailConfirm: e.target.value })}
+          />    
         </div>
 
+        { !emailMatch ? <span className="error-msg">Emails do not match!</span> : <br/> }
 
         <div className="password-box">
           <span>Password</span>
@@ -79,17 +93,15 @@ const ProfileSelectRegister = props => {
             id='confirm' 
             type="password" 
             placeholder='Confirm password'
-            value={ userInfo.confirm }
-            onChange={ e => setUserInfo({ ...userInfo, confirm: e.target.value })}
+            value={ userInfo.PassConfirm }
+            onChange={ e => setUserInfo({ ...userInfo, PassConfirm: e.target.value })}
           />    
         </div>
 
-
-        { !match ? <span className="error-msg">Passwords do not match!</span> : <br/> }
+        { !passMatch ? <span className="error-msg">Passwords do not match!</span> : <br/> }
         
-
         <div className='bio-box'>
-          <label for="bio">User Bio</label>
+          <label for="bio">User Bio (optionial)</label>
           <textarea 
             className="bio-input" 
             type="text" 
@@ -104,37 +116,68 @@ const ProfileSelectRegister = props => {
           className='avatar-select' 
           onChange={ e => setUserInfo({ ...userInfo, avatar: e.target.value })}
         >
+          
           <fieldset className='avatar-select'>
             <legend>Select an Avatar</legend>
-          <div className="avatar-item">
-            <img src="images/lhl.png"/>
-            <input type='radio' name='avatar' value={ 1 } checked></input>
-          </div>
-          <div className="avatar-item">
-            <img src="images/lhl.png"/>
-            <input type='radio' name='avatar' value={ 2 }></input>
-          </div>
-          <div className="avatar-item">
-            <img src="images/lhl.png"/>
-            <input type='radio' name='avatar' value={ 3 }></input>
-          </div>
-          <div className="avatar-item">
-            <img src="images/lhl.png"/>
-            <input type='radio' name='avatar' value={ 4 }></input>
-          </div>
+
+            <div className="avatar-row">
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 1 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 2 }></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 3 }></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 4 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 5 } ></input>
+              </div>
+            </div>
+
+            <div className="avatar-row">
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 6 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 7 }></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 8 }></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 9 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/lhl.png"/>
+                <input type='radio' name='avatar' value={ 10 } ></input>
+              </div>
+            </div>
           </fieldset>
         </div>
         
 
-        { match && 
+        { (passMatch && emailMatch) && 
           <button 
-            disabled={ !userInfo.password || !userInfo.name || !userInfo.email || !userInfo.bio }
+            disabled={ !userInfo.password || !userInfo.username || !userInfo.email || !userInfo.avatar }
             onClick={ () => submitRequest( userInfo )} 
           > 
             Register 
           </button> 
         }
-        { !match && <button disabled> Register </button> }
+        { (!passMatch || !emailMatch) && <button disabled> Register </button> }
         <button onClick={ () => setRegister( false )}>
           <a href="#">cancel</a>
         </button>
