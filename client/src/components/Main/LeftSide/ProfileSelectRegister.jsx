@@ -122,47 +122,63 @@ const ProfileSelectRegister = props => {
 
             <div className="avatar-row">
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/male1.png"/>
                 <input type='radio' name='avatar' value={ 1 } ></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/male2.png"/>
                 <input type='radio' name='avatar' value={ 2 }></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/male3.png"/>
                 <input type='radio' name='avatar' value={ 3 }></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/male4.png"/>
                 <input type='radio' name='avatar' value={ 4 } ></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/male5.png"/>
                 <input type='radio' name='avatar' value={ 5 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/male6.png"/>
+                <input type='radio' name='avatar' value={ 6 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/male7.png"/>
+                <input type='radio' name='avatar' value={ 7 } ></input>
               </div>
             </div>
 
             <div className="avatar-row">
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
-                <input type='radio' name='avatar' value={ 6 } ></input>
-              </div>
-              <div className="avatar-item">
-                <img src="images/lhl.png"/>
-                <input type='radio' name='avatar' value={ 7 }></input>
-              </div>
-              <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/female1.png"/>
                 <input type='radio' name='avatar' value={ 8 }></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/female2.png"/>
                 <input type='radio' name='avatar' value={ 9 } ></input>
               </div>
               <div className="avatar-item">
-                <img src="images/lhl.png"/>
+                <img src="images/avatars/female3.png"/>
                 <input type='radio' name='avatar' value={ 10 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/female4.png"/>
+                <input type='radio' name='avatar' value={ 11 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/female5.png"/>
+                <input type='radio' name='avatar' value={ 12 }></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/female6.png"/>
+                <input type='radio' name='avatar' value={ 13 } ></input>
+              </div>
+              <div className="avatar-item">
+                <img src="images/avatars/female7.png"/>
+                <input type='radio' name='avatar' value={ 14 }></input>
               </div>
             </div>
           </fieldset>

@@ -21,12 +21,14 @@ const Login = props => {
         props.setUserCookie( {
           ...props.cookie,
           email: res.data.email,
-          avatar: res.data.avatar
+          avatar: res.data.avatar,
+          username: res.data.username
         } );
 
         Cookies.set( 'user', {
           email: res.data.email,
-          avatar: res.data.avatar
+          avatar: res.data.avatar,
+          username: res.data.username
         } );
 
         props.update( props.state );

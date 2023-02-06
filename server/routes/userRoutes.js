@@ -167,16 +167,16 @@ router.post( '/register', ( req, res ) => {
       bcrypt.hash( user.password, salt, ( err, hash ) => {
       
         const registerUser = `
-          INSERT INTO users (email, password)
-          VALUES ($1, $2)
+          INSERT INTO users (email, password, avatar, username, bio)
+          VALUES ($1, $2, $3, $4, $5)
           RETURNING *;
         `;
 
-        const values = [ user.email, hash ];
+        const values = [ user.email, hash, user.avatar, user.username, user.bio ];
 
         return db.query( registerUser, values )
           .then(( data ) => {
-            const email = data.rows[ 0 ].email;
+            const {email} = data.rows[ 0 ];
             req.session.userID = data.rows[ 0 ].id;
             res.json({ email });
           })
@@ -200,7 +200,7 @@ router.post( '/login', async ( req, res ) => {
 
   try {
     const data = await db.query( queryString );
-    const { email, id, active, password, avatar } = data.rows[ 0 ];
+    const { email, id, active, password, avatar, username } = data.rows[ 0 ];
 
     if ( !active ) return res.status( 401 ).send( 'User Inactive!' );
 
@@ -208,7 +208,7 @@ router.post( '/login', async ( req, res ) => {
       if ( !result ) return res.status( 401 ).send( 'invalid password!' );
     
       req.session.userID = id;
-      res.json({ email, avatar });
+      res.json({ email, avatar, username });
     });
 
   } 

@@ -39,7 +39,7 @@ const Header = props => {
       </div>
       { mode === SIGNED_OUT && <SignedOut onLogin={ () => transition( LOGIN )} onRegister={ () => setRegister( true ) }/>}
       { mode === LOGIN && <Login update={ transition } state={ SIGNED_IN } setUserCookie={ setUserCookie } cookie={ userCookie } back={ back } /> }
-      { mode === SIGNED_IN && <SignedIn email={ userCookie.email } avatar={ userCookie.avatar } update={ transition } state={ SIGNED_OUT } /> }
+      { mode === SIGNED_IN && <SignedIn username={ userCookie.username } email={ userCookie.email } avatar={ userCookie.avatar } update={ transition } state={ SIGNED_OUT } /> }
     </header>
   );
 };
