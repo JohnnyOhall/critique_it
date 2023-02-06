@@ -1,5 +1,10 @@
 // External imports
-import React from "react";
+import React, { useContext } from "react";
+
+// Components & hooks
+import { GlobalContext } from "../../Application";
+import ProfileSelectMain from "./ProfileSelectMain";
+import ProfileSelectRegister from "./ProfileSelectRegister";
 
 // Styling
 import './ProfileSelect.scss';
@@ -7,11 +12,12 @@ import './ProfileSelect.scss';
 
 const ProfileSelect = props => {
 
+  const { register } = useContext( GlobalContext );
+
   return (
     <section className="profile-left" id="nav-profile">
-      <div className="profile-select">
-
-      </div>
+      { !register && <ProfileSelectMain /> }
+      { register && <ProfileSelectRegister /> }
     </section>
   );
 };

@@ -17,9 +17,17 @@ export const GlobalContext = createContext();
 
 const App = () => { 
   const [ loggedIn, setLoggedIn ] = useState( false );
+  const [ register, setRegister ] = useState( false );
 
   return (
-    <GlobalContext.Provider value={{ loggedIn, setLoggedIn }}>
+    <GlobalContext.Provider 
+      value={{ 
+        loggedIn, 
+        setLoggedIn, 
+        register, 
+        setRegister 
+      }}
+    >
       <div className="App">
         <Header />
         <Nav />
@@ -28,7 +36,6 @@ const App = () => {
         <Footer />
       </div>
     </GlobalContext.Provider>
-
   );
 };
 
