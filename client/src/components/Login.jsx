@@ -18,11 +18,20 @@ const Login = props => {
   const submitRequest = ( data ) => {
     axios.post( '/users/login', data )
       .then( res => {
-        props.setEmail( res.data.email)
-        Cookies.set( 'email', res.data.email )
-        props.update( props.state )
+        props.setUserCookie( {
+          ...props.cookie,
+          email: res.data.email,
+          avatar: res.data.avatar
+        } );
+
+        Cookies.set( 'user', {
+          email: res.data.email,
+          avatar: res.data.avatar
+        } );
+
+        props.update( props.state );
       });
-  };
+  }
   
   return (
     <div className='user'>

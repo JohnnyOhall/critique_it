@@ -1,7 +1,7 @@
-INSERT INTO users ( email, password )
+INSERT INTO users ( email, password, avatar )
 VALUES
-( 'jacqui@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m' ),
-( 'john@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m' )
+( 'jacqui@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m', 1 ),
+( 'john@telus.com', '$2a$10$qDUYsR6AYfrAKm/J0KX7UOd/fiaDaXRu2RUpLGnaqx1HkXS5EmL1m', 2 )
 ;
 
 

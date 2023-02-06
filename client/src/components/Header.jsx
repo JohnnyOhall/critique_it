@@ -20,13 +20,13 @@ const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 const Header = props => {
   const { setLoggedIn, setRegister } = useContext( GlobalContext );
 
-  useEffect(() => {
-    setEmail(Cookies.get( 'email' ))
+  useEffect( () => {
+    setUserCookie( Cookies.get( 'user' ) );
   }, []);
 
-  const { mode, transition, back } = useLoginVisualMode( Cookies.get( 'email' ) ? SIGNED_IN : SIGNED_OUT );
+  const { mode, transition, back } = useLoginVisualMode( Cookies.get( 'user' ) ? SIGNED_IN : SIGNED_OUT );
 
-  const [ email, setEmail ] = useState( Cookies.get( 'name' ) || '' );
+  const [ userCookie, setUserCookie ] = useState( Cookies.get( 'user' ) || {} );
 
   useEffect(() => {
     setLoggedIn( mode === SIGNED_IN ? true : false )
@@ -38,8 +38,8 @@ const Header = props => {
         <h1>cr<font color="#b22222">IT</font>ique<font className="pencil" color="#b22222">🖉</font></h1>
       </div>
       { mode === SIGNED_OUT && <SignedOut onLogin={ () => transition( LOGIN )} onRegister={ () => setRegister( true ) }/>}
-      { mode === LOGIN && <Login update={ transition } state={ SIGNED_IN } setEmail={ setEmail } back={ back } /> }
-      { mode === SIGNED_IN && <SignedIn email={ email } update={ transition } state={ SIGNED_OUT } /> }
+      { mode === LOGIN && <Login update={ transition } state={ SIGNED_IN } setUserCookie={ setUserCookie } cookie={ userCookie } back={ back } /> }
+      { mode === SIGNED_IN && <SignedIn email={ userCookie.email } avatar={ userCookie.avatar } update={ transition } state={ SIGNED_OUT } /> }
     </header>
   );
 };

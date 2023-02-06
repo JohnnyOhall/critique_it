@@ -34,6 +34,10 @@
     text-align: center;
   }
 
+  .login-button:active {
+    transform: scale(0.95);
+  }
+
   .login-button:hover {
     background-color: #5b5885;
   }
