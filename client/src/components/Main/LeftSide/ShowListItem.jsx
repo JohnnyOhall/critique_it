@@ -104,7 +104,7 @@ const ShowListItem = props => {
 
           <div className="episode-info">
             <span>
-              { episodeInfo.name }{ episodeInfo.exists && "✅" }
+              { episodeInfo.name } { episodeInfo.exists && "✅" }
             </span>
             { episodeInfo.exists 
               ? <button>Edit</button> 
