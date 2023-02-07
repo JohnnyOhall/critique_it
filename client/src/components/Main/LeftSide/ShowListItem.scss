@@ -1,0 +1,155 @@
+@use "../../../styles/base.scss";
+
+
+.show-list-item {
+  display: flex;
+  padding: 1em;
+  align-items: center;
+
+  .show-slider-select {
+    display: flex;
+
+    .slider-season {
+      @include base.slider;
+  
+      .season-title {
+        font-family: 'Noto Sans Display', sans-serif;
+        font-weight: bold;
+        color: rgb(82, 7, 7);
+      }
+  
+      .season-number {
+        @include base.number;
+      }
+  
+      input {
+        @include base.slider-input;
+      }
+  
+      input[type=range]{
+        appearance: none;
+      }
+      
+      input[type=range]::-webkit-slider-runnable-track {
+        @include base.slider-track;
+      }
+      
+      input[type=range]::-webkit-slider-thumb {
+        @include base.slider-thumb;
+      }
+      
+      input[type=range]:focus {
+        outline: none;
+      }
+      
+      input[type=range]:focus::-webkit-slider-runnable-track {
+        background: whitesmoke;
+      }
+    }
+  
+    .slider-episode {
+      @include base.slider;
+  
+      .episode-title {
+        font-family: 'Noto Sans Display', sans-serif;
+        font-weight: bold;
+        color: rgb(82, 7, 7);
+      }
+  
+      .episode-number {
+        @include base.number;
+      }
+  
+      input {
+        @include base.slider-input;
+      }
+  
+      input[type=range]{
+        appearance: none;
+      }
+      
+      input[type=range]::-webkit-slider-runnable-track {
+        @include base.slider-track;
+      }
+      
+      input[type=range]::-webkit-slider-thumb {
+        @include base.slider-thumb;
+      }
+      
+      input[type=range]:focus {
+        outline: none;
+      }
+      
+      input[type=range]:focus::-webkit-slider-runnable-track {
+        background: whitesmoke;
+      }
+    }
+  
+    .episode-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding-left: 2em;
+  
+      span {
+        font-family: 'Noto Sans Display', sans-serif;
+        font-weight: bold;
+        color: rgb(82, 7, 7);
+      }
+  
+      button {
+        margin: 0.2em;
+        padding: 0.15em 0.9em 0.3em 0.9em;
+        border-radius: 1em;
+        border-style: none;
+        background-color: #1b1857;
+        color: white;
+        text-align: center;
+        margin-top: 1.5em;
+        padding: 0.3em 0.8em;
+        font-size: 20px;
+        cursor: pointer;
+      }
+  
+      button:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+  
+  .show-name {
+    align-self: center;
+
+    button {
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      font-size: x-large;
+      font-weight: bold;
+      color: rgb(82, 7, 7);
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .show-img {
+    display: flex;
+    padding-right: 1em;
+    
+    img {
+      border-radius: 50%;
+      box-shadow: 0px 6px 12px rgb(3, 3, 3);
+      border: none;
+      outline: none;
+      margin-top: 0.35em;
+      cursor: pointer;
+    }
+
+    img:active {
+      transform: scale(0.95);
+    }
+  }
+}

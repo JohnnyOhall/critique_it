@@ -1,4 +1,5 @@
 //External Imports
+const e = require('express');
 const express = require( 'express' );
 const router  = express.Router();
 const db = require( '../db/connection' );
@@ -38,6 +39,31 @@ router.get( '/main', ( req, res ) => {
   db.query( pageQuery, values )
     .then( data => {
       const pageData = data.rows;
+      res.json({ pageData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+
+});
+
+
+// Route to get show by id
+router.get( '/:id', ( req, res ) => {
+
+  const pageQuery = `
+  SELECT * FROM pages
+  WHERE creator_id = $1 AND episode_id = $2;
+  `;
+
+  values = [ req.session.userID, req.params.id ];
+
+  db.query( pageQuery, values )
+    .then( data => {
+      const pageData = data.rows;
+      console.log('page data', pageData)
       res.json({ pageData });
     })
     .catch( err => {

@@ -48,30 +48,30 @@ const ProfileSelectRegister = props => {
       
       <form onSubmit={ e => e.preventDefault() }>
         <div className="form-item">
-          <label for='username'>Username</label>
+          <label for='username'>Username:</label>
           <input 
             id='username' 
             type="text" 
-            placeholder='Enter a username'
+            placeholder=' Enter a username'
             value={ userInfo.username }
             onChange={ e => setUserInfo({ ...userInfo, username: e.target.value })}
           />
         </div>
 
         <div className="password-box">
-          <span>Email</span>
+          <span>Email:</span>
           <br/>
           <input 
             id='email' 
             type="email" 
-            placeholder='Enter an email address'
+            placeholder=' Enter an email address'
             value={ userInfo.email }
             onChange={ e => setUserInfo({ ...userInfo, email: e.target.value })}
           />
           <input 
             id='confirm' 
             type="email" 
-            placeholder='Confirm email address'
+            placeholder=' Confirm email address'
             value={ userInfo.emailConfirm }
             onChange={ e => setUserInfo({ ...userInfo, emailConfirm: e.target.value })}
           />    
@@ -80,19 +80,19 @@ const ProfileSelectRegister = props => {
         { !emailMatch ? <span className="error-msg">Emails do not match!</span> : <br/> }
 
         <div className="password-box">
-          <span>Password</span>
+          <span>Password:</span>
           <br/>
           <input 
             id='password' 
             type="password" 
-            placeholder='Enter a password'
+            placeholder=' Enter a password'
             value={ userInfo.password }
             onChange={ e => setUserInfo({ ...userInfo, password: e.target.value })}
           />
           <input 
             id='confirm' 
             type="password" 
-            placeholder='Confirm password'
+            placeholder=' Confirm password'
             value={ userInfo.PassConfirm }
             onChange={ e => setUserInfo({ ...userInfo, PassConfirm: e.target.value })}
           />    
@@ -101,12 +101,12 @@ const ProfileSelectRegister = props => {
         { !passMatch ? <span className="error-msg">Passwords do not match!</span> : <br/> }
         
         <div className='bio-box'>
-          <label for="bio">User Bio (optionial)</label>
+          <label for="bio">User Bio (optional):</label>
           <textarea 
             className="bio-input" 
             type="text" 
             id="bio" 
-            placeholder="enter a short user bio"
+            placeholder=" Enter a short user bio"
             onChange={ e => setUserInfo({ ...userInfo, bio: e.target.value })}
           />
         </div>
@@ -195,7 +195,7 @@ const ProfileSelectRegister = props => {
         }
         { (!passMatch || !emailMatch) && <button disabled> Register </button> }
         <button onClick={ () => setRegister( false )}>
-          <a href="#">cancel</a>
+          <a href="#">Cancel</a>
         </button>
 
 

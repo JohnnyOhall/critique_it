@@ -1,0 +1,50 @@
+@mixin slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  font-family: sans-serif;
+  text-align: center;
+}
+
+@mixin slider-input {
+  margin-top: 0.7em;
+  width: 75%;
+  padding: 0.05em;
+  border-radius: 0.5em;
+}
+
+@mixin slider-track {
+  width: 300px;
+  height: 6px;
+  background: whitesmoke;
+  border: none;
+  border-radius: 3px;
+}
+
+@mixin slider-thumb {
+  -webkit-appearance: none;
+  border: none;
+  height: 20px;
+  width: 20px;
+  border-radius: 50%;
+  background: goldenrod;
+  margin-top: -4px;
+  margin-left: -2px;
+  cursor: pointer;
+}
+
+@mixin number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100px;
+  margin: 16px;
+  background-color: rgb(82, 7, 7);
+  color: whitesmoke;
+  font-weight: bold;
+  font-size: 2em;
+  border-radius: 50%;
+  box-shadow: 0px 6px 12px rgb(43, 42, 42);
+}
