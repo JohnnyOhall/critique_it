@@ -4,12 +4,14 @@ import axios from "axios";
 
 //Components & Hooks
 import ShowListItem from "./ShowListItem";
-import { GlobalContext } from "../../../Application";
+
+//Providers
+import { LoginContext } from "../../../../providers/LoginProvider";
 
 
 const CritiqueSelectMain = props => {
   const [ showDisplay, setShowDisplay ] = useState([]);
-  const { loggedIn } = useContext( GlobalContext )
+  const { loggedIn } = useContext( LoginContext );
 
   useEffect( () => {
     if ( loggedIn ) {

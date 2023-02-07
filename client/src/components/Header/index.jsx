@@ -8,7 +8,11 @@ import useLogin from "../../hooks/visualModes/useLogin";
 import SignedOut from "./SignedOut";
 import Login from "./Login";
 import SignedIn from "./SignedIn";
-import { GlobalContext } from "../Application";
+
+
+//Providers
+import { RegisterContext } from "../../providers/RegisterProvider";
+import { LoginContext } from "../../providers/LoginProvider";
 
 // Styling
 import './styles.scss';
@@ -18,7 +22,8 @@ const SIGNED_OUT = "SIGNED_OUT", SIGNED_IN = "SIGNED_IN", LOGIN = "LOGIN";
 
 
 const Header = props => {
-  const { setLoggedIn, setRegister } = useContext( GlobalContext );
+  const { setRegister } = useContext( RegisterContext );
+  const { setLoggedIn } = useContext( LoginContext );
 
   const { mode, transition, back } = useLogin( Cookies.get('email') ? SIGNED_IN : SIGNED_OUT );
   const [ userCookie, setUserCookie ] = useState({});
@@ -33,8 +38,8 @@ const Header = props => {
   }, []);
 
   useEffect(() => {
-    setLoggedIn( mode === SIGNED_IN ? true : false )
-    setRegister( mode === SIGNED_IN && false ) // Bug fix where register displayed in logged-in state
+    setLoggedIn( mode === SIGNED_IN ? true : false );
+    setRegister( mode === SIGNED_IN && false );
   }, [ mode ]);
 
   return (

@@ -6,14 +6,18 @@ import CritiqueDisplay from "./CritiqueDisplay";
 import ExploreDisplay from "./ExploreDisplay";
 import ProfileDisplay from "./ProfileDisplay";
 import StatDisplay from "./StatDisplay";
-import { GlobalContext } from "../../Application";
+
+// Providers
+import { LoginContext } from "../../../providers/LoginProvider";
+import { RegisterContext } from "../../../providers/RegisterProvider";
 
 // Styling
 import './RightSide.scss';
 
 
 const RightSide = props => {
-  const { loggedIn, register } = useContext( GlobalContext );
+  const { loggedIn } = useContext( LoginContext );
+  const { register } = useContext( RegisterContext );
 
   return (
     <section className="right-side">

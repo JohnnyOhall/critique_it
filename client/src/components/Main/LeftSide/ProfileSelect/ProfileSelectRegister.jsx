@@ -2,13 +2,13 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
-// Components & hooks
-import { GlobalContext } from "../../../Application";
+// Providers
+import { RegisterContext } from "../../../../providers/RegisterProvider";
 
 
 const ProfileSelectRegister = props => {
 
-  const { setRegister } = useContext( GlobalContext );
+  const { setRegister } = useContext( RegisterContext );
   const [ passMatch, setPassMatch ] = useState( false );
   const [ emailMatch, setEmailMatch ] = useState( false );
   const [ userInfo, setUserInfo ] = useState({

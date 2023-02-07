@@ -1,56 +1,17 @@
 // External imports
-import React, { useState } from "react";
-import axios from "axios";
+import React from "react";
+import useAddShow from "../../../../hooks/useAddShow";
 
 
 const CritiqueSelectAdd = props => {
 
-  const [ show, setShow ] = useState({});
-  const [ search, setSearch ] = useState('');
-
-  const removeHTMLTags = string => string.replace(/(<([^>]+)>)/ig, '');
-
-  const findShow = showName => {
-    let showData;
-
-    axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( showName )}` )
-      .then( res => {
-        let { name, id, image, rating, summary } = res.data[ 0 ].show;
-
-        image = image.original;
-        rating = rating.average;
-        summary = removeHTMLTags( summary );
-
-        showData = {
-          name,
-          id,
-          image,
-          summary,
-          rating,
-          seasons: 0,
-          episodes: 0
-        };
-
-        return axios.get( `http://api.tvmaze.com/shows/${id}/seasons` );
-      })
-      .then( res => {
-        showData.seasons = res.data.length;
-
-        for ( const season of res.data ) {
-          showData.episodes += season.episodeOrder;
-        };
-
-        setShow( showData );
-      })
-      .catch( console.error );
-  };
-
-  // prevent duplicate logic needs to be added
-  const selectShow = data => {
-    axios.post( '/pages/create', data )
-      .then( () => props.onSelect() )
-      .catch( console.error );
-  };
+  const { 
+    selectShow, 
+    findShow, 
+    setSearch,
+    show, 
+    search 
+  } = useAddShow(props);
 
   return (
     <div className="critique-select">

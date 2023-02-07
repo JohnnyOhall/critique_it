@@ -1,8 +1,9 @@
 // External imports
 import React, { useContext } from "react";
 
-//Components and Hooks
-import { GlobalContext } from "./Application";
+
+// Providers
+import { LoginContext } from "../providers/LoginProvider";
 
 // Styling
 import './Nav.scss';
@@ -10,7 +11,7 @@ import './Nav.scss';
 
 const Nav = props => {
 
-  const { loggedIn } = useContext( GlobalContext );
+  const { loggedIn } = useContext( LoginContext );
 
   //Navbar button images
   const rateImg = "https://www.svgrepo.com/show/91435/star.svg";

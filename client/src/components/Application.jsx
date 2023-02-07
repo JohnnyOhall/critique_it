@@ -1,5 +1,5 @@
 // External imports
-import React, { createContext, useState } from 'react';
+import React from 'react';
 
 // Components & hooks
 import Header from './Header';
@@ -11,31 +11,24 @@ import Footer from './Footer';
 // Styling
 import './Application.scss';
 
-// Global Variables
-export const GlobalContext = createContext();
-
+// Provider Imports
+import RegisterProvider from '../providers/RegisterProvider';
+import LoginProvider from '../providers/LoginProvider';
 
 const App = () => { 
-  const [ loggedIn, setLoggedIn ] = useState( false );
-  const [ register, setRegister ] = useState( false );
 
   return (
-    <GlobalContext.Provider 
-      value={{ 
-        loggedIn, 
-        setLoggedIn, 
-        register, 
-        setRegister 
-      }}
-    >
-      <div className="App">
-        <Header />
-        <Nav />
-        <Main />
-        <About />
-        <Footer />
-      </div>
-    </GlobalContext.Provider>
+    <LoginProvider>
+      <RegisterProvider>
+        <div className="App">
+          <Header />
+          <Nav />
+          <Main />
+          <About />
+          <Footer />
+        </div>
+      </RegisterProvider>
+    </LoginProvider>
   );
 };
 

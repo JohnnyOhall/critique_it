@@ -1,8 +1,8 @@
 //External Imports
 import React, { useContext } from "react";
 
-// Components & hooks
-import { GlobalContext } from "../../../Application";
+// Providers
+import { RegisterContext } from "../../../../providers/RegisterProvider";
 
 
 // Styling
@@ -11,7 +11,7 @@ import './styles.scss';
 
 const ProfileDisplay = prop => {
 
-  const { register } = useContext( GlobalContext );
+  const { register } = useContext( RegisterContext );
 
   return (
     <section className="profile-right">

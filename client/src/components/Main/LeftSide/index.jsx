@@ -6,14 +6,19 @@ import CritiqueSelect from "./CritiqueSelect";
 import StatSelect from "./StatSelect";
 import ExploreSelect from "./ExploreSelect";
 import ProfileSelect from "./ProfileSelect";
-import { GlobalContext } from "../../Application";
+
+//Providers
+import { RegisterContext } from "../../../providers/RegisterProvider";
+import { LoginContext } from "../../../providers/LoginProvider";
+
 
 // Styling
 import './LeftSide.scss';
 
 
 const LeftSide = props => {
-  const { loggedIn, register } = useContext( GlobalContext );
+  const { loggedIn } = useContext( LoginContext );
+  const { register } = useContext( RegisterContext );
 
   return (
     <section className="left-side">
