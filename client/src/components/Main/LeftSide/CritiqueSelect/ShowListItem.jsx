@@ -16,19 +16,19 @@ const ShowListItem = props => {
   const [ episodeMax, setEpisodeMax ] = useState( 1 );
   const [ episodeInfo, setEpisodeInfo ] = useState( {} );
 
-  const findShow = (seasonNumber, episodeNumber) => {
+  const findShow = ( seasonNumber, episodeNumber ) => {
     let showData;
 
-    axios.get(`http://api.tvmaze.com/shows/${props.show_id}/seasons`)
-      .then(res => {
+    axios.get( `http://api.tvmaze.com/shows/${ props.show_id }/seasons` )
+      .then( res => {
         showData = {
           seasonLength: res.data.length,
           seasonId: res.data[ seasonNumber - 1 ].id
         };
-        return axios.get(`http://api.tvmaze.com/seasons/${ showData.seasonId }/episodes`);
+        return axios.get( `http://api.tvmaze.com/seasons/${ showData.seasonId }/episodes` );
       })
 
-      .then(res => {
+      .then( res => {
         showData.episodeLength = res.data.length;
         showData.episode = res.data[ episodeNumber - 1 ];
         return axios.get( `/pages/${ showData.episode.id }` );
@@ -38,7 +38,7 @@ const ShowListItem = props => {
         const exists = res.data.pageData[ 0 ] ? true : false;
         setSeasonMax( showData.seasonLength );
         setEpisodeMax( showData.episodeLength );
-        setEpisodeInfo( { ...showData.episode, exists } );
+        setEpisodeInfo({ ...showData.episode, exists });
       })
 
       .catch(err => console.error( err ));
@@ -47,12 +47,12 @@ const ShowListItem = props => {
   const assignSeason = value => {
     setSeason( value );
     setEpisode( 1 );
-    findShow(value , 1);
+    findShow( value , 1 );
   };
 
   const assignEpisode = value => {
     setEpisode( value );
-    findShow(season, value);
+    findShow( season, value );
   };
 
   return (
@@ -63,9 +63,9 @@ const ShowListItem = props => {
           height="100px"
           width="100px"
           onClick={ () => {
-            findShow(season, episode);
+            findShow( season, episode );
             setSelect( select ? false : true );
-          } }
+          }}
         />
       </div>
       { !select &&
@@ -106,9 +106,9 @@ const ShowListItem = props => {
             <span>
               { episodeInfo.name } { episodeInfo.exists && "✅" }
             </span>
-            { episodeInfo.exists 
-              ? <button>Edit</button> 
-              : <button>Add</button> 
+            { episodeInfo.exists
+              ? <button>Edit</button> // Episode already critiqued and in DB
+              : <button>Add</button> // Episode has never been critiqued
             }
           </div>
         </div>

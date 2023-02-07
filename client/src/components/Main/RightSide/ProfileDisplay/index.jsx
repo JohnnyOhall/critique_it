@@ -2,11 +2,11 @@
 import React, { useContext } from "react";
 
 // Components & hooks
-import { GlobalContext } from "../../Application";
+import { GlobalContext } from "../../../Application";
 
 
 // Styling
-import './ProfileDisplay.scss';
+import './styles.scss';
 
 
 const ProfileDisplay = prop => {

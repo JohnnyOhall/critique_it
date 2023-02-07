@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './About.scss';
+import './styles.scss';
 
 
 const About = props => {

@@ -127,7 +127,7 @@ const CritiqueSelectAdd = props => {
               className="select-button"
               src="images/add.png"
               alt="Select"
-              onClick={ () => selectShow(show) }
+              onClick={ () => selectShow( show ) }
             />
             <h2>add</h2>
           </div>

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './StatSelect.scss';
+import './styles.scss';
 
 
 const StatSelect = props => {

@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './ExploreDisplay.scss';
+import './styles.scss';
 
 
 const ExploreDisplay = prop => {
