@@ -1,3 +1,5 @@
+@use "../../../../styles/base.scss";
+
 .critique-left {
   background-color: #E7D2CC;
   font-family: 'Noto Sans Display', sans-serif;
@@ -5,7 +7,7 @@
   // display: none;
 
   .critique-select {
-    height: 100vh;
+    height: base.$container-height;
     margin: 3em 2em;
     border-style: solid;
     border-color: transparent;

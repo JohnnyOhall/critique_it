@@ -1,9 +1,11 @@
+@use '../../../../styles/base.scss';
+
 .critique-right {
   background-color: #738580;
   // display: none;
 
   .critique-display {
-    height: 100vh;
+    height: base.$container-height;
     margin: 3em;
     border-style: solid;
     border-color: black;

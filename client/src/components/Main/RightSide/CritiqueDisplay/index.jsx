@@ -1,5 +1,5 @@
 // External imports
-import React from "react";
+import React, { useContext } from "react";
 
 // Components and hooks
 import Default from "./Default";
@@ -8,20 +8,33 @@ import Instructions from "./Instructions";
 import View from "./View";
 import Edit from "./Edit";
 
+// Providers
+import { CritiqueContext } from "../../../../providers/CritiqueProvider";
+
 // Styling
 import './styles.scss';
 
 
 const CritiqueDisplay = props => {
 
+  const { 
+    display, 
+    setDisplay, 
+    SUMMARY, 
+    DEFAULT, 
+    INSTRUCTIONS, 
+    EDIT, 
+    VIEW 
+  } = useContext( CritiqueContext )
+
   return (
     <section className="critique-right">
       <div className="critique-display">
-        <Default />
-        <Summary />
-        <Instructions />
-        <View />
-        <Edit />
+        { display === DEFAULT && <Default /> }
+        { display === SUMMARY && <Summary /> }
+        { display === INSTRUCTIONS && <Instructions /> }
+        { display === VIEW && <View /> }
+        { display === EDIT && <Edit /> }
       </div>
     </section>
   );
