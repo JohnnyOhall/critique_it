@@ -17,7 +17,7 @@
 @mixin slider-track {
   width: 300px;
   height: 6px;
-  background: whitesmoke;
+  // background: whitesmoke;
   border: none;
   border-radius: 3px;
 }
@@ -28,10 +28,11 @@
   height: 20px;
   width: 20px;
   border-radius: 50%;
-  background: goldenrod;
+  background: darkgoldenrod;
   margin-top: -4px;
   margin-left: -2px;
   cursor: pointer;
+  box-shadow: 0px 2px 6px rgb(77, 74, 74);
 }
 
 @mixin number {
