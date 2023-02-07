@@ -4,7 +4,7 @@ import axios from "axios";
 
 //Components & Hooks
 import ShowListItem from "./ShowListItem";
-import { GlobalContext } from "../../Application";
+import { GlobalContext } from "../../../Application";
 
 
 const CritiqueSelectMain = props => {

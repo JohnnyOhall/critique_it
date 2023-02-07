@@ -2,7 +2,7 @@
 import { useState } from "react";
 
 
-export default function useLoginVisualMode( initial ) {
+export default function useCritiqueSelect( initial ) {
 
   const [ mode, setMode ] = useState( initial );
   const [ history, setHistory ] = useState([ initial ]);
@@ -27,7 +27,7 @@ export default function useLoginVisualMode( initial ) {
     const pop = history => {
       if ( history.length === 1 ) return [ ...history ];
       
-      history.pop( );
+      history.pop();
       return [ ...history ];
     };
 

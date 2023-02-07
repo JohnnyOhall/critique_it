@@ -2,12 +2,12 @@
 import React from "react";
 
 // Components & hooks
-import useCritiqueSelectVisualMode from "../../../hooks/useCritiqueSelectVisualMode";
+import useCritiqueSelect from "../../../../hooks/visualModes/useCritiqueSelect";
 import CritiqueSelectMain from "./CritiqueSelectMain";
 import CritiqueSelectAdd from "./CritiqueSelectAdd";
 
 // Styling
-import './CritiqueSelect.scss';
+import './styles.scss';
 
 // Global Variables - Modes
 const MAIN = "MAIN", ADD = "ADD";
@@ -15,7 +15,7 @@ const MAIN = "MAIN", ADD = "ADD";
 
 const CritiqueSelect = props => {
 
-  const { mode, transition, back } = useCritiqueSelectVisualMode( MAIN );
+  const { mode, transition, back } = useCritiqueSelect( MAIN );
 
   return (
     <section className="critique-left" id="nav-critique">

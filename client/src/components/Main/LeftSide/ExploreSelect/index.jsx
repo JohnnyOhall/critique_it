@@ -2,7 +2,7 @@
 import React from "react";
 
 // Styling
-import './ExploreSelect.scss';
+import './styles.scss';
 
 
 const ExploreSelect = props => {

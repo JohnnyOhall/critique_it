@@ -2,12 +2,12 @@
 import React, { useContext } from "react";
 
 // Components & hooks
-import { GlobalContext } from "../../Application";
+import { GlobalContext } from "../../../Application";
 import ProfileSelectMain from "./ProfileSelectMain";
 import ProfileSelectRegister from "./ProfileSelectRegister";
 
 // Styling
-import './ProfileSelect.scss';
+import './styles.scss';
 
 
 const ProfileSelect = props => {
@@ -17,7 +17,7 @@ const ProfileSelect = props => {
   return (
     <section className="profile-left" id="nav-profile">
       { !register && <ProfileSelectMain /> }
-      { register && <ProfileSelectRegister /> }
+      { register  && <ProfileSelectRegister /> }
     </section>
   );
 };

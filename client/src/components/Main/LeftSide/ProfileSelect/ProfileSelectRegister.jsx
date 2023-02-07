@@ -3,7 +3,7 @@ import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 
 // Components & hooks
-import { GlobalContext } from "../../Application";
+import { GlobalContext } from "../../../Application";
 
 
 const ProfileSelectRegister = props => {
