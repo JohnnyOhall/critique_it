@@ -2,6 +2,10 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+// Styling
+import './ShowListItem.scss';
+
+
 const ShowListItem = props => {
   const { name, img } = props;
 
@@ -56,7 +60,7 @@ const ShowListItem = props => {
   console.log('episode: ', episodeInfo.name)
 
   return (
-    <li className="show-item">
+    <li className="show-list-item">
       <div className="show-img">
         <img
           src={ img }
@@ -102,9 +106,14 @@ const ShowListItem = props => {
             />
           </div>
 
-          <div>
-            <span>{ episodeInfo.name }{ episodeInfo.exists && "✅" }</span>
-            { episodeInfo.exists ? <button>Edit</button> : <button>Add</button> }
+          <div className="episode-info">
+            <span>
+              { episodeInfo.name }{ episodeInfo.exists && "✅" }
+            </span>
+            { episodeInfo.exists 
+              ? <button>Edit</button> 
+              : <button>Add</button> 
+            }
           </div>
         </div>
       }
