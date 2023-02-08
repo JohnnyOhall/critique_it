@@ -30,7 +30,7 @@ CREATE TABLE pages (
   show_title VARCHAR(255) NOT NULL,
   show_img VARCHAR(255) NOT NULL,
   season_id INTEGER,
-  episode_id INTEGER,
+  episode_id INTEGER UNIQUE,
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   badges_id INTEGER REFERENCES badges(id) ON DELETE CASCADE,
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,

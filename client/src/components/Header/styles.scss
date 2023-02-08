@@ -1,3 +1,5 @@
+@use '../../styles/base.scss';
+
 header {
   display: flex;
   justify-content: space-between;
@@ -9,7 +11,7 @@ header {
   .logo {
     background-color: fire;
     font-size: 65px;
-    font-family: 'Itim', cursive;
+    font-family: base.$site-title-font;
   }
 
   button {
@@ -17,7 +19,7 @@ header {
     background-color: transparent;
     border: transparent;
     font-size: 25px;
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: base.$site-body-font;
     cursor: pointer;
   }
 
