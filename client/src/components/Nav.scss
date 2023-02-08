@@ -1,3 +1,5 @@
+@use '../styles/base.scss';
+
 nav {
   display: flex;
   justify-content: space-evenly;
@@ -9,44 +11,115 @@ nav {
     text-decoration: none;
   }
 
-  .link-nav {
-    height: 17em;
-    width: 17em;
-    overflow: hidden;
-    background-color: burlywood;
-    border-radius: 50%;
-    border-style: ridge;
-    border-color: #B8390E;
-    text-align: center;
-    line-height: 18em;
-    
-    img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .about-text {
-      z-index: 0;
-    }
-  }
-
-  .link-nav:hover {
-    background-color: #3E505C;
-    border-style: dotted;
+  .link-nav-critique {
+    @include base.nav-pre-hover;
 
     img {
-      display: none;
-    }
-
-    .about-text {
-      color: white;
-      font-size: 4em;
-      font-family: 'Noto Sans Display', sans-serif;
+      max-width: 100%;
+      max-height: 100%;
     }
   }
+  
+  .link-nav-critique::after {
+    content: "Critique";
+    @include base.nav-hover;
+  }
+  
+  .link-nav-critique:hover::after {
+    display: block;
+  }
 
-  .link-nav:active {
+  .link-nav-critique:active {
     transform: scale(0.95);
   }
 
+  .link-nav-stats {
+    @include base.nav-pre-hover;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  
+  .link-nav-stats::after {
+    content: "Stats";
+    @include base.nav-hover;
+  }
+  
+  .link-nav-stats:hover::after {
+    display: block;
+  }
+
+  .link-nav-stats:active {
+    transform: scale(0.95);
+  }
+
+  .link-nav-explore {
+    @include base.nav-pre-hover;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  
+  .link-nav-explore::after {
+    content: "Explore";
+    @include base.nav-hover;
+  }
+  
+  .link-nav-explore:hover::after {
+    display: block;
+  }
+
+  .link-nav-explore:active {
+    transform: scale(0.95);
+  }
+
+  .link-nav-profile {
+    @include base.nav-pre-hover;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  
+  .link-nav-profile::after {
+    content: "Profile";
+    @include base.nav-hover;
+  }
+  
+  .link-nav-profile:hover::after {
+    display: block;
+  }
+
+  .link-nav-profile:active {
+    transform: scale(0.95);
+  }
+
+
+
+  .link-nav-about {
+    @include base.nav-pre-hover;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+  
+  .link-nav-about::after {
+    content: "About";
+    @include base.nav-hover;
+  }
+  
+  .link-nav-about:hover::after {
+    display: block;
+  }
+
+  .link-nav-about:active {
+    transform: scale(0.95);
+  }
 }
