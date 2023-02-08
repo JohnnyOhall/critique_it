@@ -23,42 +23,27 @@ const Nav = props => {
   return (
     <nav>
       { loggedIn && 
-        <a href="#nav-critique">
-          <div className="link-nav">
-            <img src={ rateImg } />
-            <span className="about-text">Critique</span>
-          </div>
+        <a href="#nav-critique" className="link-nav-critique">
+          <img src={ rateImg } />
         </a>
       }
 
-      <a href="#nav-stats">
-        <div className="link-nav">
-          <img src={ statsImg } />
-          <span className="about-text">Stats</span>
-        </div>
+      <a href="#nav-stats" className="link-nav-stats">
+        <img src={ statsImg } />
       </a>
 
-      <a href="#nav-explore">
-        <div className="link-nav">
-          <img src={ exploreImg } />
-          <span className="about-text">Explore</span>
-        </div>
+      <a href="#nav-explore" className="link-nav-explore">
+        <img src={ exploreImg } />
       </a>
 
       { loggedIn &&
-        <a href="#nav-profile">
-          <div className="link-nav">
-            <img src={ profileImg } />
-            <span className="about-text">Profile</span>
-          </div>
+        <a href="#nav-profile" className="link-nav-profile">
+          <img src={ profileImg } />
         </a>
       }
 
-      <a href="#nav-about">
-        <div className="link-nav">
-          <img src={ aboutImg } />
-          <span className="about-text">About</span>
-        </div>
+      <a href="#nav-about" className="link-nav-about">
+        <img src={ aboutImg } />
       </a>
 
     </nav>
