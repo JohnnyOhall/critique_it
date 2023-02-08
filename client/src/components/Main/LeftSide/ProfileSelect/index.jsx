@@ -2,7 +2,6 @@
 import React, { useContext } from "react";
 
 // Components & hooks
-import { GlobalContext } from "../../../Application";
 import ProfileSelectMain from "./ProfileSelectMain";
 import ProfileSelectRegister from "./ProfileSelectRegister";
 

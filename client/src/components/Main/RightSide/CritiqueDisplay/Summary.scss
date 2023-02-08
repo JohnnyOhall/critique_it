@@ -1,0 +1,18 @@
+.summary-index {
+  
+  .image-container {
+    height: 60%;
+    text-align: right;
+    display: flex;
+    justify-content: center;
+
+    img {
+      max-width: 55%;
+      max-height: auto;
+      border-radius: 0.75em;
+      box-shadow: 0px 6px 12px rgb(36, 40, 43);
+      object-fit: contain;
+    }
+  }
+  
+}

@@ -1,7 +1,9 @@
+@use '../../../../styles/base.scss';
+
 .explore-right {
   background-color: #B39C4D;
   .explore-display {
-    height: 100vh;
+    height: base.$container-height;
     margin: 3em;
     border-style: solid;
     border-color: black;

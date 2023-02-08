@@ -1,8 +1,10 @@
+@use '../../../../styles/base.scss';
+
 .profile-left {
   background-color: #8CBCB9;
 
   .profile-select {
-    height: 100vh;
+    height: base.$container-height;
     margin: 3em 2em;
     border-style: solid;
     border-color: transparent;
@@ -70,7 +72,7 @@
       .bio-input {
         margin-top: 1em;
         width: 30em;
-        height: 6em;
+        height: 4em;
         margin: 0.5em;
         outline: none;
         border: none;
@@ -107,7 +109,7 @@
     .avatar-select{
       display: flex;
       justify-content: center;
-      padding: 1.8em;
+      padding: 1.4em;
       margin: 0;
       border-radius: 2em;
       align-items: center;

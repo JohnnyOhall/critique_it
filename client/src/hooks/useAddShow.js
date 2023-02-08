@@ -1,13 +1,15 @@
+// External Imports
 import axios from "axios";
 import { useState } from "react";
+
+//Helpers
+import { removeHTMLTags } from "../helpers/helpers";
 
 
 const useAddShow = props => {
 
   const [ show, setShow ] = useState({});
   const [ search, setSearch ] = useState('');
-  
-  const removeHTMLTags = string => string.replace(/(<([^>]+)>)/ig, '');
   
   const findShow = showName => {
     let showData;
@@ -53,6 +55,7 @@ const useAddShow = props => {
 
   return { selectShow, findShow, setSearch, show, search };
 
-}
+};
+
 
 export default useAddShow;

@@ -14,6 +14,9 @@ Back-end:
   Reset database:
     - npm run db:reset
 
+  Export database:
+    - pg_dump critique_it > db/private/filename.sql
+
 Front-end:
   - open cd into client
   - npm start

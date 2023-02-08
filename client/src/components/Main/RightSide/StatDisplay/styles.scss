@@ -1,8 +1,10 @@
+@use '../../../../styles/base.scss';
+
 .stat-right {
   background-color: lavender;
 
   .stat-display {
-    height: 100vh;
+    height: base.$container-height;
     margin: 3em;
     border-style: solid;
     border-color: black;

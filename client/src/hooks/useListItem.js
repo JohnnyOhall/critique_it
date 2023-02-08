@@ -1,14 +1,20 @@
-import { useState } from "react";
+// External Imports
+import { useState, useContext } from "react";
 import axios from "axios";
 
+// Providers
+import { CritiqueContext } from "../providers/CritiqueProvider";
+
+
 const useListItem = props => {
+  
+  const { episodeInfo, setEpisodeInfo } = useContext( CritiqueContext );
 
   const [ select, setSelect ] = useState( false );
   const [ season, setSeason ] = useState( 1 );
-  const [ seasonMax, setSeasonMax ] = useState( 1 )
+  const [ seasonMax, setSeasonMax ] = useState( 1 );
   const [ episode, setEpisode ] = useState( 1 );
   const [ episodeMax, setEpisodeMax ] = useState( 1 );
-  const [ episodeInfo, setEpisodeInfo ] = useState( {} );
 
   const findShow = ( seasonNumber, episodeNumber ) => {
     let showData;
@@ -32,7 +38,12 @@ const useListItem = props => {
         const exists = res.data.pageData[ 0 ] ? true : false;
         setSeasonMax( showData.seasonLength );
         setEpisodeMax( showData.episodeLength );
-        setEpisodeInfo({ ...showData.episode, exists });
+        setEpisodeInfo({ 
+          ...showData.episode, 
+          exists, 
+          show_id: props.show_id, 
+          season_id: showData.seasonId
+        });
       })
 
       .catch(err => console.error( err ));
@@ -59,9 +70,8 @@ const useListItem = props => {
     seasonMax, 
     episode, 
     episodeMax, 
-    episodeInfo
   };
+};
 
-}
 
 export default useListItem;
