@@ -1,6 +1,9 @@
 DROP TABLE IF EXISTS users CASCADE;
 DROP TABLE IF EXISTS badges CASCADE;
 DROP TABLE IF EXISTS pages CASCADE;
+DROP TABLE IF EXISTS badges_library CASCADE;
+DROP TABLE IF EXISTS custom_input CASCADE;
+DROP TABLE IF EXISTS custom_input_library CASCADE;
 
 
 CREATE TABLE users (
@@ -16,13 +19,27 @@ CREATE TABLE users (
 );
 
 
-CREATE TABLE badges (
+CREATE TABLE badges_library (
   id SERIAL PRIMARY KEY NOT NULL,
   title VARCHAR(255) NOT NULL,
   description TEXT NOT NULL,
   img VARCHAR(255) NOT NULL
 );
 
+CREATE TABLE badges (
+  id SERIAL PRIMARY KEY NOT NULL,
+  badge_id INTEGER REFERENCES badges_library(id) ON DELETE CASCADE
+);
+
+CREATE TABLE custom_input_library (
+  id SERIAL PRIMARY KEY NOT NULL,
+  img VARCHAR(255)
+);
+
+CREATE TABLE custom_input (
+  id SERIAL PRIMARY KEY NOT NULL,
+  badge_id INTEGER REFERENCES badges_library(id) ON DELETE CASCADE
+);
 
 CREATE TABLE pages (
   id SERIAL PRIMARY KEY NOT NULL,
@@ -31,8 +48,15 @@ CREATE TABLE pages (
   show_img VARCHAR(255) NOT NULL,
   season_id INTEGER,
   episode_id INTEGER UNIQUE,
+  avatar VARCHAR(255),
+  color VARCHAR(255),
+  votes INTEGER,
+  rating INTEGER,
+  review VARCHAR(100),
+  watched_on VARCHAR(255),
+  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  updated TIMESTAMP DEFAULT NULL,
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   badges_id INTEGER REFERENCES badges(id) ON DELETE CASCADE,
-  created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  updated TIMESTAMP DEFAULT NULL
+  custom_input_id INTEGER REFERENCES custom_input(id) ON DELETE CASCADE
 );

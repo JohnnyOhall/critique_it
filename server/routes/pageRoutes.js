@@ -63,7 +63,7 @@ router.get( '/:id', ( req, res ) => {
   db.query( pageQuery, values )
     .then( data => {
       const pageData = data.rows;
-      console.log('page data', pageData)
+      // console.log('page data', pageData)
       res.json({ pageData });
     })
     .catch( err => {
@@ -73,7 +73,6 @@ router.get( '/:id', ( req, res ) => {
     });
 
 });
-
 
 // Route to create a new page or add a show with null valus
 router.post( '/create', ( req, res ) => {
@@ -113,8 +112,60 @@ router.post( '/create', ( req, res ) => {
 });
 
 
+// Route to create a new page or add a show with null valus
+router.post( '/newpage', ( req, res ) => {
+
+  const createPage = page => {
+    console.log('page: ', page);
+
+
+    const buildPage = `
+    INSERT INTO pages 
+    (
+      show_id,
+      show_title,
+      show_img,
+      season_id,
+      episode_id,
+      avatar,
+      color,
+      votes,
+      rating,
+      review,
+      watched_on,
+      creator_id
+    )
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+    RETURNING *;
+    `; 
+
+    const values = [ 
+      page.show_id,
+      page.show_title,
+      page.show_img,
+      page.season_id,
+      page.episode_id,
+      page.avatar,
+      page.color,
+      page.votes,
+      page.rating,
+      page.review,
+      page.watched_on,
+      req.session.userID
+    ];
+
+    return db.query( buildPage, values )
+      .then(() => res.send( 'Page Created!' ))
+      .catch(( err ) => console.log( err.message ));
+
+  };
+
+  createPage( req.body );
+});
+
+
 // Page to update an existing page record already in DB (or null recorded from add)
-router.patch( '/:id/update', ( req, res ) => {
+router.patch( '/update', ( req, res ) => {
 
   const createPage = page => {
 
