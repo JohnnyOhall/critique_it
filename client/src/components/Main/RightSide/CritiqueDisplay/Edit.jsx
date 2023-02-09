@@ -19,7 +19,7 @@ import './Edit.scss';
 
 const Edit = props => {
 
-  const { episodeInfoGlobal } = useContext( CritiqueContext );
+  const { episodeInfoGlobal, setDisplay, DEFAULT } = useContext( CritiqueContext );
   const [ rating, setRating ] = useState(0);
   const [ pageInfo, setPageInfo ] = useState({})
 
@@ -103,7 +103,7 @@ const Edit = props => {
 
 
       <div className="review">
-        <label htmlFor="review">Review:</label>
+        <label className="review-heading" htmlFor="review">Review:</label>
         <input id="review" type="text"/>
       </div>
 
@@ -124,8 +124,8 @@ const Edit = props => {
       </div>
 
       <div className="buttons">
-        <button onClick={()=> post(pageInfo)}>save</button>
-        <button>back</button>
+        <button onClick={ ()=> post( pageInfo ) }>Save</button>
+        <button onClick={ ()=> setDisplay( DEFAULT ) }>Back</button>
       </div>
     </section>
   );
