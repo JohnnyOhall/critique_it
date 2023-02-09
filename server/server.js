@@ -35,11 +35,13 @@ app.use(cookieSession({
 // Separated Routes for each Resource
 const pageRoutes = require( './routes/pageRoutes' );
 const userRoutes = require( './routes/userRoutes' );
+const voteRoutes = require( './routes/voteRoutes' );
 
 
 // Mount all resource routes
 app.use( '/pages', pageRoutes );
 app.use( '/users', userRoutes );
+app.use( '/votes', voteRoutes );
 
 
 app.listen( port, () => {

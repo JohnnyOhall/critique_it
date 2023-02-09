@@ -100,11 +100,11 @@ const ShowListItem = props => {
             { episodeInfo.exists
               ? <button onClick={ () => {
                   setDisplay(EDIT)
-                  setEpisodeInfoGlobal(episodeInfo)
+                  setEpisodeInfoGlobal({...episodeInfo, state: "edit"})
                 }}>Edit</button> // Episode already critiqued and in DB
               : <button onClick={ () => {
                   setDisplay(EDIT)
-                  setEpisodeInfoGlobal(episodeInfo)
+                  setEpisodeInfoGlobal({...episodeInfo, state: "add"})
                 } }>Add</button> // Episode has never been critiqued
             }
           </div>

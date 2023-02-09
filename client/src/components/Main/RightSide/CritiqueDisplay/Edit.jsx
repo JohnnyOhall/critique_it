@@ -27,15 +27,17 @@ const Edit = props => {
     let { image } = episodeInfoGlobal;
     image = image.original
 
+    console.log("state", episodeInfoGlobal)
+
     setPageInfo({
       show_id: episodeInfoGlobal.show_id,
       show_title: episodeInfoGlobal.name,
       show_img: image,
       season_id: episodeInfoGlobal.season_id,
-      episode_id: episodeInfoGlobal.show_id,
+      episode_id: episodeInfoGlobal.episode_id,
       badges: [],
       custom_input: [],
-      review: 'test',
+      review: '',
       watched_on: '',
       votes: 1,
       rating: 0,
@@ -46,26 +48,44 @@ const Edit = props => {
   },[])
 
   const post = data => {
-    axios.post('/pages/newpage', data)
-    .then(console.log)
-    .catch(console.log);
+
+    if (episodeInfoGlobal.state === "add") {
+      return axios.post( '/pages/newpage', data )
+        .then(res => {
+          console.log(res)
+          return axios.post( '/votes/add', data)
+        })
+        .then( console.log )
+        .catch( console.log );
+    };
+
+    if (episodeInfoGlobal.state === "edit") {
+      return axios.patch( '/pages/update', data )
+        .then( res => {
+          console.log(res)
+          return axios.patch( '/votes/update', data )
+        })
+        .then( console.log )
+        .catch( console.log );
+    };
+    
   };
   
 
-  const handleRating = (rate) => {
-    setRating(rate)
+  const handleRating = ( rate ) => {
+    setRating( rate )
     setPageInfo({ ...pageInfo, rating: rate })
   }
 
-  console.log('global: ', pageInfo);
+  console.log( 'global: ', pageInfo );
 
-  const avatarImage = avatarImages[Cookies.get( 'avatar' )];
+  const avatarImage = avatarImages[ Cookies.get( 'avatar' ) ];
 
   return (
-    <section className="edit-box">
+    <section className="edit-box" style={{backgroundColor: pageInfo.color}}>
       <div className="nav">
         <div className="menu">
-            <EditMenu />
+            <EditMenu pageInfo={pageInfo} setPageInfo={setPageInfo}/>
         </div>
         <div className="page-avatar">
           <div className="avatar-container">
@@ -75,17 +95,19 @@ const Edit = props => {
         </div>
         <div className="page-title">
           <span className="title-span">{ episodeInfoGlobal.name }</span>
-          <p>Season: <b>{episodeInfoGlobal.season}</b>  |  Episode: <b>{episodeInfoGlobal.number}</b></p>
+          <p>Season: <b>{ episodeInfoGlobal.season }</b>  |  Episode: <b>{ episodeInfoGlobal.number }</b></p>
         </div>
         <div className="voting">
             <div>
-              {pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" />}
-              {!pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" onClick={ () => { setPageInfo({...pageInfo, upvoted: true, votes: pageInfo.votes + 1 })}}/>}
+              { pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" /> }
+              { !pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" 
+                onClick={ () => { setPageInfo({ ...pageInfo, upvoted: true, votes: pageInfo.votes + 1 })}}/>}
             </div>
             <div> {pageInfo.votes} </div>
             <div>
-              {!pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px"  />}
-              { pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px" onClick={ () => { setPageInfo({...pageInfo, upvoted: false, votes: pageInfo.votes -1  })}}/>}
+              { !pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px"  /> }
+              { pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px" 
+                onClick={ () => { setPageInfo({ ...pageInfo, upvoted: false, votes: pageInfo.votes -1 })}}/>}
             </div>
         </div>
       </div>
@@ -106,14 +128,14 @@ const Edit = props => {
           <input 
             type="date" 
             id="watched-on"
-            onChange={ e => setPageInfo({...pageInfo, watched_on: e.target.value})} />
+            onChange={ e => setPageInfo({ ...pageInfo, watched_on: e.target.value })} />
         </div>
       </div>
 
 
       <div className="review">
         <label className="review-heading" htmlFor="review">Review:</label>
-        <input id="review" type="text"/>
+        <input id="review" type="text" value={ pageInfo.review } onChange={e => setPageInfo({ ...pageInfo, review: e.target.value })}/>
       </div>
 
       <div className="badges">

@@ -25,6 +25,7 @@ const useListItem = props => {
       .then( res => {
         showData.episodeLength = res.data.length;
         showData.episode = res.data[ episodeNumber - 1 ];
+        showData.episode_id = res.data[ episodeNumber - 1 ].id;
         return axios.get( `/pages/${ showData.episode.id }` );
       })
 
@@ -36,7 +37,8 @@ const useListItem = props => {
           ...showData.episode, 
           exists, 
           show_id: props.show_id, 
-          season_id: showData.seasonId
+          season_id: showData.seasonId,
+          episode_id: showData.episode_id
         });
       })
 

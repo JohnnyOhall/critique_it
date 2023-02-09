@@ -168,29 +168,42 @@ router.post( '/newpage', ( req, res ) => {
 router.patch( '/update', ( req, res ) => {
 
   const createPage = page => {
+    console.log(req.session.userID)
+    console.log('patch: ', page) 
 
     const buildPage = `
     UPDATE pages 
-    SET show_id = $1, 
-    season_id = $2, 
-    episode_id = $3, 
-    creator_id = $4,
-    updated = (to_timestamp(${ Date.now() } / 1000.0))
-    WHERE id = $5
-    AND creator_id = $4;
+    SET
+      show_id = $1,
+      show_title = $2,
+      show_img = $3,
+      season_id = $4,
+      avatar = $6,
+      episode_id = $5,
+      color = $7,
+      votes = $8,
+      rating = $9,
+      review = $10,
+      watched_on = $11,
+      updated = (to_timestamp(${ Date.now() } / 1000.0))
+    WHERE episode_id = $5
+    AND creator_id = $12;
     `;
 
     const values = [ 
-      page.showID,
-      page.seasonID,
-      page.episodeID,
-      page.userID, //add req.session.userID for production
-      page.id
+      page.show_id,
+      page.show_title,
+      page.show_img,
+      page.season_id,
+      page.episode_id,
+      page.avatar,
+      page.color,
+      page.votes,
+      page.rating,
+      page.review,
+      page.watched_on,
+      req.session.userID
     ];
-
-    if ( page.id !== Number( req.params.id )) {
-      return res.send( 'Invalid request...' );
-    };
 
     return db.query( buildPage, values )
       .then(() => res.send( 'Page Updated!' ))
