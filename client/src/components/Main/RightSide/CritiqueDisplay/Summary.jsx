@@ -14,13 +14,13 @@ import './Summary.scss';
 
 const Summary = props => {
 
-  const { episodeInfo } = useContext( CritiqueContext )
+  const { episodeInfoGlobal } = useContext( CritiqueContext )
   const [ showInfo, setShowInfo ] = useState({})
 
   useEffect( () => {
     let getInfo;
 
-    axios.get( `http://api.tvmaze.com/shows/${ episodeInfo.show_id }` )
+    axios.get( `http://api.tvmaze.com/shows/${ episodeInfoGlobal.show_id }` )
     .then( res => {
 
       let { image, summary } = res.data
@@ -38,7 +38,7 @@ const Summary = props => {
     })
     .catch(err => console.error( err ));
 
-  },[ episodeInfo ])
+  },[ episodeInfoGlobal ])
   
 
   return (

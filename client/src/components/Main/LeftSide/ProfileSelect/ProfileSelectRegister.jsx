@@ -27,7 +27,7 @@ const ProfileSelectRegister = props => {
     userInfo.PassConfirm === userInfo.password ? setPassMatch( true ) : setPassMatch( false );
     userInfo.emailConfirm === userInfo.email ? setEmailMatch( true ) : setEmailMatch( false );
     
-  },);
+  }, [userInfo]);
 
 
   const submitRequest = ( data ) => {
@@ -48,7 +48,7 @@ const ProfileSelectRegister = props => {
       
       <form onSubmit={ e => e.preventDefault() }>
         <div className="form-item">
-          <label for='username'>Username:</label>
+          <label htmlFor='username'>Username:</label>
           <input 
             id='username' 
             type="text" 
@@ -101,7 +101,7 @@ const ProfileSelectRegister = props => {
         { !passMatch ? <span className="error-msg">Passwords do not match!</span> : <br/> }
         
         <div className='bio-box'>
-          <label for="bio">User Bio (optional):</label>
+          <label htmlFor="bio">User Bio (optional):</label>
           <textarea 
             className="bio-input" 
             type="text" 
