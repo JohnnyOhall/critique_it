@@ -20,11 +20,11 @@ import './Edit.scss';
 const Edit = props => {
 
   const { episodeInfoGlobal, setDisplay, DEFAULT } = useContext( CritiqueContext );
-  const [ rating, setRating ] = useState(0);
-  const [ pageInfo, setPageInfo ] = useState({})
+  const [ rating, setRating ] = useState( 0 );
+  const [ pageInfo, setPageInfo ] = useState( {} )
 
   useEffect(() => {
-    let {image} = episodeInfoGlobal;
+    let { image } = episodeInfoGlobal;
     image = image.original
 
     setPageInfo({
@@ -33,14 +33,15 @@ const Edit = props => {
       show_img: image,
       season_id: episodeInfoGlobal.season_id,
       episode_id: episodeInfoGlobal.show_id,
-      // badges: [],
-      // custom_input: [],
+      badges: [],
+      custom_input: [],
       review: 'test',
       watched_on: '',
-      votes: 0,
+      votes: 1,
       rating: 0,
       color: '#738580',
-      avatar: Cookies.get('avatar')
+      avatar: Cookies.get('avatar'),
+      upvoted: true
     })
   },[])
 
@@ -77,7 +78,15 @@ const Edit = props => {
           <p>Season: <b>{episodeInfoGlobal.season}</b>  |  Episode: <b>{episodeInfoGlobal.number}</b></p>
         </div>
         <div className="voting">
-            votes
+            <div>
+              {pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" />}
+              {!pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" onClick={ () => { setPageInfo({...pageInfo, upvoted: true, votes: pageInfo.votes + 1 })}}/>}
+            </div>
+            <div> {pageInfo.votes} </div>
+            <div>
+              {!pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px"  />}
+              { pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px" onClick={ () => { setPageInfo({...pageInfo, upvoted: false, votes: pageInfo.votes -1  })}}/>}
+            </div>
         </div>
       </div>
 
