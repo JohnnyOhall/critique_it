@@ -9,6 +9,7 @@ import './ShowListItem.scss';
 
 const ShowListItem = props => {
   const { name, img } = props;
+  
 
   const { 
     assignSeason, 
@@ -19,8 +20,9 @@ const ShowListItem = props => {
     season, 
     seasonMax, 
     episode, 
-    episodeMax, 
-  } = useListItem(props);
+    episodeMax,
+    episodeInfo,
+  } = useListItem( props );
 
   const { 
     DEFAULT, 
@@ -28,8 +30,7 @@ const ShowListItem = props => {
     setDisplay, 
     VIEW, 
     EDIT, 
-    episodeInfo, 
-    setEpisodeInfo 
+    setEpisodeInfoGlobal
   } = useContext( CritiqueContext )
 
   return (
@@ -50,7 +51,7 @@ const ShowListItem = props => {
         <div className="show-name">
           <button onClick={ () => {
             setDisplay( SUMMARY )
-            setEpisodeInfo( {show_id: props.show_id} )
+            setEpisodeInfoGlobal( {show_id: props.show_id} )
           }}>
             { name }
           </button>
@@ -90,12 +91,21 @@ const ShowListItem = props => {
           </div>
 
           <div className="episode-info">
-            <span onClick={ () => setDisplay(VIEW) }>
-              { episodeInfo.name } { episodeInfo.exists && "📺" }
-            </span>
+            
+            <span onClick={ () => {
+              setDisplay(VIEW)
+              setEpisodeInfoGlobal(episodeInfo)
+            }}>{ episodeInfo.name } { episodeInfo.exists && "📺" }</span>
+            
             { episodeInfo.exists
-              ? <button onClick={ () => setDisplay(EDIT) }>Edit</button> // Episode already critiqued and in DB
-              : <button onClick={ () => setDisplay(EDIT) }>Add</button> // Episode has never been critiqued
+              ? <button onClick={ () => {
+                  setDisplay(EDIT)
+                  setEpisodeInfoGlobal(episodeInfo)
+                }}>Edit</button> // Episode already critiqued and in DB
+              : <button onClick={ () => {
+                  setDisplay(EDIT)
+                  setEpisodeInfoGlobal(episodeInfo)
+                } }>Add</button> // Episode has never been critiqued
             }
           </div>
         </div>

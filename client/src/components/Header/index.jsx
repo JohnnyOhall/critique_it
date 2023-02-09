@@ -9,7 +9,6 @@ import SignedOut from "./SignedOut";
 import Login from "./Login";
 import SignedIn from "./SignedIn";
 
-
 //Providers
 import { RegisterContext } from "../../providers/RegisterProvider";
 import { LoginContext } from "../../providers/LoginProvider";

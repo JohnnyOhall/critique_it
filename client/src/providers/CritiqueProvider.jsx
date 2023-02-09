@@ -9,13 +9,14 @@ const CritiqueProvider = props => {
   VIEW = "VIEW";
 
   const [ display, setDisplay ] = useState( DEFAULT );
-  const [ episodeInfo, setEpisodeInfo ] = useState( {} );
+  const [ episodeInfoGlobal, setEpisodeInfoGlobal ] = useState( {} );
+  
 
   const value = { 
     display, 
     setDisplay,
-    episodeInfo,
-    setEpisodeInfo,
+    episodeInfoGlobal,
+    setEpisodeInfoGlobal,
     SUMMARY, 
     DEFAULT, 
     INSTRUCTIONS, 
