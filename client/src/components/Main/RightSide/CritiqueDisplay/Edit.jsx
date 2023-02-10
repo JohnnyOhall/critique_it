@@ -19,9 +19,21 @@ import './Edit.scss';
 
 const Edit = props => {
 
-  const { episodeInfoGlobal, setDisplay, DEFAULT, VIEW, setEpisodeInfoGlobal } = useContext( CritiqueContext );
+  const { 
+    episodeInfoGlobal, 
+    setDisplay, 
+    DEFAULT, 
+    VIEW, 
+    setEpisodeInfoGlobal,
+    setCreate,
+    BOXES,
+    BADGES,
+    MAIN 
+  } = useContext( CritiqueContext );
   const [ rating, setRating ] = useState( 0 );
   const [ pageInfo, setPageInfo ] = useState( {} )
+  
+
 
   useEffect(() => {
     let { image, show_img } = episodeInfoGlobal;
@@ -155,18 +167,18 @@ const Edit = props => {
       </div>
 
       <div className="badges">
-        badges
+      <img src="images/add.png" onClick={() => setCreate(BADGES)}/>
       </div>
 
       <div className="content">
         <div className="box-1">
-          box 1
+          <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
         </div>
         <div className="box-2">
-          box 2
+          <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
         </div>
         <div className="box-3">
-          box 3
+          <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
         </div>
       </div>
 
@@ -176,9 +188,13 @@ const Edit = props => {
           .then(() => {
             setEpisodeInfoGlobal( {...pageInfo} )
             setDisplay( VIEW )
+            setCreate( MAIN )
           }).catch(() => setDisplay(DEFAULT))
         }}>Save</button>
-        <button onClick={ ()=> setDisplay( DEFAULT ) }>Back</button>
+        <button onClick={ ()=> {
+          setDisplay( DEFAULT )
+          setCreate( MAIN )
+        }}>Back</button>
       </div>
     </section>
   );

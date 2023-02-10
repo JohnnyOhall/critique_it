@@ -2,9 +2,11 @@
 import React, { useContext } from "react";
 
 // Components & hooks
-import useCritiqueSelect from "../../../../hooks/visualModes/useCritiqueSelect";
+// import useCritiqueSelect from "../../../../hooks/visualModes/useCritiqueSelect";
 import CritiqueSelectMain from "./CritiqueSelectMain";
 import CritiqueSelectAdd from "./CritiqueSelectAdd";
+import Boxes from "./Boxes";
+import Badges from "./Badges";
 
 // Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
@@ -13,30 +15,41 @@ import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 import './styles.scss';
 
 // Global Variables - Modes
-const MAIN = "MAIN", ADD = "ADD";
+// const  = "MAIN", ADD = "ADD";
 
 
 const CritiqueSelect = props => {
 
-  const { mode, transition, back } = useCritiqueSelect( MAIN );
-  const { DEFAULT, setDisplay } = useContext( CritiqueContext);
+  // const { mode, transition, back } = useCritiqueSelect( MAIN );
+  const { 
+    DEFAULT, 
+    setDisplay, 
+    setCreate, 
+    MAIN, 
+    create,
+    ADD, 
+    BADGES, 
+    BOXES } = useContext( CritiqueContext);
 
   return (
     <section className="critique-left" id="nav-critique">
-      { mode === MAIN && 
+
+      { create === MAIN && 
         <CritiqueSelectMain 
           onAdd={ () => {
-            transition( ADD );
+            setCreate( ADD );
             setDisplay(DEFAULT);
           }}
         /> 
       }
-      { mode === ADD && 
+      { create === ADD && 
         <CritiqueSelectAdd 
-          onClose={ () => transition( back ) } 
-          onSelect={ () => transition( MAIN ) } 
+          onClose={ () => setCreate( MAIN ) } 
+          onSelect={ () => setCreate( MAIN ) } 
         /> 
       }
+      { create === BADGES && <Badges /> }
+      { create === BOXES &&  <Boxes /> }
     </section>
   );
 };
