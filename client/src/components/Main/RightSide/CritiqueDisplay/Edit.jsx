@@ -64,9 +64,9 @@ const Edit = props => {
       });
 
 
-  },[boxes])
+  },[])
 
-
+  
   const boxItem = boxes.map( box => {
 
     console.log('box-item: ', box)
@@ -80,7 +80,6 @@ const Edit = props => {
       />
     ); 
   });
-
 
   const post = data => {
     
