@@ -1,5 +1,5 @@
 // External Imports
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import useListItem from "../../../../hooks/useListItem";
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 
@@ -10,7 +10,6 @@ import './ShowListItem.scss';
 const ShowListItem = props => {
   const { name, img } = props;
   
-
   const { 
     assignSeason, 
     assignEpisode,
@@ -92,10 +91,11 @@ const ShowListItem = props => {
 
           <div className="episode-info">
             
-            <span onClick={ () => {
+            { episodeInfo.exists 
+            ? <span onClick={ () => {
               setDisplay(VIEW)
-              setEpisodeInfoGlobal(episodeInfo)
-            }}>{ episodeInfo.name } { episodeInfo.exists && "📺" }</span>
+              setEpisodeInfoGlobal(episodeInfo)}}>{ episodeInfo.name } "📺"</span> 
+            : <span>{ episodeInfo.name }</span> }
             
             { episodeInfo.exists
               ? <button onClick={ () => {

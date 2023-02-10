@@ -1,5 +1,4 @@
 //External Imports
-const e = require('express');
 const express = require( 'express' );
 const router  = express.Router();
 const db = require( '../db/connection' );
@@ -49,7 +48,6 @@ router.get( '/main', ( req, res ) => {
 
 });
 
-
 // Route to get show by id
 router.get( '/:id', ( req, res ) => {
 
@@ -63,7 +61,31 @@ router.get( '/:id', ( req, res ) => {
   db.query( pageQuery, values )
     .then( data => {
       const pageData = data.rows;
-      // console.log('page data', pageData)
+      res.json({ pageData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+
+});
+
+
+// Route to get show by id
+router.post( '/view', ( req, res ) => {
+
+  const pageQuery = `
+  SELECT * FROM pages
+  WHERE creator_id = $1 
+  AND episode_id = $2
+  `;
+
+  values = [ req.session.userID, req.body.episode_id ];
+
+  db.query( pageQuery, values )
+    .then( data => {
+      const pageData = data.rows[0];
       res.json({ pageData });
     })
     .catch( err => {
@@ -116,9 +138,7 @@ router.post( '/create', ( req, res ) => {
 router.post( '/newpage', ( req, res ) => {
 
   const createPage = page => {
-    console.log('page: ', page);
-
-
+    
     const buildPage = `
     INSERT INTO pages 
     (
@@ -133,9 +153,11 @@ router.post( '/newpage', ( req, res ) => {
       rating,
       review,
       watched_on,
-      creator_id
+      creator_id,
+      season_num,
+      episode_num
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
     RETURNING *;
     `; 
 
@@ -151,12 +173,15 @@ router.post( '/newpage', ( req, res ) => {
       page.rating,
       page.review,
       page.watched_on,
-      req.session.userID
+      req.session.userID,
+      page.season_num,
+      page.episode_num
     ];
 
     return db.query( buildPage, values )
-      .then(() => res.send( 'Page Created!' ))
-      .catch(( err ) => console.log( err.message ));
+      .then((data) => res.json(data.rows))
+      .catch(( err ) => {
+        res.status(409).json({err: "show already exists"})});
 
   };
 
@@ -166,10 +191,7 @@ router.post( '/newpage', ( req, res ) => {
 
 // Page to update an existing page record already in DB (or null recorded from add)
 router.patch( '/update', ( req, res ) => {
-
   const createPage = page => {
-    console.log(req.session.userID)
-    console.log('patch: ', page) 
 
     const buildPage = `
     UPDATE pages 

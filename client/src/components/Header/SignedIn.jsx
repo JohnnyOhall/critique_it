@@ -1,6 +1,6 @@
 //External Imports
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import Cookies from "js-cookie";
 
 // Styling
@@ -8,9 +8,12 @@ import './SignedIn.scss';
 
 //Global Variables
 import { avatarImages } from "../../constants/constants";
+import { CritiqueContext } from "../../providers/CritiqueProvider";
 
 
 const SignedIn = props => {
+
+  const { setDisplay, DEFAULT } = useContext(CritiqueContext)
 
   const signOut = () => {
     axios.post( '/users/logout' )
@@ -19,6 +22,7 @@ const SignedIn = props => {
         Cookies.remove( 'email' );
         Cookies.remove( 'username' );
         Cookies.remove( 'avatar' );
+        setDisplay(DEFAULT)
       });
   };
 

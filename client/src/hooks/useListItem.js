@@ -38,7 +38,8 @@ const useListItem = props => {
           exists, 
           show_id: props.show_id, 
           season_id: showData.seasonId,
-          episode_id: showData.episode_id
+          episode_id: showData.episode_id,
+          page_id: res.data.pageData[0] ? res.data.pageData[0].id : null
         });
       })
 
