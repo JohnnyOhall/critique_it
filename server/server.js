@@ -36,12 +36,14 @@ app.use(cookieSession({
 const pageRoutes = require( './routes/pageRoutes' );
 const userRoutes = require( './routes/userRoutes' );
 const voteRoutes = require( './routes/voteRoutes' );
+const boxRoutes = require( './routes/boxRoutes' );
 
 
 // Mount all resource routes
 app.use( '/pages', pageRoutes );
 app.use( '/users', userRoutes );
 app.use( '/votes', voteRoutes );
+app.use( '/boxes', boxRoutes )
 
 
 app.listen( port, () => {
