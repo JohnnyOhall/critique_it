@@ -66,6 +66,26 @@ const Acknowledgements = props => {
             },
             children: <span>{`<`}</span>,
           }}
+          dotsNav={{
+            show: true,
+            itemBtnProps: {
+              style: {
+                height: 16,
+                width: 16,
+                borderRadius: "50%",
+                border: 0
+              }
+            },
+            activeItemBtnProps: {
+              style: {
+                height: 16,
+                width: 16,
+                borderRadius: "50%",
+                border: 0,
+                background: "grey"
+              }
+            }
+          }}
           responsiveProps={[
             {
               itemsToShow: 1,
@@ -77,35 +97,19 @@ const Acknowledgements = props => {
           easing="linear"
           >
 
-          <div className="carousel-item" style={{ 
-              width: 200, 
-              height: 200, 
-              background: 'whitesmoke',
-            }}>
+          <div className="carousel-item">
             <a href={ links.tvMaze }>TV Maze</a>
           </div>
 
-          <div className="carousel-item" style={{ 
-            width: 200, 
-            height: 200, 
-            background: 'whitesmoke',
-            }}>
+          <div className="carousel-item">
             <a href={ links.stars }>React-simple-star-rating</a>
           </div>
 
-          <div className="carousel-item" style={{ 
-            width: 200, 
-            height: 200, 
-            background: 'whitesmoke',
-            }}>
+          <div className="carousel-item">
             <a href={ links.slider }>RC Slider</a>
           </div>
 
-          <div className="carousel-item" style={{ 
-            width: 200, 
-            height: 200, 
-            background: 'whitesmoke',
-            }}>
+          <div className="carousel-item">
             <a href={ links.lhl }>Lighthouse Labs Web Development Bootcamp</a>
           </div>
         </ReactSimplyCarousel>
