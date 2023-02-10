@@ -1,0 +1,44 @@
+.instructions {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  font-family: "Noto Sans Display", sans-serif;
+
+  .close-button-container {
+    align-self: flex-end;
+    
+    .close-button {
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-size: x-large;
+    }  
+  }
+  .instructions-arrow {
+    font-size: 50px;
+    color: rgba(245, 245, 245, 0.365);
+    font-weight: bolder;
+  }
+
+  .instruction-item {
+    display: flex;
+    align-items: center;
+    width: 515px;
+    height: 600px;
+    background-color: transparent;
+    color: whitesmoke;
+    font-size: 25px;
+    border-radius: 1em;
+    cursor: pointer;
+
+    p {
+      text-align: center;
+      width: 100%;
+    }
+
+    a {
+      color: whitesmoke;
+    }
+  }
+}

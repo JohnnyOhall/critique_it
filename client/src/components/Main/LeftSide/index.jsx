@@ -3,7 +3,6 @@ import React, { useContext } from "react";
 
 // Components & Hooks
 import CritiqueSelect from "./CritiqueSelect";
-import StatSelect from "./StatSelect";
 import ExploreSelect from "./ExploreSelect";
 import ProfileSelect from "./ProfileSelect";
 
@@ -23,7 +22,6 @@ const LeftSide = props => {
   return (
     <section className="left-side">
       { loggedIn && <CritiqueSelect /> }
-      <StatSelect />
       <ExploreSelect />
       { loggedIn && <ProfileSelect /> }
       { register && <ProfileSelect /> }
@@ -33,3 +31,9 @@ const LeftSide = props => {
 
 
 export default LeftSide;
+
+
+
+// Code for stats - add back eventually:
+// import StatSelect from "./StatSelect";
+// <StatSelect />

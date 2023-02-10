@@ -81,13 +81,13 @@ const View = props => {
           />
         </div>
         <div className="watched-on">
-          <span className="watched-on-title">Watched on:</span><span className="watched-on-content">{pageInfo.watched_on}</span>  
+          <span className="watched-on-title">Watched on: </span><span className="watched-on-content">{pageInfo.watched_on}</span>  
         </div>
       </div>
 
 
       <div className="review">
-        <span className="review-title">Review: </span><span className="review-content">{pageInfo.review}</span> 
+        <span className="review-title">Review: </span><span className="review-content" disabled>{pageInfo.review}</span> 
       </div>
 
       <div className="badges">

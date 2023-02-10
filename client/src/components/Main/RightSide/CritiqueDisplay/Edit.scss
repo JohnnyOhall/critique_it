@@ -40,7 +40,7 @@
       flex-grow: 3;
 
       .title-span {
-        font-size: larger;
+        font-size: x-large;
         font-weight: bold;
         color: base.$font-dark-red;
       }
@@ -64,17 +64,28 @@
     align-items: center;
     width: 100%;
     justify-content: space-between;
+    font-size: large;
 
     .stars {
       flex-grow: 1;
 
       .star-bar {
-        margin: 0 1.25em;
+        margin: 0 1.1em;
       }
     }
 
     .watched-on {
-      flex-grow: 1
+      flex-grow: 1;
+      
+      input {
+        border-radius: 0.25em;
+        border: none;
+        padding: 0.3em;
+        margin-top: 0.3em;
+        background-color: whitesmoke;
+        box-shadow: 0px 3px 10px rgb(154, 151, 151);
+        font-family: base.$site-body-font;
+      }
     }
   }
 
@@ -88,7 +99,6 @@
       margin-right: 0.5em;
     }
 
-    // Should we change this to textarea instead of input? We can update resize: none so that we have a fixed size
     #review {
       height: 50%;
       width: 400px;

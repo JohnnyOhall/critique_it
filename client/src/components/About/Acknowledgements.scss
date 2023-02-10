@@ -4,7 +4,12 @@
   align-items: center;
   height: 100%;
   width: 100%;
-  color: black;
+  font-family: 'Noto Sans Display', sans-serif;
+  // border: dotted;
+  border-radius: 1em;
+  border-color: rgba(245, 245, 245, 0.61);
+  background-color: #716f9a69;
+  box-shadow: 0px 6px 12px rgb(3 3 3);
 
   .ack-close-button {
     align-self: flex-end;
@@ -13,6 +18,10 @@
       border: none;
       border-radius: 0.5em;
       background-color: transparent;
+      color: rgba(245, 245, 245, 0.259);
+      font-size: 25px;
+      font-weight: bold;
+      margin-right: 0.25em;
     }
   
     button:active {
@@ -20,20 +29,30 @@
     }
   }
 
-  p {
-    padding-bottom: 1em;
-    font-size: 20px;
-  }
+  .carousel {
+    margin-bottom: 3em;
 
-  .carousel-item {
-    width: 200px;
-    height: 200px;
-    background-color: whitesmoke;
-    border-radius: 1em;
-
-    a {
-      text-decoration: none; 
-      color: black;
+    .arrow {
+      font-size: 50px;
+      color: rgba(245, 245, 245, 0.259);
+      font-weight: bolder;
+    }
+  
+    .carousel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 500px;
+      height: 200px;
+      background-color: transparent;
+      border-radius: 1em;
+  
+      a {
+        text-decoration: none;
+        color: whitesmoke;
+        font-size: 40px;
+        font-weight: bold;
+      }
     }
   }
 }

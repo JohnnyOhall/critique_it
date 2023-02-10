@@ -10,7 +10,8 @@ const links = {
   lhl: "https://www.lighthouselabs.ca/",
   tvMaze: "https://www.tvmaze.com/",
   slider: "https://www.npmjs.com/package/rc-slider",
-  stars: "https://github.com/awran5/react-simple-star-rating"
+  stars: "https://github.com/awran5/react-simple-star-rating",
+  carousel: "https://github.com/vadymshymko/react-simply-carousel"
 }
 
 
@@ -22,11 +23,9 @@ const Acknowledgements = props => {
     <div className="acknowledgements">
 
       <div className="ack-close-button">
-        <button onClick={ props.update }>✖️</button>
+        <button onClick={ props.update }>x</button>
       </div>
-      
-      <p>The making of crITique would not be possible without:</p>
-
+    
       <div className="carousel">
 
         <ReactSimplyCarousel
@@ -48,7 +47,7 @@ const Acknowledgements = props => {
               textAlign: 'center',
               width: 30,
             },
-            children: <span>{`>`}</span>,
+            children: <span className="arrow">{`>`}</span>,
           }}
           backwardBtnProps={{
             style: {
@@ -64,7 +63,7 @@ const Acknowledgements = props => {
               textAlign: 'center',
               width: 30,
             },
-            children: <span>{`<`}</span>,
+            children: <span className="arrow">{`<`}</span>,
           }}
           dotsNav={{
             show: true,
@@ -73,7 +72,9 @@ const Acknowledgements = props => {
                 height: 16,
                 width: 16,
                 borderRadius: "50%",
-                border: 0
+                border: 0,
+                marginRight: 7,
+                marginLeft: 7,
               }
             },
             activeItemBtnProps: {
@@ -82,7 +83,9 @@ const Acknowledgements = props => {
                 width: 16,
                 borderRadius: "50%",
                 border: 0,
-                background: "grey"
+                background: "grey",
+                marginRight: 7,
+                marginLeft: 7
               }
             }
           }}
@@ -102,7 +105,7 @@ const Acknowledgements = props => {
           </div>
 
           <div className="carousel-item">
-            <a href={ links.stars }>React-simple-star-rating</a>
+            <a href={ links.stars }>Simple-star-rating</a>
           </div>
 
           <div className="carousel-item">
@@ -110,7 +113,11 @@ const Acknowledgements = props => {
           </div>
 
           <div className="carousel-item">
-            <a href={ links.lhl }>Lighthouse Labs Web Development Bootcamp</a>
+            <a href={ links.carousel }>Simply-carousel</a>
+          </div>
+
+          <div className="carousel-item">
+            <a href={ links.lhl }>Lighthouse Labs</a>
           </div>
         </ReactSimplyCarousel>
       </div>

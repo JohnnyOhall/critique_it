@@ -5,7 +5,6 @@ import React, { useContext } from "react";
 import CritiqueDisplay from "./CritiqueDisplay";
 import ExploreDisplay from "./ExploreDisplay";
 import ProfileDisplay from "./ProfileDisplay";
-import StatDisplay from "./StatDisplay";
 
 // Providers
 import { LoginContext } from "../../../providers/LoginProvider";
@@ -22,7 +21,6 @@ const RightSide = props => {
   return (
     <section className="right-side">
       { loggedIn && <CritiqueDisplay /> }
-      <StatDisplay />
       <ExploreDisplay />
       { loggedIn && <ProfileDisplay /> }
       { register && <ProfileDisplay /> }
@@ -32,3 +30,9 @@ const RightSide = props => {
 
 
 export default RightSide;
+
+
+
+// Code for stats - add back eventually:
+// import StatDisplay from "./StatDisplay";
+// <StatDisplay />

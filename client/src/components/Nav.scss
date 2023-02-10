@@ -33,28 +33,6 @@ nav {
     transform: scale(0.95);
   }
 
-  .link-nav-stats {
-    @include base.nav-pre-hover;
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-    }
-  }
-  
-  .link-nav-stats::after {
-    content: "Stats";
-    @include base.nav-hover;
-  }
-  
-  .link-nav-stats:hover::after {
-    display: block;
-  }
-
-  .link-nav-stats:active {
-    transform: scale(0.95);
-  }
-
   .link-nav-explore {
     @include base.nav-pre-hover;
 
@@ -123,3 +101,25 @@ nav {
     transform: scale(0.95);
   }
 }
+
+
+
+
+// Code for stats - add back eventually:
+// .link-nav-stats {
+//   @include base.nav-pre-hover;
+//   img {
+//     max-width: 100%;
+//     max-height: 100%;
+//   }
+// }
+// .link-nav-stats::after {
+//   content: "Stats";
+//   @include base.nav-hover;
+// }
+// .link-nav-stats:hover::after {
+//   display: block;
+// }
+// .link-nav-stats:active {
+//   transform: scale(0.95);
+// }
