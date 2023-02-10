@@ -95,11 +95,11 @@ const Instructions = () => {
       >
 
         <div className="instruction-item">
-          <p>This is a test of what it could look like, just need to figure out how we want it styled. Click <a href="https://github.com/vadymshymko/react-simply-carousel">here</a> to view the customization options.</p>
+          <p>This is a test of what it could look like, just need to figure out how we want it styled.<p></p>Click <a href="https://github.com/vadymshymko/react-simply-carousel">here</a> to view the customization options.</p>
         </div>
 
         <div className="instruction-item">
-          <p>Do we hate it? I am open to other ideas!</p>
+          <p>Do we hate it? I'm open to other ideas!</p>
         </div>
 
         <div className="instruction-item">
