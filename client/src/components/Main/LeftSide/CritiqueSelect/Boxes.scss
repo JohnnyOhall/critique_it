@@ -1,0 +1,11 @@
+@use '../../../../styles/base.scss';
+
+.box-outer {
+
+  .box-inner {
+    height: base.$container-height;
+    margin: 3em;
+    border-style: solid;
+    border-color: black;
+  }
+}
