@@ -34,7 +34,6 @@ const View = props => {
         const upvoted = res.data.voteData.upvoted
         setPageInfo({...extract, upvoted});
         setEpisodeInfoGlobal({...episodeInfoGlobal, page_id: page_id.page_id })
-        console.log('after: ', episodeInfoGlobal)
       })
 
   }, [])

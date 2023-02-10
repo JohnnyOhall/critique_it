@@ -3,9 +3,72 @@
 .box-outer {
 
   .box-inner {
+    display: flex;
+    flex-direction: column;
     height: base.$container-height;
     margin: 3em;
     border-style: solid;
     border-color: black;
+
+    .select-box {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex-grow: 3;
+      height: 5%;
+
+      .box-title {
+        padding-bottom: 1em;
+        font-size: 2em;
+      }
+      
+      .box-content {
+        display: flex;
+        justify-content: center;
+
+        .box-item {
+          display: flex;
+          flex-direction: column;
+          padding: 0 .5em;
+
+          img {
+            padding-bottom: 1em;
+          }
+        }
+      } 
+    }
+
+    .box-input {
+      flex-grow: 2;
+      display:flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      p {
+        padding: 0.5em 0;
+      }
+
+      .url {
+        width: 60%;
+      }
+
+      .short {
+        width: 25%;
+      }
+
+      textarea {
+        width: 25%;
+        height: 45%;
+        resize: none;
+      }
+    }
+
+    .box-buttons{
+      flex-grow: 1;
+      display: flex;
+      justify-content: space-evenly;
+      align-items: flex-start;
+    }
   }
 }

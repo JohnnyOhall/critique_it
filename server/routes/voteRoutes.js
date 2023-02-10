@@ -22,7 +22,12 @@ router.post( '/add', ( req, res ) => {
     RETURNING *;
   `;
 
-  const values = [ req.session.userID, req.body.page_id, req.body.episode_id, req.body.upvoted ]
+  const values = [ 
+    req.session.userID, 
+    req.body.page_id, 
+    req.body.episode_id, 
+    req.body.upvoted 
+  ]
 
   db.query( upvotePage, values )
     .then( () => res.send( 'success!' ))
@@ -66,10 +71,35 @@ router.post( '/user', ( req, res ) => {
   `;
 
   const values = [ req.session.userID, req.body.page_id ]
-  console.log('back-end: ', values)
+
   db.query( voteQuery, values )
     .then( data => {
    
+      const voteData = data.rows[ 0 ];
+      res.json({ voteData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+  });
+
+});
+
+
+router.get( '/:id', ( req, res ) => {
+
+  const voteQuery = `
+  SELECT * FROM votes
+  WHERE voter_id = $1
+  AND page_id = $2;
+  `;
+
+  const values = [ req.session.userID, req.params.id ]
+  console.log('back-end-votes: ', values)
+
+  db.query( voteQuery, values )
+    .then( data => {
       const voteData = data.rows[ 0 ];
       res.json({ voteData });
     })

@@ -1,8 +1,8 @@
 // External Imports
 import React, { useContext, useEffect, useState } from "react";
 import { Rating } from 'react-simple-star-rating'
-import Cookies from "js-cookie";
 import axios from 'axios';
+import Cookies from "js-cookie";
 
 // Components
 import EditMenu from "./EditMenu";
@@ -30,84 +30,47 @@ const Edit = props => {
     BADGES,
     MAIN 
   } = useContext( CritiqueContext );
+
   const [ rating, setRating ] = useState( 0 );
   const [ pageInfo, setPageInfo ] = useState( {} )
   
-
-
   useEffect(() => {
-    let { image, show_img } = episodeInfoGlobal;
+    let { page_id, avatar } = episodeInfoGlobal;
+    let extract;
 
-    if (image){
-      image = image.original
-    }
-    if (show_img){
-      image = show_img
-    }
+    axios.get(`pages/edit/${page_id}`)
+      .then(res => {
+        extract = res.data.pageData
+        return axios.get(`votes/${page_id}`)
+      })
+      .then(res => {
+        const upvoted = res.data.voteData.upvoted
+        setPageInfo({...extract, avatar, upvoted })
+      })
 
-    setPageInfo({
-      show_id: episodeInfoGlobal.show_id,
-      show_title: episodeInfoGlobal.name ? episodeInfoGlobal.name : episodeInfoGlobal.show_title,
-      show_img: image ? image : "https://cdn0.iconfinder.com/data/icons/gcons-2/24/silhouette5-512.png",
-      season_id: episodeInfoGlobal.season_id,
-      episode_id: episodeInfoGlobal.episode_id,
-      badges: [],
-      custom_input: [],
-      review: '',
-      watched_on: '',
-      votes: 1,
-      rating: 0,
-      color: '#738580',
-      avatar: Cookies.get('avatar'),
-      upvoted: true,
-      season_num: episodeInfoGlobal.season,
-      episode_num: episodeInfoGlobal.number,
-      page_id: episodeInfoGlobal.page_id
-    })
-
-  },[])
+  }, [])
 
 
   const post = data => {
-
-    if (episodeInfoGlobal.state === "add") {
-      let page_id;
-
-      return axios.post( '/pages/newpage', data )
-        .then(res => {
-          console.log('new-page complete', res.data[0].id)
-          setPageInfo({...pageInfo, user_id: res.data[0].id})
-          page_id = {page_id: res.data[0].id}
-          return axios.post( '/votes/add', {...data, page_id: page_id.page_id })
-        })
-        .catch( () => {
-          alert('Page Already exists!') 
-
-          return new Promise((res,rej)=> {
-            rej('page already exists!')
-          })
-        });
-    };
-
-    if (episodeInfoGlobal.state === "edit") {
-      return axios.patch( '/pages/update', data )
-        .then( res => {
-          console.log(res)
-          return axios.patch( '/votes/update', data )
-        })
-        .then( console.log )
-        .catch( console.log );
-    };
     
+    axios.patch( '/pages/update', data )
+      .then( () => {
+        return axios.patch( '/votes/update', data )
+      })
+      .then( () => {
+        setEpisodeInfoGlobal( data )
+        setDisplay( VIEW )
+        setCreate( MAIN )
+      })
+      .catch( console.log );
   };
-  
-
+    
   const handleRating = ( rate ) => {
     setRating( rate )
     setPageInfo({ ...pageInfo, rating: rate })
   }
 
-  const avatarImage = avatarImages[ Cookies.get( 'avatar' ) ];
+  const avatarImage = avatarImages[ Cookies.get('avatar') ];
 
   return (
     <section className="edit-box" style={{backgroundColor: pageInfo.color}}>
@@ -122,8 +85,8 @@ const Edit = props => {
           
         </div>
         <div className="page-title">
-          <span className="title-span">{ episodeInfoGlobal.name }</span>
-          <p>Season: <b>{ episodeInfoGlobal.season }</b>  |  Episode: <b>{ episodeInfoGlobal.number }</b></p>
+          <span className="title-span">{ pageInfo.show_title }</span>
+          <p>Season: <b>{ pageInfo.season_num }</b>  |  Episode: <b>{ pageInfo.episode_num }</b></p>
         </div>
         <div className="voting">
             <div>
@@ -170,25 +133,18 @@ const Edit = props => {
       <img src="images/add.png" onClick={() => setCreate(BADGES)}/>
       </div>
 
-      <div className="content">
+      <div className="boxes">
         <div className="box-1">
           <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
         </div>
-        <div className="box-2">
-          <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
-        </div>
-        <div className="box-3">
-          <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
-        </div>
       </div>
+      
 
       <div className="buttons">
         <button onClick={ ()=> {
           post( pageInfo )
           .then(() => {
-            setEpisodeInfoGlobal( {...pageInfo} )
-            setDisplay( VIEW )
-            setCreate( MAIN )
+            
           }).catch(() => setDisplay(DEFAULT))
         }}>Save</button>
         <button onClick={ ()=> {
@@ -202,3 +158,13 @@ const Edit = props => {
 
 
 export default Edit;
+
+
+// const firstUpdate = useRef(true);
+//   useLayoutEffect(() => {
+//     if (firstUpdate.current) {
+//       firstUpdate.current = false;
+//     } else {
+//      // do things after first render
+//     }
+//   });

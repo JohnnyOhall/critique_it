@@ -35,7 +35,7 @@ CREATE TABLE pages (
   id SERIAL PRIMARY KEY NOT NULL,
   show_id INTEGER NOT NULL,
   show_title VARCHAR(255) NOT NULL,
-  show_img VARCHAR(255) NOT NULL,
+  show_img VARCHAR(255),
   season_id INTEGER,
   episode_id INTEGER,
   avatar VARCHAR(255),
