@@ -22,7 +22,7 @@ const About = () => {
 
   const [ mode, setMode ] = useState( EMPTY );
   const transition = ( mode ) => setMode( mode );
-  const emptyDiv = <div></div>;
+  const emptyDiv = <div className="empty-div"></div>;
 
   return (
     <section className="about-us" id="nav-about">

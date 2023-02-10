@@ -4,7 +4,7 @@
   justify-content: center;
   align-items: flex-start;
   font-family: 'Noto Sans Display', sans-serif;
-  background-color: #E7D2CC;
+  background-color: #25234A;
 
   .about-content {
     display: flex;
@@ -16,7 +16,7 @@
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      padding: 5% 0 5% 3%;
+      padding: 5% 3% 5% 3%;
       flex-grow: 1;
       color: whitesmoke;
       font-size: 100px;
@@ -29,7 +29,7 @@
       flex-grow: 1;
       height: 100%;
       width: 50%;
-      padding: 2.5% 3% 2.5% 0%;
+      padding: 2.5% 3% 2.5% 3%;
     }
   }
 
