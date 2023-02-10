@@ -17,4 +17,4 @@ const StatDisplay = props => {
 };
 
 
-export default StatDisplay;cd 
+export default StatDisplay;
