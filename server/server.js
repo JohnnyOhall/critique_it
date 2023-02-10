@@ -43,7 +43,7 @@ const boxRoutes = require( './routes/boxRoutes' );
 app.use( '/pages', pageRoutes );
 app.use( '/users', userRoutes );
 app.use( '/votes', voteRoutes );
-app.use( '/boxes', boxRoutes )
+app.use( '/boxes', boxRoutes );
 
 
 app.listen( port, () => {

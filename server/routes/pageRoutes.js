@@ -71,6 +71,32 @@ router.get( '/:id', ( req, res ) => {
 
 });
 
+// Route to get show by id
+router.get( '/edit/:id', ( req, res ) => {
+
+  const pageQuery = `
+  SELECT * FROM pages
+  WHERE creator_id = $1 AND id = $2;
+  `;
+
+  values = [ req.session.userID, req.params.id ];
+
+  console.log('back-end:', values)
+
+  db.query( pageQuery, values )
+    .then( data => {
+      const pageData = data.rows[0];
+      res.json({ pageData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+
+});
+
+
 
 // Route to get show by id
 router.post( '/view', ( req, res ) => {
@@ -143,44 +169,34 @@ router.post( '/newpage', ( req, res ) => {
     INSERT INTO pages 
     (
       show_id,
-      show_title,
-      show_img,
       season_id,
       episode_id,
-      avatar,
-      color,
-      votes,
-      rating,
-      review,
-      watched_on,
+      show_title,
       creator_id,
       season_num,
-      episode_num
+      episode_num,
+      votes
     )
-    VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, $14)
+    VALUES ($1, $2, $3, $4, $5, $6, $7, $8)
     RETURNING *;
     `; 
 
     const values = [ 
       page.show_id,
-      page.show_title,
-      page.show_img,
       page.season_id,
       page.episode_id,
-      page.avatar,
-      page.color,
-      page.votes,
-      page.rating,
-      page.review,
-      page.watched_on,
+      page.name,
       req.session.userID,
-      page.season_num,
-      page.episode_num
+      page.season,
+      page.number,
+      1
     ];
 
+    console.log(values)
     return db.query( buildPage, values )
       .then((data) => res.json(data.rows))
       .catch(( err ) => {
+        console.log(err)
         res.status(409).json({err: "show already exists"})});
 
   };

@@ -1,7 +1,9 @@
 // External Imports
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import useListItem from "../../../../hooks/useListItem";
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
+import Cookies from "js-cookie";
 
 // Styling
 import './ShowListItem.scss';
@@ -21,6 +23,7 @@ const ShowListItem = props => {
     episode, 
     episodeMax,
     episodeInfo,
+    setEpisodeInfo
   } = useListItem( props );
 
   const { 
@@ -31,6 +34,46 @@ const ShowListItem = props => {
     EDIT, 
     setEpisodeInfoGlobal
   } = useContext( CritiqueContext )
+
+
+  const buildpage = data => {
+    console.log(data)
+
+    let page_id, episode_id;
+    const avatar = Cookies.get('avatar')
+
+      return axios.post( '/pages/newpage', data )
+        .then(res => {
+
+          page_id = res.data[0].id
+          episode_id = res.data[0].episode_id
+
+          const votesInfo = {
+            page_id,
+            episode_id,
+            upvoted: true
+          }
+
+          return axios.post( '/votes/add', votesInfo)
+        })
+        .then( () => {
+
+          const globalInfo = {
+            avatar,
+            page_id
+          }
+
+          setEpisodeInfoGlobal(globalInfo)
+          setDisplay(EDIT)
+        })
+        .catch( () => {
+          alert('Error on Server!') 
+
+          return new Promise((res,rej)=> {
+            rej('Error on Server!')
+          })
+        });
+  }
 
   return (
     <li className="show-list-item">
@@ -103,8 +146,7 @@ const ShowListItem = props => {
                   setEpisodeInfoGlobal({...episodeInfo, state: "edit"})
                 }}>Edit</button> // Episode already critiqued and in DB
               : <button onClick={ () => {
-                  setDisplay(EDIT)
-                  setEpisodeInfoGlobal({...episodeInfo, state: "add"})
+                  buildpage(episodeInfo)
                 } }>Add</button> // Episode has never been critiqued
             }
           </div>
