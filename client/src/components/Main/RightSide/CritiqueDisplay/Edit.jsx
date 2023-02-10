@@ -6,6 +6,7 @@ import Cookies from "js-cookie";
 
 // Components
 import EditMenu from "./EditMenu";
+import ShowBoxItem from "./ShowBoxItem";
 
 // Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
@@ -28,7 +29,9 @@ const Edit = props => {
     setCreate,
     BOXES,
     BADGES,
-    MAIN 
+    MAIN,
+    setBoxes,
+    boxes
   } = useContext( CritiqueContext );
 
   const [ rating, setRating ] = useState( 0 );
@@ -49,6 +52,34 @@ const Edit = props => {
       })
 
   }, [])
+
+  useEffect(() => {
+    let { page_id } = episodeInfoGlobal;
+    let extract;
+
+    axios.get(`boxes/${page_id}`)
+      .then(res => {
+        extract = res.data.data.rows;
+        setBoxes([extract])
+      });
+
+
+  },[boxes])
+
+
+  const boxItem = boxes.map( box => {
+
+    console.log('box-item: ', box)
+    return (
+      <ShowBoxItem
+        key={ box.id }
+        show_id={ box.id }
+        text={ box.text }
+        url={ box.url }
+        style={ box.style}
+      />
+    ); 
+  });
 
 
   const post = data => {
@@ -134,9 +165,10 @@ const Edit = props => {
       </div>
 
       <div className="boxes">
-        <div className="box-1">
+        <ul className="box-list">{boxItem}</ul>
+        { boxes.length < 3 && <div className="box-1">
           <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
-        </div>
+        </div> }
       </div>
       
 

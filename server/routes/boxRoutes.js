@@ -35,4 +35,21 @@ router.post( '/add', ( req, res ) => {
     });
 });
 
+router.get( '/:id', (req, res) => {
+
+  const getBoxes =`
+  SELECT * FROM boxes
+  WHERE page_id = ${req.params.id}
+  `
+
+  db.query( getBoxes )
+    .then (data => res.json({data}))
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+})
+
+
 module.exports = router;

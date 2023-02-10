@@ -15,7 +15,15 @@ const Boxes = props => {
   const [ danger, setDanger ] = useState( false );
   const [ pageInfo, setPageInfo ] = useState( {} );
 
-  const { episodeInfoGlobal, MAIN, EDIT, VIEW, setDisplay, setCreate } = useContext( CritiqueContext )
+  const { 
+    episodeInfoGlobal, 
+    MAIN, 
+    EDIT, 
+    setDisplay, 
+    setCreate,
+    setBoxes,
+    boxes 
+  } = useContext( CritiqueContext )
 
   useEffect(() => {
     setPageInfo({
@@ -34,10 +42,13 @@ const Boxes = props => {
     setPageInfo({...pageInfo, page_id})
     
     axios.post('./boxes/add', pageInfo )
-      .then(() => {
-        setCreate(MAIN);
-        setDisplay(VIEW);
-        setDisplay(EDIT);
+      .then((res) => {
+        const extract = res.data.data.rows[0]
+        
+        setBoxes([...boxes, extract]);
+        console.log('middle', boxes)
+        // setCreate(MAIN);
+        // setDisplay(EDIT);
       })
   }
 

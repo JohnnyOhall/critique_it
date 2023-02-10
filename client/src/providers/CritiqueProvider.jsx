@@ -14,6 +14,7 @@ const CritiqueProvider = props => {
   const [ create, setCreate ] = useState( MAIN );
   const [ display, setDisplay ] = useState( DEFAULT );
   const [ episodeInfoGlobal, setEpisodeInfoGlobal ] = useState( {} );
+  const [ boxes, setBoxes ] = useState([]);
   
 
   const value = { 
@@ -28,7 +29,8 @@ const CritiqueProvider = props => {
     VIEW,
     create, setCreate,
     BADGES, BOXES,
-    MAIN, ADD
+    MAIN, ADD,
+    setBoxes, boxes
   };
 
   return (
