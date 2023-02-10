@@ -14,7 +14,6 @@ const links = {
 }
 
 
-// HTML below is for testing, we will alter this
 const Acknowledgements = props => {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -31,7 +30,6 @@ const Acknowledgements = props => {
       <div className="carousel">
 
         <ReactSimplyCarousel
-
           activeSlideIndex={activeSlideIndex}
           onRequestChange={setActiveSlideIndex}
           itemsToShow={1}
@@ -39,7 +37,7 @@ const Acknowledgements = props => {
           forwardBtnProps={{
             style: {
               alignSelf: 'center',
-              background: 'white',
+              background: 'transparent',
               border: 'none',
               borderRadius: '50%',
               color: 'black',
@@ -55,7 +53,7 @@ const Acknowledgements = props => {
           backwardBtnProps={{
             style: {
               alignSelf: 'center',
-              background: 'white',
+              background: 'transparent',
               border: 'none',
               borderRadius: '50%',
               color: 'black',
@@ -79,42 +77,37 @@ const Acknowledgements = props => {
           easing="linear"
           >
 
-          <div style={{ 
-              width: 300, 
-              height: 150, 
+          <div className="carousel-item" style={{ 
+              width: 200, 
+              height: 200, 
               background: 'whitesmoke',
-              borderRadius: '20%'
             }}>
             <a href={ links.tvMaze }>TV Maze</a>
           </div>
 
-          <div style={{ 
-            width: 300, 
-            height: 150, 
+          <div className="carousel-item" style={{ 
+            width: 200, 
+            height: 200, 
             background: 'whitesmoke',
-            borderRadius: '20%' 
             }}>
             <a href={ links.stars }>React-simple-star-rating</a>
           </div>
 
-          <div style={{ 
-            width: 300, 
-            height: 150, 
+          <div className="carousel-item" style={{ 
+            width: 200, 
+            height: 200, 
             background: 'whitesmoke',
-            borderRadius: '20%' 
             }}>
             <a href={ links.slider }>RC Slider</a>
           </div>
 
-          <div style={{ 
-            width: 300, 
-            height: 150, 
+          <div className="carousel-item" style={{ 
+            width: 200, 
+            height: 200, 
             background: 'whitesmoke',
-            borderRadius: '20%'  
             }}>
             <a href={ links.lhl }>Lighthouse Labs Web Development Bootcamp</a>
           </div>
-
         </ReactSimplyCarousel>
       </div>
 

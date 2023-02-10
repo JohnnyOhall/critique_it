@@ -1,4 +1,3 @@
-// CSS below is for testing, we will alter this
 .acknowledgements {
   display: flex;
   flex-direction: column;
@@ -25,5 +24,9 @@
     padding-bottom: 1em;
     font-weight: bold;
     font-size: 20px;
+  }
+
+  .carousel-item {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   }
 }
