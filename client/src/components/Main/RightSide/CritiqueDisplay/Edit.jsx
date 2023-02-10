@@ -19,20 +19,24 @@ import './Edit.scss';
 
 const Edit = props => {
 
-  const { episodeInfoGlobal, setDisplay, DEFAULT } = useContext( CritiqueContext );
+  const { episodeInfoGlobal, setDisplay, DEFAULT, VIEW, setEpisodeInfoGlobal } = useContext( CritiqueContext );
   const [ rating, setRating ] = useState( 0 );
   const [ pageInfo, setPageInfo ] = useState( {} )
 
   useEffect(() => {
-    let { image } = episodeInfoGlobal;
-    image = image.original
+    let { image, show_img } = episodeInfoGlobal;
 
-    console.log("state", episodeInfoGlobal)
+    if (image){
+      image = image.original
+    }
+    if (show_img){
+      image = show_img
+    }
 
     setPageInfo({
       show_id: episodeInfoGlobal.show_id,
-      show_title: episodeInfoGlobal.name,
-      show_img: image,
+      show_title: episodeInfoGlobal.name ? episodeInfoGlobal.name : episodeInfoGlobal.show_title,
+      show_img: image ? image : "https://cdn0.iconfinder.com/data/icons/gcons-2/24/silhouette5-512.png",
       season_id: episodeInfoGlobal.season_id,
       episode_id: episodeInfoGlobal.episode_id,
       badges: [],
@@ -43,20 +47,34 @@ const Edit = props => {
       rating: 0,
       color: '#738580',
       avatar: Cookies.get('avatar'),
-      upvoted: true
+      upvoted: true,
+      season_num: episodeInfoGlobal.season,
+      episode_num: episodeInfoGlobal.number,
+      page_id: episodeInfoGlobal.page_id
     })
+
   },[])
+
 
   const post = data => {
 
     if (episodeInfoGlobal.state === "add") {
+      let page_id;
+
       return axios.post( '/pages/newpage', data )
         .then(res => {
-          console.log(res)
-          return axios.post( '/votes/add', data)
+          console.log('new-page complete', res.data[0].id)
+          setPageInfo({...pageInfo, user_id: res.data[0].id})
+          page_id = {page_id: res.data[0].id}
+          return axios.post( '/votes/add', {...data, page_id: page_id.page_id })
         })
-        .then( console.log )
-        .catch( console.log );
+        .catch( () => {
+          alert('Page Already exists!') 
+
+          return new Promise((res,rej)=> {
+            rej('page already exists!')
+          })
+        });
     };
 
     if (episodeInfoGlobal.state === "edit") {
@@ -76,8 +94,6 @@ const Edit = props => {
     setRating( rate )
     setPageInfo({ ...pageInfo, rating: rate })
   }
-
-  console.log( 'global: ', pageInfo );
 
   const avatarImage = avatarImages[ Cookies.get( 'avatar' ) ];
 
@@ -155,7 +171,13 @@ const Edit = props => {
       </div>
 
       <div className="buttons">
-        <button onClick={ ()=> post( pageInfo ) }>Save</button>
+        <button onClick={ ()=> {
+          post( pageInfo )
+          .then(() => {
+            setEpisodeInfoGlobal( {...pageInfo} )
+            setDisplay( VIEW )
+          }).catch(() => setDisplay(DEFAULT))
+        }}>Save</button>
         <button onClick={ ()=> setDisplay( DEFAULT ) }>Back</button>
       </div>
     </section>

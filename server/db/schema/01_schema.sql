@@ -48,13 +48,15 @@ CREATE TABLE pages (
   show_title VARCHAR(255) NOT NULL,
   show_img VARCHAR(255) NOT NULL,
   season_id INTEGER,
-  episode_id INTEGER UNIQUE,
+  episode_id INTEGER,
   avatar VARCHAR(255),
   color VARCHAR(255),
   votes INTEGER,
   rating INTEGER,
   review VARCHAR(100),
   watched_on VARCHAR(255),
+  episode_num VARCHAR(255),
+  season_num VARCHAR(255),
   created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   updated TIMESTAMP DEFAULT NULL,
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
@@ -64,7 +66,9 @@ CREATE TABLE pages (
 
 CREATE TABLE votes (
   id SERIAL PRIMARY KEY NOT NULL,
+  voter_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  episode_id INTEGER REFERENCES pages(episode_id) ON DELETE CASCADE,
+  page_id INTEGER REFERENCES pages(id) ON DELETE CASCADE,
+  episode_id VARCHAR(100),
   upvoted BOOLEAN NOT NULL
 );
