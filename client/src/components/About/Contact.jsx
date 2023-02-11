@@ -5,7 +5,6 @@ import React from "react";
 import './Contact.scss';
 
 
-// HTML below is for testing, we will alter this
 const Contact = props => {
   
   return (

@@ -1,22 +1,104 @@
-// CSS below is for testing, we will alter this
 .faq {
   height: 100%;
+  width: 100%;
   color: whitesmoke;
-  font-size: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans Display', sans-serif;
+  border-radius: 1em;
+  border-color: rgba(245, 245, 245, 0.61);
+  background-color: #716f9a69;
+  box-shadow: 0px 6px 12px rgb(3 3 3);
+  padding: 1.5em 0;
 
-  button {
-    background-color: whitesmoke;
-    border: none;
+  .faq-button {
+    flex-grow: 1;
+    align-self: flex-end;
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-size: x-large;
+      margin-right: 1em;
+    }
+  
+    button:active {
+      transform: scale(0.95);
+    }
+  }
+
+  .faq-item {
+    flex-grow: 2;
     border-radius: 0.5em;
-    padding: 0.5em 0.75em;
+    background-color: #7b799e6b;
+    height: 45px;
+    width: 600px;
+    margin: 0.5em;
+    padding: 0.26em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 3px 10px rgb(47, 46, 46);
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-weight: bold;
+      font-size: 25px;
+    }
+  
+    button:active {
+      transform: scale(0.95);
+    }
+  }
+}
+
+.faq-question {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 200px;
+  width: 600px;
+  color: whitesmoke;
+  font-family: 'Noto Sans Display', sans-serif;
+  border-radius: 1em;
+  border-color: rgba(245, 245, 245, 0.61);
+  background-color: #738580;
+  box-shadow: 0px 6px 12px rgb(3 3 3);
+  margin-left: 3em;
+
+  .faq-button {
+    flex-grow: 0.5;
+    display: flex;
+    align-self: flex-end;
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-size: x-large;
+      margin-right: 1em;
+    }
+  
+    button:active {
+      transform: scale(0.95);
+    }
   }
 
-  button:active {
-    transform: scale(0.95);
-  }
-
-  img {
-    height: 25px;
-    width: 25px;
+  .answer {
+    flex-grow: 2;
+    border-radius: 0.75em;
+    height: 45px;
+    width: 500px;
+    padding: 0.5em;
+    font-size: 25px;
+    font-weight: bold;
   }
 }

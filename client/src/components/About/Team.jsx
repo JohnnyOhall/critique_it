@@ -6,7 +6,6 @@ import ReactSimplyCarousel from 'react-simply-carousel';
 import './Team.scss';
 
 
-// HTML below is for testing, we will alter this
 const Team = props => {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -93,18 +92,26 @@ const Team = props => {
           >
 
           <div className="team-carousel-item">
-            <p>Meet the team</p>
+            <div className="meet-team">
+              <p>Meet the team</p>
+            </div>
           </div>
 
           <div className="team-carousel-item">
-            <p className="name">John</p>
+            <div className="name">
+              <p className="first-name">John</p>
+              <p>co-founder of crITique</p>
+            </div>
             <img src="images/avatars/male6.png"></img>
           </div>
 
           <div className="team-carousel-item">
-            <p className="name">Jacqui</p>
-            <img src="images/avatars/female6.png"></img>
-          </div>  
+            <div className="name">
+              <p className="first-name">Jacqui</p>
+              <p>co-founder of crITique</p>
+            </div>
+            <img src="images/jacqui.png"></img>
+          </div> 
 
         </ReactSimplyCarousel>
       </div>

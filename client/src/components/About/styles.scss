@@ -41,20 +41,25 @@
     background-color: whitesmoke;
   
     .about-link {
-      padding-top: 1.5em;
+      padding-top: 2em;
       font-family: 'Noto Sans Display', sans-serif;
 
       button {
         background: transparent;
         border: none;
-        color:black;
+        color:rgba(0, 0, 0, 0.798);
         font-weight: bold;
-        font-size: 1.8em;
+        font-size: 2em;
         cursor: pointer;
       }
 
-      button:active {
-        transform: scale(0.95);
+      button:focus {
+        background-color: #25234A;
+        box-shadow: 0px 6px 12px rgb(139, 135, 135);
+        color: whitesmoke;
+        border-radius: 1em;
+        padding: 0.25em 0.5em;
+        font-size: 2.25em;
       }
     }
   }
