@@ -118,22 +118,10 @@
   }
 
   .boxes {
-    flex-grow: 2;
+    flex-grow: .5;
     display: flex;
     align-items: center;
     width: 100%;
-
-    .box-1 {
-      flex-grow: 1;
-    }
-
-    .box-2 {
-      flex-grow: 1;
-    }
-
-    .box-3 {
-      flex-grow: 1;
-    }
   }
 
   .buttons {

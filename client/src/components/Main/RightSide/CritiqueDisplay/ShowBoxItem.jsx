@@ -9,21 +9,21 @@ const ShowBoxItem = props => {
   return (
     <li className="show-box-item">
     { style === 1 && 
-      <div> 
-        <img src={url} height="100px" width="100px" />
+      <div className="single-box-image"> 
+        <img src={url} />
       </div> 
     }
 
     { style === 2 && 
-      <div> 
+      <div className="single-box-text"> 
         <p>{text}</p>
       </div> 
     }
 
     { style === 3 && 
-      <div>
+      <div className="single-box-combined">
         <span>{text}</span>
-        <img src={url} height="75px" width="75px" />
+        <img src={url}  />
       </div> 
     }
     </li>
