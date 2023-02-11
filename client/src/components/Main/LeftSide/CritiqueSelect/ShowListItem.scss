@@ -99,23 +99,21 @@
         font-family: 'Noto Sans Display', sans-serif;
         font-weight: bold;
         color: rgb(60, 58, 58);
+        padding-right: 1em;
       }
-  
-      button {
-        margin: 0.2em;
-        border-radius: 1em;
-        border-style: none;
-        background-color: #1b1857;
-        color: white;
-        text-align: center;
-        padding: 8px 11px;
-        margin-left: 1em;
-        font-size: 20px;
-        cursor: pointer;
+      
+      .add-show-button {
+        height: 45px;
+        width: 45px;
       }
-  
-      button:active {
+
+      .add-show-button:active {
         transform: scale(0.95);
+      }
+
+      .added-show-button {
+        height: 45px;
+        width: 45px;
       }
     }
   }

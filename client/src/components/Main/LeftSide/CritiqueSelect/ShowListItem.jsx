@@ -133,21 +133,31 @@ const ShowListItem = props => {
           </div>
 
           <div className="episode-info">
-            
-            { episodeInfo.exists 
-            ? <span onClick={ () => {
-              setDisplay(VIEW)
-              setEpisodeInfoGlobal(episodeInfo)}}>{ episodeInfo.name } "📺"</span> 
-            : <span>{ episodeInfo.name }</span> }
-            
-            { episodeInfo.exists
-              ? <button onClick={ () => {
-                  setDisplay(EDIT)
-                  setEpisodeInfoGlobal({...episodeInfo, state: "edit"})
-                }}>Edit</button> // Episode already critiqued and in DB
-              : <button onClick={ () => {
-                  buildpage(episodeInfo)
-                } }>Add</button> // Episode has never been critiqued
+            { episodeInfo.exists ? 
+              <>
+                <span onClick={ () => {
+                  setDisplay(VIEW)
+                  setEpisodeInfoGlobal(episodeInfo)}}>{ episodeInfo.name }
+                </span>
+                <img
+                  className="added-show-button"
+                  src="images/checkmark.png"
+                  alt="Add"
+                  onClick={ () => {
+                    setDisplay(VIEW)
+                    setEpisodeInfoGlobal( episodeInfo ) }}
+                />
+              </>
+            : <span>{ episodeInfo.name }</span> 
+            }
+          
+            { !episodeInfo.exists &&
+              <img
+                className="add-show-button"
+                src="images/add.png"
+                alt="Add"
+                onClick={ () => buildpage(episodeInfo) }
+              />
             }
           </div>
         </div>
