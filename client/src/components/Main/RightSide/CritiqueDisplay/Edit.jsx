@@ -7,6 +7,7 @@ import Cookies from "js-cookie";
 // Components
 import EditMenu from "./EditMenu";
 import ShowBoxItem from "./ShowBoxItem";
+import ShowBadgeItem from "./ShowBadgeItem";
 
 // Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
@@ -31,7 +32,9 @@ const Edit = props => {
     BADGES,
     MAIN,
     setBoxes,
-    boxes
+    boxes,
+    badges,
+    setBadges
   } = useContext( CritiqueContext );
 
   const [ rating, setRating ] = useState( 0 );
@@ -39,7 +42,9 @@ const Edit = props => {
   
   useEffect(() => {
     let { page_id, avatar } = episodeInfoGlobal;
-    let extractPage, extractBox;
+    let extractPage, extractBox, extractBadge;
+
+    
 
     axios.get(`pages/edit/${page_id}`)
       .then(res => {
@@ -48,7 +53,7 @@ const Edit = props => {
       })
       .then(res => {
         const upvoted = res.data.voteData.upvoted
-        setPageInfo({...extractPage, avatar, upvoted })
+        setPageInfo({...extractPage, avatar, upvoted, page_id })
       })
       .catch( console.log );
 
@@ -59,13 +64,20 @@ const Edit = props => {
       })
       .catch( console.log );
 
+    axios.get(`badges/${page_id}`)
+      .then(res => {
+        extractBadge = res.data.data.rows;
+        setBadges(extractBadge)
+      })
+      .catch( console.log );
+
   }, [])
   
   const boxItem = boxes.map( box => {
     return (
       <ShowBoxItem
         key={ box.id }
-        show_id={ box.id }
+        id={ box.id }
         text={ box.text }
         url={ box.url }
         style={ box.style}
@@ -73,8 +85,22 @@ const Edit = props => {
     ); 
   });
 
+  const badgeItem = badges.map( badge => {
+    return (
+      <ShowBadgeItem
+        key={ badge.id }
+        id={ badge.id }
+        actor_1={ badge.actor_1 }
+        actor_2={ badge.actor_2 }
+        url_actor_1={ badge.url_actor_1 }
+        url_actor_2={ badge.url_actor_2 }
+        badge_id={ badge.badge_id}
+      />
+    ); 
+  });
+
   const post = data => {
-    
+    console.log('data on save', data)
     axios.patch( '/pages/update', data )
       .then( () => {
         return axios.patch( '/votes/update', data )
@@ -152,7 +178,10 @@ const Edit = props => {
       </div>
 
       <div className="badges">
-      <img src="images/add.png" onClick={() => setCreate(BADGES)}/>
+      { badges.length !== 0 && <ul className="badge-list">{badgeItem}</ul> }
+        { badges.length < 5 && <div className="badge-1">
+          <img src="images/add.png" onClick={() => setCreate(BADGES)}/>
+        </div> }
       </div>
 
       <div className="boxes">

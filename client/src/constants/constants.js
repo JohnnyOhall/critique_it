@@ -15,4 +15,17 @@ const avatarImages = {
   14: "images/avatars/female7.png",
 }
 
-export { avatarImages };
+const badgeImages = {
+  1: "images/badges/best_action.png",
+  2: "images/badges/best_actor.png",
+  3: "images/badges/dynamic_duo.png",
+  4: "images/badges/going_to_miss_you.png",
+  5: "images/badges/im_in_love.png",
+  6: "images/badges/love_to_hate.png",
+  7: "images/badges/most_hilarious.png",
+  8: "images/badges/most_touching.png",
+  9: "images/badges/shipping_it.png",
+  10: "images/badges/worst_performance.png",
+}
+
+export { avatarImages, badgeImages };

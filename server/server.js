@@ -37,6 +37,7 @@ const pageRoutes = require( './routes/pageRoutes' );
 const userRoutes = require( './routes/userRoutes' );
 const voteRoutes = require( './routes/voteRoutes' );
 const boxRoutes = require( './routes/boxRoutes' );
+const badgeRoutes = require( './routes/badgeRoutes' );
 
 
 // Mount all resource routes
@@ -44,6 +45,7 @@ app.use( '/pages', pageRoutes );
 app.use( '/users', userRoutes );
 app.use( '/votes', voteRoutes );
 app.use( '/boxes', boxRoutes );
+app.use( '/badges', badgeRoutes );
 
 
 app.listen( port, () => {

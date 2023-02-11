@@ -6,6 +6,7 @@ import { Rating } from 'react-simple-star-rating'
 
 // Components
 import ShowBoxItem from "./ShowBoxItem";
+import ShowBadgeItem from "./ShowBadgeItem";
 
 // Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
@@ -20,11 +21,12 @@ import './View.scss';
 const View = props => {
 
   const { episodeInfoGlobal, EDIT, setDisplay, setEpisodeInfoGlobal } = useContext(CritiqueContext);
-  const [ pageInfo, setPageInfo ] = useState({})
-  const [ boxes, setBoxes ] = useState([])
+  const [ pageInfo, setPageInfo ] = useState({});
+  const [ boxes, setBoxes ] = useState([]);
+  const [ badges, setBadges ] = useState([]);
 
   useEffect( () => {
-    let extract, extractBox;
+    let extract, extractBox, extractBadge;
     let { page_id } = episodeInfoGlobal;
 
     axios.post('/pages/view', episodeInfoGlobal )
@@ -48,6 +50,13 @@ const View = props => {
       })
       .catch( console.log );
 
+    axios.get(`badges/${page_id}`)
+      .then(res => {
+        extractBadge = res.data.data.rows;
+        setBadges(extractBadge)
+      })
+      .catch( console.log );
+
   }, [])
 
   const avatarImage = avatarImages[ Cookies.get( 'avatar' ) ];
@@ -60,6 +69,20 @@ const View = props => {
         text={ box.text }
         url={ box.url }
         style={ box.style}
+      />
+    ); 
+  });
+
+  const badgeItem = badges.map( badge => {
+    return (
+      <ShowBadgeItem
+        key={ badge.id }
+        id={ badge.id }
+        actor_1={ badge.actor_1 }
+        actor_2={ badge.actor_2 }
+        url_actor_1={ badge.url_actor_1 }
+        url_actor_2={ badge.url_actor_2 }
+        badge_id={ badge.badge_id}
       />
     ); 
   });
@@ -113,7 +136,7 @@ const View = props => {
       </div>
 
       <div className="badges">
-        badges
+        { badges.length !== 0 && <ul className="badge-list">{badgeItem}</ul> }
       </div>
 
       
