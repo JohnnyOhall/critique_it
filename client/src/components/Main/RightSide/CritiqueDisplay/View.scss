@@ -15,7 +15,6 @@
 
     .edit {
       flex-grow: 1;
-
     }
 
     .page-avatar {
@@ -125,8 +124,6 @@
         justify-content: center;
 
         .single-box-image{
-          
-
           img {
             background-color: whitesmoke;
             height: 200px;
@@ -138,15 +135,18 @@
         }
 
         .single-box-text {
-          
+          height: 200px;
+          width: 250px;
+          background-color: whitesmoke;
+          border-color: rgba(0, 0, 0, 0.096);
+          border-radius: 1em;
+          box-shadow: 0px 6px 12px rgb(3 3 3);
+          display: flex;
+          align-items: center;
+
           p {
-            height: 200px;
-            width: 250px;
-            background-color: whitesmoke;
-            border-color: rgba(0, 0, 0, 0.096);
-            border-radius: 1em;
-            box-shadow: 0px 6px 12px rgb(3 3 3);
-            text-indent: 1em;
+            margin: 1em;
+            text-align: start;
           }
         }
 
@@ -159,8 +159,7 @@
           border-radius: 1em;
           box-shadow: 0px 6px 12px rgb(3 3 3);
           width: 250px;
-          height: 200px;
-          
+          height: 200px; 
 
           span {
             color: base.$font-dark-red;
@@ -179,5 +178,4 @@
       }
     }
   }
-
 }

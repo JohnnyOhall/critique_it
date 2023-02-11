@@ -6,7 +6,6 @@ import ReactSimplyCarousel from 'react-simply-carousel';
 import './Team.scss';
 
 
-// HTML below is for testing, we will alter this
 const Team = props => {
 
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
