@@ -1,22 +1,73 @@
-// CSS below is for testing, we will alter this
 .team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   height: 100%;
-  color: whitesmoke;
-  font-size: 100px;
+  width: 100%;
+  font-family: 'Noto Sans Display', sans-serif;
+  border-radius: 1em;
+  background-color: #716f9a69;
+  box-shadow: 0px 6px 12px rgb(3 3 3);
+  padding: 2em 0;
 
-  button {
-    background-color: whitesmoke;
-    border: none;
-    border-radius: 0.5em;
-    padding: 0.5em 0.75em;
+  .team-close-button {
+    align-self: flex-end;
+
+    button {
+      background-color: transparent;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-size: x-large;
+      margin-right: 1em;
+    }
+  
+    button:active {
+      transform: scale(0.95);
+    }
   }
 
-  button:active {
-    transform: scale(0.95);
-  }
+  .team-carousel {
+    margin-bottom: 3em;
 
-  img {
-    height: 25px;
-    width: 25px;
+    .arrow {
+      font-size: 50px;
+      color: rgba(245, 245, 245, 0.259);
+      font-weight: bolder;
+    }
+  
+    .team-carousel-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 500px;
+      height: 200px;
+      background-color: transparent;
+      border-radius: 1em;
+
+      p {
+        color: whitesmoke;
+        font-size: 45px;
+        font-weight: bold;
+        border-radius: 50%;
+        padding: 0.75em;
+      }
+
+      .name {
+        display: flex;
+        background-color: rgb(57, 54, 54);
+        border-radius: 50%;
+        padding: 0.75em;
+        height: 60px;
+        width: 60px;
+      }
+
+      img {
+        height: 200px;
+        width: 200px;
+        background-color: whitesmoke;
+        border-radius: 50%;
+      }
+    }
   }
 }

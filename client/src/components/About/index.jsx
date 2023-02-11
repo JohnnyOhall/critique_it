@@ -51,7 +51,11 @@ const About = () => {
       </div>
 
       <div className="about-links">
-      <div className="about-link">
+        <div className="about-link">
+          <button onClick={ () => transition( TEAM ) }>Our team</button>
+        </div>
+
+        <div className="about-link">
           <button onClick={ () => transition( CONTACT ) }>Contact</button>
         </div>
 
@@ -61,10 +65,6 @@ const About = () => {
 
         <div className="about-link">
           <button onClick={ () => transition( ACKNOWLEDGEMENTS ) }>Acknowledgements</button>
-        </div>
-
-        <div className="about-link">
-          <button onClick={ () => transition( TEAM ) }>Our team</button>
         </div>
 
       </div>
