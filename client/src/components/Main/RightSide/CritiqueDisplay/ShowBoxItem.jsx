@@ -4,7 +4,7 @@ const ShowBoxItem = props => {
 
   const { text, url, style } = props;
 
-  console.log("items", text, url, style)
+  // console.log("items", text, url, style)
 
   return (
     <li className="show-box-item">

@@ -39,37 +39,29 @@ const Edit = props => {
   
   useEffect(() => {
     let { page_id, avatar } = episodeInfoGlobal;
-    let extract;
+    let extractPage, extractBox;
 
     axios.get(`pages/edit/${page_id}`)
       .then(res => {
-        extract = res.data.pageData
+        extractPage = res.data.pageData
         return axios.get(`votes/${page_id}`)
       })
       .then(res => {
         const upvoted = res.data.voteData.upvoted
-        setPageInfo({...extract, avatar, upvoted })
+        setPageInfo({...extractPage, avatar, upvoted })
       })
-
-  }, [])
-
-  useEffect(() => {
-    let { page_id } = episodeInfoGlobal;
-    let extract;
+      .catch( console.log );
 
     axios.get(`boxes/${page_id}`)
       .then(res => {
-        extract = res.data.data.rows;
-        setBoxes([extract])
-      });
+        extractBox = res.data.data.rows;
+        setBoxes(extractBox)
+      })
+      .catch( console.log );
 
-
-  },[])
-
+  }, [])
   
   const boxItem = boxes.map( box => {
-
-    console.log('box-item: ', box)
     return (
       <ShowBoxItem
         key={ box.id }
@@ -164,7 +156,7 @@ const Edit = props => {
       </div>
 
       <div className="boxes">
-        <ul className="box-list">{boxItem}</ul>
+        { boxes.length !== 0 && <ul className="box-list">{boxItem}</ul> }
         { boxes.length < 3 && <div className="box-1">
           <img src="images/add.png" onClick={() => setCreate(BOXES)}/>
         </div> }
@@ -189,13 +181,3 @@ const Edit = props => {
 
 
 export default Edit;
-
-
-// const firstUpdate = useRef(true);
-//   useLayoutEffect(() => {
-//     if (firstUpdate.current) {
-//       firstUpdate.current = false;
-//     } else {
-//      // do things after first render
-//     }
-//   });

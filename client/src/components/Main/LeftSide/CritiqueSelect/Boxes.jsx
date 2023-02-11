@@ -44,11 +44,9 @@ const Boxes = props => {
     axios.post('./boxes/add', pageInfo )
       .then((res) => {
         const extract = res.data.data.rows[0]
-        
         setBoxes([...boxes, extract]);
-        console.log('middle', boxes)
-        // setCreate(MAIN);
-        // setDisplay(EDIT);
+        setCreate(MAIN);
+        setDisplay(EDIT);
       })
   }
 
