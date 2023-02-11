@@ -4,6 +4,9 @@ import React, { useContext, useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import { Rating } from 'react-simple-star-rating'
 
+// Components
+import ShowBoxItem from "./ShowBoxItem";
+
 // Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 
@@ -18,10 +21,11 @@ const View = props => {
 
   const { episodeInfoGlobal, EDIT, setDisplay, setEpisodeInfoGlobal } = useContext(CritiqueContext);
   const [ pageInfo, setPageInfo ] = useState({})
+  const [ boxes, setBoxes ] = useState([])
 
   useEffect( () => {
-    let extract;
-    let page_id;
+    let extract, extractBox;
+    let { page_id } = episodeInfoGlobal;
 
     axios.post('/pages/view', episodeInfoGlobal )
       .then(res => {
@@ -35,11 +39,30 @@ const View = props => {
         setPageInfo({...extract, upvoted});
         setEpisodeInfoGlobal({...episodeInfoGlobal, page_id: page_id.page_id })
       })
+      .catch( console.log );
+
+    axios.get(`boxes/${page_id}`)
+      .then(res => {
+        extractBox = res.data.data.rows;
+        setBoxes(extractBox)
+      })
+      .catch( console.log );
 
   }, [])
 
   const avatarImage = avatarImages[ Cookies.get( 'avatar' ) ];
 
+  const boxItem = boxes.map( box => {
+    return (
+      <ShowBoxItem
+        key={ box.id }
+        show_id={ box.id }
+        text={ box.text }
+        url={ box.url }
+        style={ box.style}
+      />
+    ); 
+  });
 
   return (
     <section className="edit-box" style={{backgroundColor: pageInfo.color}}>
@@ -93,17 +116,11 @@ const View = props => {
         badges
       </div>
 
-      <div className="content">
-        <div className="box-1">
-          box 1
-        </div>
-        <div className="box-2">
-          box 2
-        </div>
-        <div className="box-3">
-          box 3
-        </div>
+      
+      <div className="boxes">
+        { boxes.length !== 0 && <ul className="box-list">{boxItem}</ul> }
       </div>
+  
     </section>
   );
 };
