@@ -43,7 +43,7 @@ router.get( '/:id', (req, res) => {
 
   const getBadges =`
   SELECT * FROM badges
-  WHERE page_id = ${req.params.id}
+  WHERE page_id = ${req.params.id};
   `
 
   db.query( getBadges )
@@ -54,6 +54,22 @@ router.get( '/:id', (req, res) => {
         .json({ error: err.message });
     });
 })
+
+router.delete( '/:id', (req, res) => {
+
+  const deleteBadges =`
+  DELETE FROM badges
+  WHERE id = ${req.params.id};
+  `
+
+  db.query( deleteBadges )
+    .then (() => res.send("Badge deleted successfully"))
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+});
 
 
 module.exports = router;

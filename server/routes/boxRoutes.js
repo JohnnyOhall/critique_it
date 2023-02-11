@@ -49,7 +49,23 @@ router.get( '/:id', (req, res) => {
         .status( 500 )
         .json({ error: err.message });
     });
-})
+});
+
+router.delete( '/:id', (req, res) => {
+
+  const deleteBoxes =`
+  DELETE FROM boxes
+  WHERE id = ${req.params.id};
+  `
+
+  db.query( deleteBoxes )
+    .then (() => res.send("Box deleted successfully"))
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+});
 
 
 module.exports = router;
