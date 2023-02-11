@@ -38,36 +38,50 @@
   
     .team-carousel-item {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
       width: 500px;
       height: 200px;
       background-color: transparent;
       border-radius: 1em;
-
-      p {
+      position: relative;
+    
+      .meet-team {
         color: whitesmoke;
-        font-size: 45px;
+        font-size: 50px;
         font-weight: bold;
-        border-radius: 50%;
-        padding: 0.75em;
       }
-
+    
       .name {
-        display: flex;
-        background-color: rgb(57, 54, 54);
+        color: whitesmoke;
+        font-size: 15px;
+        position: absolute;
+        bottom: 10px;
+        left: 80px;
+        z-index: 1;
+        background-color: rgb(100, 95, 95);
         border-radius: 50%;
-        padding: 0.75em;
-        height: 60px;
-        width: 60px;
-      }
+        padding: 0.25em 0.75em 1.25em 1.25em;
+        box-shadow: 0px 2px 6px rgb(154 151 151);
 
-      img {
-        height: 200px;
-        width: 200px;
-        background-color: whitesmoke;
-        border-radius: 50%;
+        .first-name {
+          font-size: 35px;
+          font-weight: bold;
+        }
       }
-    }
+    
+      img {
+        height: 175px;
+        width: 175px;
+        background-color: whitesmoke;
+        border-radius: 2em;
+        margin-bottom: 1.5em;
+        margin-left: 5em;
+        object-fit: cover;
+        box-shadow: 0px 2px 6px rgb(154 151 151);
+        z-index: 0;
+      }
+    }    
   }
 }
