@@ -5,23 +5,21 @@
   height: 100%;
   width: 100%;
   font-family: 'Noto Sans Display', sans-serif;
-  // border: dotted;
   border-radius: 1em;
-  border-color: rgba(245, 245, 245, 0.61);
   background-color: #716f9a69;
   box-shadow: 0px 6px 12px rgb(3 3 3);
+  padding: 2em 0;
 
   .ack-close-button {
     align-self: flex-end;
 
     button {
-      border: none;
-      border-radius: 0.5em;
       background-color: transparent;
-      color: rgba(245, 245, 245, 0.259);
-      font-size: 25px;
-      font-weight: bold;
-      margin-right: 0.25em;
+      border-style: none;
+      cursor: pointer;
+      color: whitesmoke;
+      font-size: x-large;
+      margin-right: 1em;
     }
   
     button:active {
@@ -50,7 +48,7 @@
       a {
         text-decoration: none;
         color: whitesmoke;
-        font-size: 40px;
+        font-size: 45px;
         font-weight: bold;
       }
     }

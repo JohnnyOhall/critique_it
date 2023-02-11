@@ -23,7 +23,7 @@ const Acknowledgements = props => {
     <div className="acknowledgements">
 
       <div className="ack-close-button">
-        <button onClick={ props.update }>x</button>
+        <button onClick={ props.update }>✖︎</button>
       </div>
     
       <div className="carousel">

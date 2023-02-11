@@ -1,22 +1,80 @@
 // CSS below is for testing, we will alter this
 .contact {
   height: 100%;
+  width: 100%;
   color: whitesmoke;
-  font-size: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: 'Noto Sans Display', sans-serif;
+  border-radius: 1em;
+  border-color: rgba(245, 245, 245, 0.61);
+  background-color: #716f9a69;
+  box-shadow: 0px 6px 12px rgb(3 3 3);
+  padding: 1.5em 0;
 
-  button {
-    background-color: whitesmoke;
-    border: none;
-    border-radius: 0.5em;
-    padding: 0.5em 0.75em;
+  .contact-top {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 0.5;
+    height: 100%;
+    width: 100%;
+
+    .contact-icons {
+      img {
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+        margin-left: 1.5em;
+      }
+    }
+
+    .contact-button {
+      button {
+        background-color: transparent;
+        border-style: none;
+        cursor: pointer;
+        color: whitesmoke;
+        font-size: x-large;
+        margin-right: 1em;
+      }
+    
+      button:active {
+        transform: scale(0.95);
+      }
+    
+      img {
+        height: 25px;
+        width: 25px;
+        cursor: pointer;
+      }
+    }
   }
 
-  button:active {
-    transform: scale(0.95);
-  }
+  .contact-text {
+    flex-grow: 2;
+    height: 100%;
+    width: 100%;
+    padding: 3em;
+    align-self: center;
 
-  img {
-    height: 25px;
-    width: 25px;
+    p {
+      font-size: 75px;
+      font-weight: bold;
+    }
+  } 
+
+  .contact-email {
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+    margin-left: 3em;
+    
+    p {
+      cursor: pointer;
+      font-size: 30px;
+      font-weight: bold;
+    }
   }
 }

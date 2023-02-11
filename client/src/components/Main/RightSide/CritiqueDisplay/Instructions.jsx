@@ -18,7 +18,7 @@ const Instructions = () => {
     <div className="instructions">
 
       <div className="close-button-container">
-        <button className="close-button" onClick={ () => setDisplay( DEFAULT ) }><h3>✖︎</h3></button>
+        <button className="close-button" onClick={ () => setDisplay( DEFAULT ) }>✖︎</button>
       </div>
 
       <ReactSimplyCarousel
