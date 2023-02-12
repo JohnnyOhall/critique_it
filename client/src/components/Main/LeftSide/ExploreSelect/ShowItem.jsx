@@ -25,13 +25,17 @@ const ShowItem = props => {
   }
 
   const episodeItem = episodes.map( episode => {
+
+    console.log(episode)
+
     return (
       <EpisodeItem
         key={ episode.id }
-        id={ episode.id }
-        show_id={ episode.show_id }
-        avatar={ episode.avatar }
+        page_id={ episode.id }
         show_title={ episode.show_title }
+        rating={ episode.rating }
+        votes={ episode.votes }
+        watched={ episode.watched_on }
       />
     ); 
   });

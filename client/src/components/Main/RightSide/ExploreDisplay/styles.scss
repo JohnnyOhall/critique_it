@@ -5,8 +5,10 @@
   
   .explore-display {
     height: base.$container-height;
-    margin: 3em;
+    margin: 3em 2em;
     border-style: solid;
-    border-color: black;
+    border-color: transparent;
+
+    
   }
 }

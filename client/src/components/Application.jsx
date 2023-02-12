@@ -15,21 +15,24 @@ import './Application.scss';
 import RegisterProvider from '../providers/RegisterProvider';
 import LoginProvider from '../providers/LoginProvider';
 import CritiqueProvider from '../providers/CritiqueProvider';
+import ExploreProvider from '../providers/ExploreProvider';
 
 const App = () => { 
 
   return (
     <LoginProvider>
       <RegisterProvider>
-        <CritiqueProvider>
-          <div className="App">
-            <Header />
-            <Nav />
-            <Main />
-            <About />
-            <Footer />
-          </div>
-        </CritiqueProvider>
+        <ExploreProvider>
+          <CritiqueProvider>
+            <div className="App">
+              <Header />
+              <Nav />
+              <Main />
+              <About />
+              <Footer />
+            </div>
+          </CritiqueProvider>
+        </ExploreProvider> 
       </RegisterProvider>
     </LoginProvider> 
   );

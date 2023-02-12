@@ -138,13 +138,13 @@ const Edit = props => {
         </div>
         <div className="voting">
             <div>
-              { pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" /> }
+              { pageInfo.upvoted && <img src="images/upvote-active.png" height="25px" width="25px" /> }
               { !pageInfo.upvoted && <img src="images/upvote.png" height="25px" width="25px" 
                 onClick={ () => { setPageInfo({ ...pageInfo, upvoted: true, votes: pageInfo.votes + 1 })}}/>}
             </div>
             <div> {pageInfo.votes} </div>
             <div>
-              { !pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px"  /> }
+              { !pageInfo.upvoted && <img src="images/downvote-active.png" height="25px" width="25px"  /> }
               { pageInfo.upvoted && <img src="images/downvote.png" height="25px" width="25px" 
                 onClick={ () => { setPageInfo({ ...pageInfo, upvoted: false, votes: pageInfo.votes -1 })}}/>}
             </div>

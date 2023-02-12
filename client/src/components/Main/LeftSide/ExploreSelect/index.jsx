@@ -1,10 +1,13 @@
 // External imports
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from 'axios';
 
 // Components
 import ShowItem from "./ShowItem";
 import SeasonItem from "./SeasonItem";
+
+// Providers
+import { ExploreContext } from "../../../../providers/ExploreProvider";
 
 // Styling
 import './styles.scss';
@@ -21,6 +24,12 @@ const ExploreSelect = props => {
   const [ showsInfo, setShowsInfo ] = useState( [] );
   const [ seasonsInfo, setSeasonsInfo ] = useState( [] );
 
+  const { PROFILE, setDisplay, setProfileGlobal, profileGlobal} = useContext(ExploreContext)
+
+  const displayUser = () => {
+    setDisplay(PROFILE);
+  }
+
   const searchUser = () => {
     let tempUserInfo;
     setUserInfo( {} );
@@ -29,14 +38,13 @@ const ExploreSelect = props => {
     axios.get( `users/search/${ searchValue }` )
       .then( res => {
         tempUserInfo = res.data.userData
+        setProfileGlobal( tempUserInfo.id )
         return axios.get( `pages/search/user/${ tempUserInfo.id }` )
       })
       .then( res => {
         setUserInfo(tempUserInfo);
         setShowsInfo(res.data.data.rows);
         setSearchValue('');
-        console.log('userinfo: ', userInfo);
-        console.log('showinfo: ', showsInfo);
       })
       .catch( console.log );
   };
@@ -48,7 +56,6 @@ const ExploreSelect = props => {
 
     axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
       .then(res =>{
-        console.log(res.data.length)
         if ( res.data.length === 0 ) {
           alert('No results found')
           tempShowInfo = 'error';
@@ -193,7 +200,7 @@ const ExploreSelect = props => {
             <div className="user-search-results">
               <span>USERS:</span>
               <ul>
-                <li>{ userInfo.username }</li>
+                <li onClick={displayUser}>{ userInfo.username }</li>
               </ul>
               <span> SHOWS:</span>
               { showsInfo.length !== 0 && <ul className="show-list">{ showItem }</ul> }

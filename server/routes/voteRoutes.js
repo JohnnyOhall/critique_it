@@ -38,6 +38,38 @@ router.post( '/add', ( req, res ) => {
     });
 });
 
+router.post( '/explore/add', ( req, res ) => {
+  
+  const upvotePage =`
+    INSERT INTO votes
+    (
+      creator_id,
+      voter_id,
+      page_id,
+      episode_id,
+      upvoted
+    )
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *;
+  `;
+
+  const values = [ 
+    req.body.creator_id,
+    req.session.userID, 
+    req.body.page_id, 
+    req.body.episode_id, 
+    req.body.upvoted 
+  ]
+
+  db.query( upvotePage, values )
+    .then( () => res.send( 'success!' ))
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+});
+
 router.patch( '/update', ( req, res ) => {
 
   const upvotePage =`
@@ -48,7 +80,7 @@ router.patch( '/update', ( req, res ) => {
   `;
 
   const values = [ req.body.upvoted, req.body.page_id, req.session.userID ]
-
+  console.log('vote-vals', values)
   db.query( upvotePage, values )
   .then( () => res.send( 'success!' ))
   .catch( err => {
@@ -71,6 +103,7 @@ router.post( '/user', ( req, res ) => {
   `;
 
   const values = [ req.session.userID, req.body.page_id ]
+  console.log('here user')
 
   db.query( voteQuery, values )
     .then( data => {
@@ -88,6 +121,7 @@ router.post( '/user', ( req, res ) => {
 
 
 router.get( '/:id', ( req, res ) => {
+  console.log('here id')
 
   const voteQuery = `
   SELECT * FROM votes

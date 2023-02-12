@@ -177,6 +177,19 @@ router.get( '/search/:username', ( req, res ) => {
 
 });
 
+router.get( '/find/:id', ( req, res ) => {
+
+  const getUser = `
+    SELECT username FROM users
+    WHERE id = ${req.params.id};
+  `;
+
+  db.query( getUser )
+    .then( data => res.json({ data }))
+    .catch( console.log );
+    
+});
+
 
 // Route to register a new user - not yet in production
 router.post( '/register', ( req, res ) => {

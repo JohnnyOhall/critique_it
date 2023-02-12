@@ -122,6 +122,27 @@ router.post( '/view', ( req, res ) => {
 
 });
 
+// Route to get show by id
+router.get( '/view/:id', ( req, res ) => {
+
+  const pageQuery = `
+  SELECT * FROM pages
+  WHERE id = ${req.params.id}
+  `;
+
+  db.query( pageQuery )
+    .then( data => {
+      const pageData = data.rows[0];
+      res.json({ pageData });
+    })
+    .catch( err => {
+      res
+        .status( 500 )
+        .json({ error: err.message });
+    });
+
+});
+
 // Route to create a new page or add a show with null valus
 router.post( '/create', ( req, res ) => {
 
@@ -333,6 +354,23 @@ router.get( '/search/showitem', async ( req, res ) => {
   }
 
 })
+
+router.get( '/search/critiques/:id', async ( req, res ) => {
+
+  const queryPagesByEpisode =`
+    SELECT * FROM pages
+    WHERE episode_id = ${req.params.id};
+  `;
+
+  try {
+    const data = await db.query(queryPagesByEpisode);
+    return res.json({ data });
+  } catch (err) {
+    console.log(err);
+    res.send('error', err);
+  };
+
+});
 
 router.get( '/profile/userstats', (req, res)  => {
   
