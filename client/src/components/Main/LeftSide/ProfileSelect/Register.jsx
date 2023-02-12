@@ -5,8 +5,11 @@ import axios from "axios";
 // Providers
 import { RegisterContext } from "../../../../providers/RegisterProvider";
 
+// Styles
+import './Register.scss';
 
-const ProfileSelectRegister = props => {
+
+const Register = props => {
 
   const { setRegister } = useContext( RegisterContext );
   const [ passMatch, setPassMatch ] = useState( false );
@@ -40,7 +43,7 @@ const ProfileSelectRegister = props => {
   };
 
   return (
-    <div className="profile-select">
+    <div className="profile-select-register">
 
       <div className="register-title">
         <span >Register New Account</span>
@@ -205,4 +208,4 @@ const ProfileSelectRegister = props => {
 };
 
 
-export default ProfileSelectRegister;
+export default Register;

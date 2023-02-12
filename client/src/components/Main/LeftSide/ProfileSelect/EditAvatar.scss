@@ -1,0 +1,47 @@
+@use '../../../../styles/base.scss';
+
+.avatar-select {
+  display: flex;
+  justify-content: center;
+  border-radius: 2em;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: base.$site-body-font;
+
+  .avatar-row {
+    display: flex;
+
+    .avatar-item {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+
+      img {
+        padding: .7em;
+        height: 50px;
+        width: 50px;
+      }
+    }
+  }
+
+  .buttons-edit {
+    
+    button {
+      margin: 0.5em;
+      border-radius: 1em;
+      border-style: none;
+      text-align: center;
+      padding: 0.3em 0.9em;
+      font-size: 18px;
+      cursor: pointer;
+      font-family: 'Noto Sans Display', sans-serif;
+      box-shadow: 0px 1px 3px rgb(218, 222, 225);
+
+    }
+
+    button:active {
+      transform: scale(0.95);
+    }
+  }
+}

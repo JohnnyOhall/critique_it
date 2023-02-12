@@ -128,25 +128,24 @@ router.get( '/', ( req, res ) => {
 
 
 //Get specific user ID (not for production - testing only)
-router.get( '/:id', ( req, res ) => {
+router.get( '/:email', ( req, res ) => {
 
   const userQuery = `
-  SELECT * FROM users
-  WHERE id = $1;
+  SELECT email, avatar, username, bio, active FROM users
+  WHERE id = ${ req.session.userID };
   `;
 
-  values = [ req.body.id ];
-
-  if ( Number( req.params.id ) !== req.body.id ) {
-    return res.send( 'Invalid Request ...' );
-  };
-
-  db.query( userQuery, values )
+  db.query( userQuery )
   .then( data => {
     const userData = data.rows[ 0 ];
+    
+    userData.email !== req.params.email &&
+      res.send( 'Invalid Request ...' );
+    
     !userData.active ? 
       res.send( 'User Inactive!' ) :
       res.json({ userData });
+     
   })
   .catch( err => {
     res

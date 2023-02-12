@@ -3,8 +3,8 @@ import React, { useContext } from "react";
 
 // Components & hooks
 // import useCritiqueSelect from "../../../../hooks/visualModes/useCritiqueSelect";
-import CritiqueSelectMain from "./CritiqueSelectMain";
-import CritiqueSelectAdd from "./CritiqueSelectAdd";
+import Main from "./Main";
+import Add from "./Add";
 import Boxes from "./Boxes";
 import Badges from "./Badges";
 
@@ -35,7 +35,7 @@ const CritiqueSelect = props => {
     <section className="critique-left" id="nav-critique">
 
       { create === MAIN && 
-        <CritiqueSelectMain 
+        <Main 
           onAdd={ () => {
             setCreate( ADD );
             setDisplay(DEFAULT);
@@ -43,7 +43,7 @@ const CritiqueSelect = props => {
         /> 
       }
       { create === ADD && 
-        <CritiqueSelectAdd 
+        <Add 
           onClose={ () => setCreate( MAIN ) } 
           onSelect={ () => setCreate( MAIN ) } 
         /> 

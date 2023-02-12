@@ -2,8 +2,8 @@
 import React, { useContext } from "react";
 
 // Components & hooks
-import ProfileSelectMain from "./ProfileSelectMain";
-import ProfileSelectRegister from "./ProfileSelectRegister";
+import Main from "./Main"
+import Register from "./Register";
 
 // Providers
 import { RegisterContext } from "../../../../providers/RegisterProvider";
@@ -18,8 +18,8 @@ const ProfileSelect = props => {
 
   return (
     <section className="profile-left" id="nav-profile">
-      { !register && <ProfileSelectMain /> }
-      { register  && <ProfileSelectRegister /> }
+      { !register && <Main /> }
+      { register  && <Register /> }
     </section>
   );
 };

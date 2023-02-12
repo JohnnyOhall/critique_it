@@ -9,7 +9,7 @@ import ShowListItem from "./ShowListItem";
 import { LoginContext } from "../../../../providers/LoginProvider";
 
 
-const CritiqueSelectMain = props => {
+const Main = props => {
   const [ showDisplay, setShowDisplay ] = useState([]);
   const { loggedIn } = useContext( LoginContext );
 
@@ -75,4 +75,4 @@ const CritiqueSelectMain = props => {
 };
 
 
-export default CritiqueSelectMain;
+export default Main;

@@ -334,5 +334,51 @@ router.get( '/search/showitem', async ( req, res ) => {
 
 })
 
+router.get( '/profile/userstats', (req, res)  => {
+  
+  const results = {
+    score: 0,
+    shows: 0,
+    episodes: 0
+  }
+  
+  const getScoreQuery =`
+    SELECT SUM(votes)
+    FROM pages
+    WHERE creator_id = ${req.session.userID};
+  `;
+  const getShowsQuery = `
+    SELECT COUNT( DISTINCT show_id)
+    FROM pages
+    WHERE creator_id = ${req.session.userID}
+    AND episode_id IS NULL;
+  `;
+  const getEpisodesQuery =`
+    SELECT COUNT(episode_id)
+    FROM pages
+    WHERE creator_id = ${req.session.userID}
+    AND episode_id IS NOT NULL;
+  `;
+
+  return db.query( getScoreQuery )
+    .then( res => {
+      results.score = res.rows[0].sum;
+      
+      return db.query( getShowsQuery );
+    })
+    .then( res => {
+      results.shows = res.rows[0].count;
+      
+      return db.query( getEpisodesQuery )
+    })
+    .then( data => {
+      results.episodes = data.rows[0].count;
+      
+      return res.json({results})
+    })
+    .catch(err => console.log(err))
+
+})
+
 
 module.exports = router;

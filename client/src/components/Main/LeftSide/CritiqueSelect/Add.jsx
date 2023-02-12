@@ -3,7 +3,7 @@ import React from "react";
 import useAddShow from "../../../../hooks/useAddShow";
 
 
-const CritiqueSelectAdd = props => {
+const Add = props => {
 
   const { 
     selectShow, 
@@ -111,4 +111,4 @@ const CritiqueSelectAdd = props => {
 };
 
 
-export default CritiqueSelectAdd;
+export default Add;
