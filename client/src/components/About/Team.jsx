@@ -100,15 +100,15 @@ const Team = props => {
           <div className="team-carousel-item">
             <div className="name">
               <p className="first-name">John</p>
-              <p>co-founder of crITique</p>
+              <p>co-founder</p>
             </div>
-            <img src="images/avatars/male6.png"></img>
+            <img src="images/john.png"></img>
           </div>
 
           <div className="team-carousel-item">
             <div className="name">
               <p className="first-name">Jacqui</p>
-              <p>co-founder of crITique</p>
+              <p>co-founder</p>
             </div>
             <img src="images/jacqui.png"></img>
           </div> 

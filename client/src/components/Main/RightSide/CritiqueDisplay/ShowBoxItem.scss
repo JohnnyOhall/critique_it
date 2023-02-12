@@ -1,0 +1,67 @@
+@use '../../../../styles/base.scss';
+
+
+.show-box-item {
+  list-style-type: none;
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+
+  .single-box-image{
+    img {
+      background-color: whitesmoke;
+      height: 200px;
+      width: 250px;
+      object-fit: cover;
+      border-radius: 1em;
+      box-shadow: 0px 6px 12px rgb(3 3 3);
+    }
+  }
+
+  .single-box-text {
+    height: 200px;
+    width: 250px;
+    background-color: whitesmoke;
+    border-color: rgba(0, 0, 0, 0.096);
+    border-radius: 1em;
+    box-shadow: 0px 6px 12px rgb(3 3 3);
+    display: flex;
+    align-items: center;
+
+    p {
+      margin: 1em;
+      text-align: start;
+    }
+  }
+
+  .single-box-combined {
+    background-color: whitesmoke;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border-radius: 1em;
+    box-shadow: 0px 6px 12px rgb(3 3 3);
+    width: 250px;
+    height: 200px; 
+
+    span {
+      color: base.$font-dark-red;
+      font-weight: bold;
+    }
+
+    img {
+      height: 150px;
+      width: 200px;
+      object-fit: cover;
+      border-radius: 1em;
+      padding-bottom: 0.30em;
+    }
+  }
+
+  .box-delete-container {
+    margin-top: 0.5em;
+  }
+}

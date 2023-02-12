@@ -3,6 +3,7 @@ import axios from "axios";
 
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 
+import "./ShowBoxItem.scss";
 
 const ShowBoxItem = props => {
 
@@ -24,32 +25,52 @@ const ShowBoxItem = props => {
 
   return (
     <li className="show-box-item">
-    { style === 1 && 
-      <div className="single-box-image"> 
-        <img src={url} />
-        { display === EDIT &&
-          <img onClick={ deleteBox } src="images/trash.png" />
-        }
-      </div>
+    { style === 1 &&
+      <>
+        <div className="single-box-image"><img src={url} /></div>
+        <div className="box-delete-container">
+          { display === EDIT &&
+            <img 
+              className="box-delete" 
+              onClick={ deleteBox } 
+              src="images/trash.png" 
+            />
+          }
+        </div>
+      </>
     }
 
     { style === 2 && 
-      <div className="single-box-text"> 
-        <p>{text}</p>
-        { display === EDIT &&
-          <img onClick={ deleteBox } src="images/trash.png" />
-        }
-      </div> 
+      <>
+        <div className="single-box-text"><p>{text}</p></div>
+        <div className="box-delete-container">
+          { display === EDIT &&
+            <img 
+              className="box-delete" 
+              onClick={ deleteBox } 
+              src="images/trash.png" 
+            />
+          }
+        </div>
+      </>
     }
 
     { style === 3 && 
-      <div className="single-box-combined">
-        <span>{text}</span>
-        <img src={url}  />
-        { display === EDIT &&
-          <img onClick={ deleteBox } src="images/trash.png" />
-        }
-      </div> 
+      <>
+        <div className="single-box-combined">
+          <span>{text}</span>
+          <img src={url}  />
+        </div>
+        <div className="box-delete-container">
+          { display === EDIT &&
+            <img 
+              className="box-delete" 
+              onClick={ deleteBox } 
+              src="images/trash.png" 
+            />
+          }
+        </div>
+      </> 
     }
     </li>
   )
