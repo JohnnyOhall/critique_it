@@ -1,10 +1,16 @@
+// External Imports
 import React, { useContext } from "react";
 import axios from "axios";
 
-import { badgeImages } from "../../../../constants/constants";
+// Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 
+// Constants
+import { badgeImages } from "../../../../constants/constants";
+
+// Styles
 import "./ShowBadgeItem.scss";
+
 
 const ShowBadgeItem = props => {
 
@@ -44,7 +50,6 @@ const ShowBadgeItem = props => {
         </div>
       </div> 
     }
-
     { actor_2 && 
       <div className="single-box-dual"> 
         <div className="content-container">
@@ -68,5 +73,6 @@ const ShowBadgeItem = props => {
     </li>
   );
 };
+
 
 export default ShowBadgeItem;

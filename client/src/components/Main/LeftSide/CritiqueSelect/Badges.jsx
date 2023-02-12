@@ -122,7 +122,7 @@ const Badges = props => {
 
         { badge_id === 0 && 
           <div className="badge-input">
-            please make a badge selection above!
+            <p>Please make a badge selection above!</p>
           </div> 
         }
 
@@ -206,7 +206,7 @@ const Badges = props => {
 
         { badge_id === "4" && 
           <div className="badge-input">
-            <p>The character you are or going to miss!</p>
+            <p>The character you are or are going to miss!</p>
             <input 
               type="text"
               className="short"
@@ -290,7 +290,7 @@ const Badges = props => {
 
         { badge_id === "8" && 
           <div className="badge-input">
-            <p>The most touching performance.</p>
+            <p>The most touching performance</p>
             <input 
               type="text"
               className="short"
@@ -367,11 +367,9 @@ const Badges = props => {
           </div> 
         }
 
-       
-
         <div className="badge-buttons">
-          <button onClick={post}>add</button>
-          <button onClick={()=> setCreate(MAIN)}>back</button>
+          <button onClick={post}>Add</button>
+          <button onClick={()=> setCreate(MAIN)}>Back</button>
         </div>
 
       </div>

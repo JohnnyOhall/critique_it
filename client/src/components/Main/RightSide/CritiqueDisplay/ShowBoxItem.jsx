@@ -1,14 +1,18 @@
+// External Imports
 import React, { useContext } from "react";
 import axios from "axios";
 
+// Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
 
+// Styles
 import "./ShowBoxItem.scss";
+
 
 const ShowBoxItem = props => {
 
   const { text, url, style, id } = props;
-
+  
   const { EDIT, display, setBoxes, episodeInfoGlobal } = useContext( CritiqueContext );
 
   const deleteBox = () => {
@@ -39,7 +43,6 @@ const ShowBoxItem = props => {
         </div>
       </>
     }
-
     { style === 2 && 
       <>
         <div className="single-box-text"><p>{text}</p></div>
@@ -54,7 +57,6 @@ const ShowBoxItem = props => {
         </div>
       </>
     }
-
     { style === 3 && 
       <>
         <div className="single-box-combined">
