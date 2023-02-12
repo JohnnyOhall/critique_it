@@ -39,7 +39,7 @@ const ShowBadgeItem = props => {
         <div className="content-container">
           <img src={badgeImage} height="100px" widght="100px"/>
           <div className="character">
-            <img src={url_actor_1} width="25px" height="25px" />
+            <img src={url_actor_1} width="55px" height="55px" />
             <span>{actor_1}</span>
           </div>
         </div>
@@ -55,11 +55,11 @@ const ShowBadgeItem = props => {
         <div className="content-container">
           <img src={badgeImage} height="75px" widght="75px"/>
           <div className="character-1">
-            <img src={url_actor_1} width="25px" height="25px" />
+            <img src={url_actor_1} width="35px" height="35px" />
             <span>{actor_1}</span>
           </div>
           <div className="character-2">
-            <img src={url_actor_2} width="25px" height="25px" />
+            <img src={url_actor_2} width="35px" height="35px" />
             <span>{actor_2}</span>
           </div>
         </div>

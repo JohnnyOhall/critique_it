@@ -27,7 +27,7 @@
       .avatar-container {
         img {
           border-radius: 50%;
-          box-shadow: 0px 3px 10px rgb(154, 151, 151);
+          box-shadow: 0px 6px 12px rgb(40, 39, 39);
           background-color: whitesmoke;
         }
       }
@@ -84,7 +84,7 @@
         padding: 0.3em;
         margin-top: 0.3em;
         background-color: whitesmoke;
-        box-shadow: 0px 3px 10px rgb(154, 151, 151);
+        box-shadow: 0px 6px 12px rgb(40, 39, 39);
         font-family: base.$site-body-font;
       }
     }
@@ -107,7 +107,7 @@
       outline: none;
       border-radius: 0.75em;
       background-color: whitesmoke;
-      box-shadow: 0px 3px 10px rgb(154, 151, 151);
+      box-shadow: 0px 6px 12px rgb(40, 39, 39);
       font-size: medium;
     }
   }

@@ -35,7 +35,8 @@
 
     p {
       margin: 1em;
-      text-align: start;
+      color: base.$font-dark-red;
+      font-weight: bold;
     }
   }
 
@@ -46,7 +47,7 @@
     align-items: center;
     justify-content: space-around;
     border-radius: 1em;
-    box-shadow: 0px 6px 12px rgb(3 3 3);
+    box-shadow: 0px 6px 12px rgb(40, 39, 39);
     width: 250px;
     height: 200px; 
 
