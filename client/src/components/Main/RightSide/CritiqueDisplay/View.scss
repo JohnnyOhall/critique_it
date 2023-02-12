@@ -93,7 +93,7 @@
 
     .review-content {
       padding: 1.25em 0;
-      width: 400px;
+      width: 500px;
       border: none;
       outline: none;
       border-radius: 0.75em;
@@ -115,108 +115,15 @@
       list-style-type: none;
       padding-left: 0;
       width: 100%;
-
-      .single-box {
-        position: relative;
-        
-        img {
-          background-color: whitesmoke;
-          border-radius: 50%;
-          box-shadow: 0px 6px 12px rgb(3 3 3);
-        }
-
-        .character {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          position: absolute;
-          bottom: -15px;
-          right: 30px;
-          z-index: 1;
-
-          span {
-            background-color: base.$font-dark-red;
-            color: whitesmoke;
-            box-shadow: 0px 6px 12px rgb(3 3 3);
-            border-radius: 0.5em;
-            padding: 0.25em 0.5em;
-            font-weight: bold;
-          }
-
-          img {
-            box-shadow: 0px 6px 12px rgb(3 3 3);
-          }
-        }
-      }
     }
   }
 
   .boxes {
-    
     .box-list {
       display: flex;
+      justify-content: space-between;
       width: 100%;
       padding: 0;
-
-      .show-box-item {
-        list-style-type: none;
-        flex-grow: 1;
-        display: flex;
-        justify-content: center;
-
-        .single-box-image{
-          img {
-            background-color: whitesmoke;
-            height: 200px;
-            width: 250px;
-            object-fit: cover;
-            border-radius: 1em;
-            box-shadow: 0px 6px 12px rgb(3 3 3);
-          }
-        }
-
-        .single-box-text {
-          height: 200px;
-          width: 250px;
-          background-color: whitesmoke;
-          border-color: rgba(0, 0, 0, 0.096);
-          border-radius: 1em;
-          box-shadow: 0px 6px 12px rgb(3 3 3);
-          display: flex;
-          align-items: center;
-
-          p {
-            margin: 1em;
-            text-align: start;
-          }
-        }
-
-        .single-box-combined {
-          background-color: whitesmoke;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: space-around;
-          border-radius: 1em;
-          box-shadow: 0px 6px 12px rgb(3 3 3);
-          width: 250px;
-          height: 200px; 
-
-          span {
-            color: base.$font-dark-red;
-            // padding-bottom: .5em;
-            font-weight: bold;
-          }
-
-          img {
-            height: 150px;
-            width: 200px;
-            object-fit: cover;
-            border-radius: 1em;
-            padding-bottom: 0.30em;
-          }
-        }
-      }
     }
   }
 }

@@ -1,6 +1,7 @@
 @use '../../../../styles/base.scss';
 
 .box-outer {
+  font-family: base.$site-body-font;
 
   .box-inner {
     display: flex;
@@ -8,18 +9,18 @@
     height: base.$container-height;
     margin: 3em;
     border-style: solid;
-    border-color: black;
+    border-color: transparent;
 
     .select-box {
       display: flex;
       flex-direction: column;
       justify-content: center;
-      flex-grow: 3;
-      height: 5%;
+      flex-grow: 1.5;
 
       .box-title {
         padding-bottom: 1em;
         font-size: 2em;
+        font-weight: bold;
       }
       
       .box-content {
@@ -32,7 +33,9 @@
           padding: 0 .5em;
 
           img {
-            padding-bottom: 1em;
+            margin-bottom: 1em;
+            border-radius: 0.15em;
+            box-shadow: 0px 4px 8px rgb(69, 67, 67);
           }
         }
       } 
@@ -44,23 +47,57 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      margin-bottom: 1em;
 
       p {
-        padding: 0.5em 0;
+        margin-bottom: 0.25em;
+        margin-top: 0.5em;
+        font-weight: bold;
+        font-size: 18px;
       }
 
       .url {
-        width: 60%;
+        width: 70%;
+        margin: 0.5em;
+        padding: 0.25em;
+        outline: none;
+        border: none;
+        border-radius: 0.6em;
+        padding: 0.3em;
+        background-color: whitesmoke;
+        box-shadow: 0px 1px 3px rgb(218, 222, 225);
+        font-size: 15px;
+        font-family: 'Noto Sans Display', sans-serif;
       }
 
       .short {
-        width: 25%;
+        width: 30%;
+        margin: 0.5em;
+        padding: 0.25em;
+        outline: none;
+        border: none;
+        border-radius: 0.6em;
+        padding: 0.3em;
+        background-color: whitesmoke;
+        box-shadow: 0px 1px 3px rgb(218, 222, 225);
+        font-size: 15px;
+        font-family: 'Noto Sans Display', sans-serif;
       }
 
       textarea {
-        width: 25%;
-        height: 45%;
+        width: 50%;
+        height: 40%;
         resize: none;
+        margin: 0.5em;
+        padding: 0.25em;
+        outline: none;
+        border: none;
+        border-radius: 0.6em;
+        padding: 0.3em;
+        background-color: whitesmoke;
+        box-shadow: 0px 1px 3px rgb(218, 222, 225);
+        font-size: 15px;
+        font-family: 'Noto Sans Display', sans-serif;
       }
     }
 
@@ -68,7 +105,29 @@
       flex-grow: 1;
       display: flex;
       justify-content: space-evenly;
-      align-items: flex-start;
+      align-items: center;
+
+      button {
+        background-color: rgb(51, 51, 51);
+        color: whitesmoke;
+        border-radius: 1.75em;
+        border-style: none;
+        text-align: center;
+        padding: 0.4em 1.2em;
+        font-size: 18px;
+        font-weight: bold;
+        cursor: pointer;
+        font-family: 'Noto Sans Display', sans-serif;
+        box-shadow: 0px 1px 3px rgb(102, 105, 105);
+      }
+
+      button:active {
+        transform: scale(0.95);
+      }
+
+      button:hover {
+        background-color: rgba(51, 51, 51, 0.856);
+      }
     }
   }
 }

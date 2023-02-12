@@ -1,8 +1,15 @@
+// External Imports
 import React, { useContext } from "react";
 import axios from "axios";
 
-import { badgeImages } from "../../../../constants/constants";
+// Providers
 import { CritiqueContext } from "../../../../providers/CritiqueProvider";
+
+// Constants
+import { badgeImages } from "../../../../constants/constants";
+
+// Styles
+import "./ShowBadgeItem.scss";
 
 
 const ShowBadgeItem = props => {
@@ -29,35 +36,43 @@ const ShowBadgeItem = props => {
     <li className="show-badge-item">
     { !actor_2 && 
       <div className="single-box"> 
-        <img src={badgeImage} height="100px" widght="100px"/>
-        <div className="character">
-          <img src={url_actor_1} width="25px" height="25px" />
-          <span>{actor_1}</span>
+        <div className="content-container">
+          <img src={badgeImage} height="100px" widght="100px"/>
+          <div className="character">
+            <img src={url_actor_1} width="25px" height="25px" />
+            <span>{actor_1}</span>
+          </div>
         </div>
-        { display === EDIT &&
-          <img onClick={ deleteBadge } src="images/trash.png" />
-        }
+        <div className="badge-delete-container">
+          { display === EDIT &&
+            <img onClick={ deleteBadge } src="images/trash.png" />
+          }
+        </div>
       </div> 
     }
-
     { actor_2 && 
       <div className="single-box-dual"> 
-        <img src={badgeImage} height="75px" widght="75px"/>
-        <div className="character">
-          <img src={url_actor_1} width="25px" height="25px" />
-          <span>{actor_1}</span>
+        <div className="content-container">
+          <img src={badgeImage} height="75px" widght="75px"/>
+          <div className="character-1">
+            <img src={url_actor_1} width="25px" height="25px" />
+            <span>{actor_1}</span>
+          </div>
+          <div className="character-2">
+            <img src={url_actor_2} width="25px" height="25px" />
+            <span>{actor_2}</span>
+          </div>
         </div>
-        <div className="character">
-          <img src={url_actor_2} width="25px" height="25px" />
-          <span>{actor_2}</span>
+        <div className="badge-delete-container">
+          { display === EDIT &&
+            <img onClick={ deleteBadge } src="images/trash.png" />
+          }
         </div>
-        { display === EDIT &&
-          <img onClick={ deleteBadge } src="images/trash.png" />
-        }
       </div> 
     }
     </li>
   );
 };
+
 
 export default ShowBadgeItem;

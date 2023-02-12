@@ -65,34 +65,33 @@ const Boxes = props => {
             setDanger(false)
           }}> 
             <div className="box-item">
-              <img src="images/boxes/box-1.png" height="250px" width="250px"/>
+              <img src="images/boxes/box-1.png" height="225px" width="225px"/>
               <input type='radio' name='box' value={ 1 } ></input>
             </div>
             <div className="box-item">
-              <img src="images/boxes/box-2.png" height="250px" width="250px"/>
+              <img src="images/boxes/box-2.png" height="225px" width="225px"/>
               <input type='radio' name='box' value={ 2 }></input>
             </div>
             <div className="box-item">
-              <img src="images/boxes/box-3.png" height="250px" width="250px"/>
+              <img src="images/boxes/box-3.png" height="225px" width="225px"/>
               <input type='radio' name='box' value={ 3 }></input>
             </div>
           </div>
         </div>
 
-
         { style === 0 && 
           <div className="box-input">
-            please make a lay-out selection above!
+            <p>Please make a lay-out selection above!</p>
           </div> 
         }
 
         { style === "1" && 
           <div className="box-input">
-            <p>Please enter a image url:</p>
+            <p>Please enter an image url:</p>
             <input 
               type="url" 
               className="url" 
-              placeholder="enter url here"
+              placeholder="Paste url here"
               onChange={ e => {
                 setPageInfo({ ...pageInfo, url: e.target.value })
               }}/>
@@ -103,7 +102,7 @@ const Boxes = props => {
           <div className="box-input">
             <p>Please enter your thoughts (225 characters max):</p>
             <textarea 
-              placeholder="type here" 
+              placeholder="Type here" 
               maxLength={225}
               onChange={e => {
                 setCharacters(e.target.value.length)
@@ -117,11 +116,11 @@ const Boxes = props => {
 
         { style === "3" && 
           <div className="box-input"> 
-            <p>please leave a short message (25 characters max): </p>
+            <p>Please leave a short message (25 characters max): </p>
             <input 
               className="short" 
               type="text" 
-              placeholder="enter short text here"
+              placeholder="Type here"
               maxLength={ 25 }
               onChange={ e => {
                 setCharacters( e.target.value.length )
@@ -130,11 +129,11 @@ const Boxes = props => {
               }}
             /> 
             <span style={{ color: danger ? "red" : "black" }}>{ characters }</span>
-            <p>Please enter a image url:</p>
+            <p>Please enter an image url:</p>
             <input 
               className="url" 
               type="url" 
-              placeholder="enter url here"
+              placeholder="Paste url here"
               onChange={ e => {
                 setPageInfo({ ...pageInfo, url: e.target.value })
               }}
@@ -144,8 +143,8 @@ const Boxes = props => {
 
 
         <div className="box-buttons">
-          <button onClick={post}>add</button>
-          <button onClick={()=> setCreate(MAIN)}>back</button>
+          <button onClick={post}>Add</button>
+          <button onClick={()=> setCreate(MAIN)}>Back</button>
         </div>
 
       </div>

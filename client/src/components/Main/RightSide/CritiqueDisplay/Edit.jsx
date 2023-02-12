@@ -174,7 +174,13 @@ const Edit = props => {
 
       <div className="review">
         <label className="review-heading" htmlFor="review">Review:</label>
-        <input id="review" type="text" value={ pageInfo.review } onChange={e => setPageInfo({ ...pageInfo, review: e.target.value })}/>
+        <input 
+          id="review" 
+          type="text" 
+          value={ pageInfo.review } 
+          onChange={e => setPageInfo({ ...pageInfo, review: e.target.value })}
+          maxlength="100"
+        />
       </div>
 
       <div className="badges">
@@ -191,7 +197,6 @@ const Edit = props => {
         </div> }
       </div>
       
-
       <div className="buttons">
         <button onClick={ ()=> {
           post( pageInfo )
