@@ -8,7 +8,7 @@
   font-family: base.$site-body-font;
 
   .nav {
-    flex-grow: 0.5;
+    flex-grow: 0.25;
     display: flex;
     align-items: center;
     width: 100%;
@@ -92,8 +92,8 @@
     }
 
     .review-content {
-      padding: 1.25em 0;
-      width: 500px;
+      padding: 1em 1em;
+      width: 550px;
       border: none;
       outline: none;
       border-radius: 0.75em;
@@ -119,9 +119,14 @@
   }
 
   .boxes {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    width: 100%;
+    
     .box-list {
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-end;
       width: 100%;
       padding: 0;
     }

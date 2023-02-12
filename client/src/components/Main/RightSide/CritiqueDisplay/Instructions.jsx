@@ -39,7 +39,7 @@ const Instructions = () => {
             lineHeight: 1,
             textAlign: 'center',
             width: 30,
-            marginRight: 10,
+            marginLeft: 50,
           },
           children: <span className="instructions-arrow">{`>`}</span>,
         }}
@@ -56,7 +56,7 @@ const Instructions = () => {
             lineHeight: 1,
             textAlign: 'center',
             width: 30,
-            marginRight: 10,
+            marginRight: 60,
           },
           children: <span className="instructions-arrow">{`<`}</span>,
         }}
@@ -64,8 +64,8 @@ const Instructions = () => {
           show: true,
           itemBtnProps: {
             style: {
-              height: 16,
-              width: 16,
+              height: 18,
+              width: 18,
               borderRadius: "50%",
               border: 0,
               marginRight: 10,
@@ -74,11 +74,11 @@ const Instructions = () => {
           },
           activeItemBtnProps: {
             style: {
-              height: 16,
-              width: 16,
+              height: 18,
+              width: 18,
               borderRadius: "50%",
               border: 0,
-              background: "#0F0F0F",
+              background: "#333333",
               marginRight: 10,
               marginLeft: 10,
             }
@@ -95,19 +95,51 @@ const Instructions = () => {
       >
 
         <div className="instruction-item">
-          <p>This is a test of what it could look like, just need to figure out how we want it styled.<p></p>Click <a href="https://github.com/vadymshymko/react-simply-carousel">here</a> to view the customization options.</p>
+          <p><h2 className="heading">Search for a show:</h2></p>
+          <ul>
+            <li>Click on the plus button to the left</li>
+            <li>Enter a show name and click the magnifying glass</li>
+            <li>The show results will be displayed</li>
+            <li>If you want to add the show, click on the plus button</li>
+          </ul>
         </div>
 
         <div className="instruction-item">
-          <p>Do we hate it? I'm open to other ideas!</p>
+          <p><h2 className="heading">Create a page:</h2></p>
+          <ul>
+            <li>Find your added show in the list to the left</li>
+            <li>Click on the show image to populate the season and episode info</li>
+            <li>Use the yellow slider to find the show you'd like to create a page for</li>
+            <li>Click on the plus button and your page will open to the right</li>
+            <li>Customize available fields and click the save button. Continue to the next slide to learn about customizing your page.</li>
+          </ul>
         </div>
 
         <div className="instruction-item">
-          <p>Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text. Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text. Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.Here's a bunch of text.</p>
+          <p><h2 className="heading">Customize your page:</h2></p>
+          <ul>
+            <li>Click on the three horizontal lines to update your page color.</li>
+            <li>Click on the first plus button to open a badges selection to the left. Select a badge and you'll be able to add your favourite actors and upload an image of your choosing. Clicking add will add the badge to your page.</li>
+          </ul>
         </div>
 
         <div className="instruction-item">
-          <p>Code is a bit messy right now but it can be cleaned up 😌</p>
+          <p><h2 className="heading">Customize your page (cont):</h2></p>
+          <ul>
+            <li>Click on the second plus button to open a boxes selection where you can dive deeper into customizing your page. Select from the various options and enter the text and/or images you'd like. Clicking add will add the box to your page.</li>
+            <li>Don't forget to press save when you're done your page!</li>
+          </ul>
+        </div>
+
+        <div className="instruction-item">
+          <p><h2 className="heading">Not sure what to do with this section</h2></p>
+          <ul>
+            <li>??????????????????</li>
+            <li>Looks weird??</li>
+            <li>Transparent does too</li>
+            <li>Help!</li>
+            <li>🥹</li>
+          </ul>
         </div>
       </ReactSimplyCarousel>
 
