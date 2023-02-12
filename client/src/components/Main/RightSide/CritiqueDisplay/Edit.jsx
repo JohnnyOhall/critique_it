@@ -179,7 +179,7 @@ const Edit = props => {
           type="text" 
           value={ pageInfo.review } 
           onChange={e => setPageInfo({ ...pageInfo, review: e.target.value })}
-          maxlength="100"
+          maxLength="100"
         />
       </div>
 
