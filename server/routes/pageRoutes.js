@@ -279,5 +279,60 @@ router.delete ( '/:id/delete', ( req, res ) => {
   deletePages( req.body );
 });
 
+router.get( '/search/user/:id', async ( req, res ) => {
+
+  const queryShowsByUser =`
+    SELECT DISTINCT show_title, show_id FROM pages
+    WHERE creator_id = ${req.params.id}
+    AND episode_id IS NULL;
+  `;
+
+  try {
+    const data = await db.query(queryShowsByUser);
+    return res.json({ data });
+  } catch (err) {
+    console.log(err);
+    res.send('error', err);
+  }
+
+})
+
+router.get( '/search/show/:id', async ( req, res ) => {
+
+  const queryShow =`
+    SELECT DISTINCT show_title, show_id FROM pages
+    WHERE show_id = ${req.params.id}
+    AND episode_id IS NULL;
+  `;
+
+  try {
+    const data = await db.query(queryShow);
+    return res.json({ data });
+  } catch (err) {
+    console.log(err);
+    res.send('error', err);
+  }
+
+})
+
+router.get( '/search/showitem', async ( req, res ) => {
+
+  const queryEpisodesByShow =`
+    SELECT DISTINCT * FROM pages
+    WHERE creator_id = ${req.query.userid}
+    AND show_id = ${req.query.showid}
+    AND episode_id IS NOT NULL;
+  `;
+
+  try {
+    const data = await db.query(queryEpisodesByShow);
+    return res.json({ data });
+  } catch (err) {
+    console.log(err);
+    res.send('error', err);
+  }
+
+})
+
 
 module.exports = router;

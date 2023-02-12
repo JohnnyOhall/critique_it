@@ -156,6 +156,28 @@ router.get( '/:id', ( req, res ) => {
 
 });
 
+router.get( '/search/:username', ( req, res ) => {
+
+  const userQuery = `
+  SELECT * FROM users
+  WHERE username = '${req.params.username}';
+  `;
+
+  db.query( userQuery )
+  .then( data => {
+    const userData = data.rows[ 0 ];
+    !userData.active ? 
+      res.send( 'User Inactive!' ) :
+      res.json({ userData });
+  })
+  .catch( err => {
+    res
+      .status( 500 )
+      .json({ error: err.message });
+  });
+
+});
+
 
 // Route to register a new user - not yet in production
 router.post( '/register', ( req, res ) => {

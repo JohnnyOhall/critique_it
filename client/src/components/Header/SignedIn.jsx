@@ -13,7 +13,7 @@ import { CritiqueContext } from "../../providers/CritiqueProvider";
 
 const SignedIn = props => {
 
-  const { setDisplay, DEFAULT } = useContext(CritiqueContext)
+  const { setDisplay, DEFAULT, setCreate, MAIN } = useContext(CritiqueContext)
 
   const signOut = () => {
     axios.post( '/users/logout' )
@@ -23,6 +23,7 @@ const SignedIn = props => {
         Cookies.remove( 'username' );
         Cookies.remove( 'avatar' );
         setDisplay(DEFAULT)
+        setCreate(MAIN)
       });
   };
 
