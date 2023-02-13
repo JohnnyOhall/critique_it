@@ -4,6 +4,8 @@ import React, { useContext } from "react";
 // Providers
 import { RegisterContext } from "../../../../providers/RegisterProvider";
 
+//Components & Hooks
+import ProfileDisplayRegister from "./ProfileDisplayRegister";
 
 // Styling
 import './styles.scss';
@@ -18,7 +20,11 @@ const ProfileDisplay = prop => {
       { !register && <div className="profile-display"> 
       
       </div>}
-      { register && <div className="profile-display">register page</div> }
+      { register && 
+        <div className="profile-display">
+          <ProfileDisplayRegister />
+        </div> 
+      }
     </section>
   );
 };

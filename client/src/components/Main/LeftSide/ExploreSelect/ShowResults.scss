@@ -1,0 +1,77 @@
+@use '../../../../styles/base.scss';
+
+
+.show-results {
+  flex-grow: 3;
+  padding-top: 3em;
+
+  .show-name-results {
+    display: flex;
+    flex-grow: 1;
+    padding-bottom: 2em;
+
+    ul {
+      list-style-type: none;
+    }
+  }
+
+  .season-results {
+    display: flex;
+    flex-grow: 1;
+    height: 600px;
+    overflow-y: scroll;
+
+    .season-name {
+      font-weight: bold;
+      font-size: larger;
+      color: base.$font-dark-red;
+    }
+
+    ul {
+      list-style-type: none;
+
+      li {
+        padding-bottom: 0.5em;
+        padding-left: 0;
+      }
+    }
+
+    .episode-list-show {
+      display: flex;
+      flex-direction: column;
+      height: 275px;
+      overflow-y: scroll;
+
+      ul {
+        list-style-type: none;
+
+        li {
+          padding-left: 0;
+        }
+      }
+
+      .critiques-list-show {
+        display: flex;
+        flex-direction: column;
+        height: 215px;
+        overflow-y: scroll;
+
+        ul {
+          list-style-type: none;
+        }
+
+        .critiques-list-show-item {
+          display: flex;
+          align-items: flex-start;
+          flex-direction: column;
+          padding: 0.5em;
+          width: 215px;
+          background-color: whitesmoke;
+          border-radius: 0.5em;
+          color: base.$font-dark-red;
+          cursor: pointer;
+        }
+      }
+    }
+  }
+}

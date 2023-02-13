@@ -11,6 +11,8 @@ import { ExploreContext } from "../../../../providers/ExploreProvider";
 
 // Styling
 import './styles.scss';
+import './ShowResults.scss';
+import './UserResults.scss';
 
 
 const ExploreSelect = props => {
@@ -53,6 +55,7 @@ const ExploreSelect = props => {
     let tempShowInfo;
     setUserInfo( {} );
     setShowInfo( {} );
+    setSeasonsInfo( [] );
 
     axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
       .then(res =>{
@@ -113,11 +116,12 @@ const ExploreSelect = props => {
   return (
     <section className="explore-left" id="nav-explore">
       <div className="explore-select">
-        <section className="Search-nav">
+
+        <section className="search-nav">
           <div className="explore-search">
-            <label htmlFor="search-bar">Search</label>
+            <label htmlFor="search-bar">Search:</label>
             { search === "show" &&
-              <div> 
+              <div className="search-area"> 
                 <input 
                   id="search-bar" 
                   type="text" 
@@ -133,7 +137,7 @@ const ExploreSelect = props => {
               </div>
             }
             { search === "user" &&
-              <div>
+              <div className="search-area">
                 <input 
                   id="search-bar" 
                   type="text" 
@@ -151,8 +155,8 @@ const ExploreSelect = props => {
           </div>
 
           <div className="search-select">
-            <div>
-              <label htmlFor="show">show</label>
+            <div className="radio">
+              <label htmlFor="show">Show</label>
               <input 
                 type="radio" 
                 name="search" 
@@ -166,8 +170,8 @@ const ExploreSelect = props => {
                 checked={ search === "show" }
               />
             </div>
-            <div>
-              <label htmlFor="show">user</label>
+            <div className="radio">
+              <label htmlFor="show">User</label>
               <input 
                 type="radio" 
                 name="search" 
@@ -183,30 +187,37 @@ const ExploreSelect = props => {
             </div>
           </div>
         </section>
+
         { search === "show" && 
           <section className="show-results">
             <div className="show-search-results">
-              <span>SHOW:</span>
-              <ul>
-                <li>{ showInfo.name }</li>
-              </ul>
-              <span> SEASONS:</span>
-                { seasonsInfo.length !== 0 && <ul className="season-list">{ seasonItem }</ul> }
+              <div className="show-name-results">
+                <span>SHOW:</span>
+                <ul><li>{ showInfo.name }</li></ul>
+              </div>
+              { seasonsInfo.length !== 0 && 
+                <div className="season-results">
+                  <span> SEASONS:</span>
+                  <ul className="season-list">{ seasonItem }</ul> 
+                </div>
+              }
             </div> 
           </section>
         }
+
         { search === "user" && 
           <section className="user-results">
             <div className="user-search-results">
-              <span>USERS:</span>
-              <ul>
-                <li onClick={displayUser}>{ userInfo.username }</li>
-              </ul>
-              <span> SHOWS:</span>
-              { showsInfo.length !== 0 && <ul className="show-list">{ showItem }</ul> }
-            </div>
-            <div>
-
+              <div className="users">
+                <span>USERS:</span>
+                <ul>
+                  <li onClick={displayUser}>{ userInfo.username }</li>
+                </ul>
+              </div>
+              <div className="shows">
+                <span> SHOWS:</span>
+                { showsInfo.length !== 0 && <ul className="show-list">{ showItem }</ul> }
+              </div>
             </div>
           </section>
         }

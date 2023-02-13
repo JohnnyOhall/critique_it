@@ -41,8 +41,8 @@ const SeasonItem = props => {
 
   return (
     <li>
-    <span onClick={searchEpisode} >Season { number }</span> 
-    { episodes.length !== 0 && <ul className="episode-list-show">{ episodesItem }</ul> }
+      <span onClick={searchEpisode} >Season { number }</span> 
+      { episodes.length !== 0 && <ul className="episode-list-show">{ episodesItem }</ul> }
     </li>
   );
 };

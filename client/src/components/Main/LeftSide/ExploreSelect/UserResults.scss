@@ -1,0 +1,54 @@
+@use '../../../../styles/base.scss';
+
+
+.user-results {
+  flex-grow: 3;
+  padding-top: 3em;
+
+  .user-search-results {
+    flex-grow: 1;
+    padding-bottom: 2em;
+
+    .users {
+      display: flex;
+      flex-direction: flex-start;
+      flex-grow: 1;
+      padding-bottom: 2em;
+
+      ul {
+        list-style-type: none;
+      }
+    }
+
+    .shows {
+      display: flex;
+      flex-direction: flex-start;
+      flex-grow: 1;
+
+      ul {
+        list-style-type: none;
+
+        li {
+          padding-bottom: 0.5em;
+        }
+      }
+
+      .episode-item-by-user {
+        display: flex;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 0.5em;
+        width: 215px;
+        background-color: whitesmoke;
+        border-radius: 0.5em;
+        cursor: pointer;
+
+        .title {
+          font-size: large;
+          font-weight: bold;
+          color: base.$font-dark-red;
+        }
+      }
+    }
+  }
+}

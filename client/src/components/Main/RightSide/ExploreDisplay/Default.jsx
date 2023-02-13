@@ -1,11 +1,25 @@
+// External exports
 import React from "react";
+
+// Styles
+import "./Default.scss";
 
 
 const Default = props => {
 
   return (
     <div className="explore-display">
-      <img src="https://cdn.custom-cursor.com/packs/1206/pack1432.png" />
+      <div className="explore-display-img">
+        <img src="https://cdn.custom-cursor.com/packs/1206/pack1432.png" />
+      </div>
+      <div className="default-title">
+        <div className="pre-wave">WAITING FOR SEARCH</div>
+        <div className="wave">
+          <span className="dot"></span>
+          <span className="dot"></span>
+          <span className="dot"></span>
+        </div>
+      </div>
     </div>
   );
 };

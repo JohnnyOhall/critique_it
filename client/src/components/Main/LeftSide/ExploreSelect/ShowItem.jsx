@@ -25,9 +25,6 @@ const ShowItem = props => {
   }
 
   const episodeItem = episodes.map( episode => {
-
-    console.log(episode)
-
     return (
       <EpisodeItem
         key={ episode.id }
