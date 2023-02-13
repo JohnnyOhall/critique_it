@@ -34,12 +34,17 @@
           input {
             width: 450px;
             margin: 1em;
-            padding: 0.75em;
+            padding: 0.5em 0.75em;
             border-radius: 1em;
             box-shadow: 0px 3px 6px rgb(195, 203, 208);
             border: none;
             outline: none;
             font-family: base.$site-body-font;
+            font-size: medium;
+          }
+
+          img:active {
+            transform: scale(0.95);
           }
         }
       }

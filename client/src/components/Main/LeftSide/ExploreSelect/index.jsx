@@ -52,7 +52,9 @@ const ExploreSelect = props => {
 
   const searchShow = () => {
     let tempShowInfo;
-    setSearchValue("")
+    setSeasonsInfo( [] );
+    setShowInfo( {} );
+    setSearchValue("");
 
     axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
       .then(res =>{
@@ -197,13 +199,12 @@ const ExploreSelect = props => {
           <section className="show-results">
             <div className="show-search-results">
               <div className="show-name-results">
-                { seasonsInfo.length !== 0 && <span>SHOW:</span> }
-                <ul><li>{ showInfo.name }</li></ul>
+                <span className="show-title">{ showInfo.name }</span>
               </div>
               { seasonsInfo.length !== 0 && 
                 <div className="season-results">
-                  <span> SEASONS:</span>
-                  <ul className="season-list">{ seasonItem }</ul> 
+                  <span className="title"> SEASONS:</span>
+                  <ul className="season-list tree">{ seasonItem }</ul> 
                 </div>
               }
             </div> 
@@ -214,14 +215,15 @@ const ExploreSelect = props => {
           <section className="user-results">
             <div className="user-search-results">
               <div className="users">
-                { showsInfo.length !== 0 && <span>USERS:</span> }
-                <ul>
-                  <li onClick={displayUser}>{ userInfo.username }</li>
-                </ul>
+                <span onClick={displayUser} className="users-name">{ userInfo.username }</span> 
               </div>
               <div className="shows">
-                { showsInfo.length !== 0 && <span> SHOWS:</span> }
-                { showsInfo.length !== 0 && <ul className="show-list">{ showItem }</ul> }
+                { showsInfo.length !== 0 && 
+                <div>
+                  <span className="shows-name"> SHOWS:</span>
+                  <ul className="show-list tree">{ showItem }</ul>
+                </div>
+                }
               </div>
             </div>
           </section>
@@ -233,3 +235,16 @@ const ExploreSelect = props => {
 
 
 export default ExploreSelect;
+
+
+
+
+// Code for user if we want to change back to list view:
+// { showsInfo.length !== 0 && 
+//   <div>
+//     <span className="users-name">USERS:</span> 
+//     <ul>
+//       <li onClick={displayUser}>{ userInfo.username }</li>
+//     </ul>
+//   </div>
+// }
