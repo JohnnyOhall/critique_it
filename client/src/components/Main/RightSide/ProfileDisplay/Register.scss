@@ -1,14 +1,12 @@
 .register-instructions {
-  padding-top: 2em;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-  height: 100%;
 
   .how-to {
-    flex-grow: 2;
-    padding: 0 3.5em;
-    font-size: larger;
+    flex-grow: 0;
+    font-size: large;
+    margin-bottom: 0.5em;
 
     h2 {
       margin-bottom: 1em;
@@ -19,10 +17,15 @@
     }
   }
 
-  .terms {
+  .register-image {
     flex-grow: 1;
     padding: 0 3.5em;
-    font-size: larger;
+  }
+
+  .terms {
+    flex-grow: 0;
+    font-size: large;
+    margin-top: 0.5em;
 
     h2 {
       margin-bottom: 1em;
