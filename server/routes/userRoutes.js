@@ -8,103 +8,197 @@ const db = require( '../db/connection' );
 
 
 //Route to deactive user (will set active to false) - Not in production yet
-router.delete( '/:id/deactivate', ( req, res ) => {
+// router.delete( '/:id/deactivate', ( req, res ) => {
 
-  const disableUsers = user => {
+//   const disableUsers = user => {
 
-    const disableUser = `
-      UPDATE users
-      SET active = FALSE,
-      updated = (to_timestamp(${ Date.now() } / 1000.0))
-      WHERE id = $1;
-    `;
+//     const disableUser = `
+//       UPDATE users
+//       SET active = FALSE,
+//       updated = (to_timestamp(${ Date.now() } / 1000.0))
+//       WHERE id = $1;
+//     `;
 
-    const values = [ user.id ]; // set this to req.session.userID (or the other 1)
+//     const values = [ user.id ]; // set this to req.session.userID (or the other 1)
 
-    if ( Number( req.params.id ) !== user.id ) {
-      return res.send( 'Invalid Request ...' )
-    };
+//     if ( Number( req.params.id ) !== user.id ) {
+//       return res.send( 'Invalid Request ...' )
+//     };
 
-    return db.query( disableUser, values )
-      .then(() => {
-        res.send( 'User Deactivated!' )
-        req.session = null;
-      })
-      .catch(( err ) => console.log( err.message ));
+//     return db.query( disableUser, values )
+//       .then(() => {
+//         res.send( 'User Deactivated!' )
+//         req.session = null;
+//       })
+//       .catch(( err ) => console.log( err.message ));
 
-  };
+//   };
 
-  disableUsers( req.body );
-});
+//   disableUsers( req.body );
+// });
 
 
 //Route to reactivate user (will set active to true) - Not in production yet
-router.patch( '/:id/reactivate', ( req, res ) => {
+// router.patch( '/:id/reactivate', ( req, res ) => {
 
-  const enableUsers = user => {
+//   const enableUsers = user => {
 
-    const enableUser = `
-      UPDATE users
-      SET active = TRUE,
-      updated = (to_timestamp(${ Date.now() } / 1000.0))
-      WHERE id = $1
-      RETURNING *;
-    `;
+//     const enableUser = `
+//       UPDATE users
+//       SET active = TRUE,
+//       updated = (to_timestamp(${ Date.now() } / 1000.0))
+//       WHERE id = $1
+//       RETURNING *;
+//     `;
 
-    const values = [ user.id ]; // set this to req.session.userID (or the other 1)
+//     const values = [ user.id ]; // set this to req.session.userID (or the other 1)
 
-    if ( Number( req.params.id ) !== user.id ) {
-      return res.send( 'Invalid Request ...' );
-    };
+//     if ( Number( req.params.id ) !== user.id ) {
+//       return res.send( 'Invalid Request ...' );
+//     };
 
-    return db.query( enableUser, values )
-      .then(( data ) => {
+//     return db.query( enableUser, values )
+//       .then(( data ) => {
 
-        const { email, id } = data.rows[ 0 ];
+//         const { email, id } = data.rows[ 0 ];
 
-        req.session.userID = id;
-        res.json({ email });
+//         req.session.userID = id;
+//         res.json({ email });
 
-      })
-      .catch(( err ) => console.log( err.message ));
+//       })
+//       .catch(( err ) => console.log( err.message ));
 
-  };
+//   };
 
-  enableUsers( req.body );
+//   enableUsers( req.body );
+// });
+
+
+router.patch( '/update/password', ( req, res ) => {
+
+  const queryString = `
+  SELECT * FROM users
+  WHERE email = '${ req.body.email }';
+  `;
+
+  db.query( queryString )
+    .then(data => {
+      password = data.rows[0].password
+
+      return bcrypt.compare( req.body.currentPassword, password )
+    })
+    .then( result  => {
+
+      if ( !result ) return res.status( 401 ).send( 'invalid password!' );
+
+      bcrypt.genSalt( 10, ( err, salt ) => {
+
+        bcrypt.hash( req.body.password, salt, ( err, hash ) => {
+          
+          const updatePassword = `
+            UPDATE users
+            SET password = '${hash}',
+            updated = (to_timestamp(${ Date.now() } / 1000.0))
+            WHERE id = ${req.session.userID}
+            RETURNING *;
+          `;
+
+          return db.query( updatePassword )
+        });
+      });
+    })
+    .then(( ) => res.send('Password changed Successfully!'))
+    .catch(( err ) => {
+      console.log( err.message );
+    });  
 });
 
 
-// Allows to update user information - currently just email / not in production
-router.patch( '/:id/update', ( req, res ) => {
 
-  const enableUsers = user => {
+router.patch( '/update/bio', ( req, res ) => {
 
-    const enableUser = `
-    UPDATE users
-    SET email = $1,
-    updated = (to_timestamp(${ Date.now() } / 1000.0))
-    WHERE id = $2
-    RETURNING *;
-    `;
+  const updateBio = `
+  UPDATE users
+  SET bio = '${req.body.bio}',
+  updated = (to_timestamp(${ Date.now() } / 1000.0))
+  WHERE id = ${req.session.userID}
+  RETURNING *;
+  `;
 
-    const values = [ user.email, user.id ];
+  return db.query( updateBio )
+    .then(( data ) => {
+      const bio = data.rows[ 0 ].bio;
+      res.json({ bio });
+    })
+    .catch(( err ) => {
+      console.log( err.message );
+    });
 
-    if ( Number( req.params.id ) !== user.id ) {
-      return res.send( 'Invalid Request ...' );
-    }; // set this to req.session.userID (or the other 1)
+});
 
-    return db.query( enableUser, values )
-      .then(( data ) => {
-        const email = data.rows[ 0 ].email;
-        res.json({ email });
-      })
-      .catch(( err ) => {
-        console.log( err.message );
-      });
+router.patch( '/update/email', ( req, res ) => {
 
-  };
+  const updateEmail = `
+  UPDATE users
+  SET email = '${req.body.email}',
+  updated = (to_timestamp(${ Date.now() } / 1000.0))
+  WHERE id = ${req.session.userID}
+  RETURNING *;
+  `;
 
-  enableUsers( req.body );
+  return db.query( updateEmail )
+    .then(( data ) => {
+      const email = data.rows[ 0 ].email;
+      res.json({ email });
+    })
+    .catch(( err ) => {
+      console.log( err.message );
+    });
+
+});
+
+router.patch( '/update/username', ( req, res ) => {
+
+  const updateUsername = `
+  UPDATE users
+  SET username = '${req.body.username}',
+  updated = (to_timestamp(${ Date.now() } / 1000.0))
+  WHERE id = ${req.session.userID}
+  RETURNING *;
+  `;
+
+  return db.query( updateUsername )
+    .then(( data ) => {
+      const username = data.rows[ 0 ].username;
+      res.json({ username });
+    })
+    .catch(( err ) => {
+      console.log( err.message );
+    });
+
+});
+
+
+
+router.patch( '/update/avatar/:avatar', ( req, res ) => {
+
+  const updateAvatar = `
+  UPDATE users
+  SET avatar = ${req.params.avatar},
+  updated = (to_timestamp(${ Date.now() } / 1000.0))
+  WHERE id = ${req.session.userID}
+  RETURNING *;
+  `;
+
+  return db.query( updateAvatar )
+    .then(( data ) => {
+      const avatar = data.rows[ 0 ].avatar;
+      res.json({ avatar });
+    })
+    .catch(( err ) => {
+      console.log( err.message );
+    });
+
 });
 
 
