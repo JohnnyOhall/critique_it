@@ -26,7 +26,7 @@ const ExploreSelect = props => {
   const [ showsInfo, setShowsInfo ] = useState( [] );
   const [ seasonsInfo, setSeasonsInfo ] = useState( [] );
 
-  const { PROFILE, setDisplay, setProfileGlobal} = useContext(ExploreContext)
+  const { PROFILE, DEFAULT, setDisplay, setProfileGlobal} = useContext(ExploreContext)
 
   const displayUser = () => {
     setDisplay(PROFILE);
