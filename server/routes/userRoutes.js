@@ -165,9 +165,12 @@ router.get( '/search/:username', ( req, res ) => {
   db.query( userQuery )
   .then( data => {
     const userData = data.rows[ 0 ];
-    !userData.active ? 
-      res.send( 'User Inactive!' ) :
-      res.json({ userData });
+
+    if (!userData.active) {
+      return res.send( 'User Inactive');
+    } else {
+      return res.json({ userData });
+    }
   })
   .catch( err => {
     res

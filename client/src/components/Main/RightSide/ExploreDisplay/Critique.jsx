@@ -34,7 +34,7 @@ const Critique = props => {
   useEffect( () => {
     let extract, extractBox, extractBadge;
 
-    axios.get(`/pages/view/${critiqueGlobal}`)
+    axios.get(`/pages/view/${critiqueGlobal || 1}`)
       .then(res => {
         extract = res.data.pageData        
         return axios.get( `/votes/${critiqueGlobal}` )

@@ -26,7 +26,7 @@ const ExploreSelect = props => {
   const [ showsInfo, setShowsInfo ] = useState( [] );
   const [ seasonsInfo, setSeasonsInfo ] = useState( [] );
 
-  const { PROFILE, setDisplay, setProfileGlobal, profileGlobal} = useContext(ExploreContext)
+  const { PROFILE, setDisplay, setProfileGlobal} = useContext(ExploreContext)
 
   const displayUser = () => {
     setDisplay(PROFILE);
@@ -34,8 +34,7 @@ const ExploreSelect = props => {
 
   const searchUser = () => {
     let tempUserInfo;
-    setUserInfo( {} );
-    setShowInfo( {} );
+    setSearchValue("");
 
     axios.get( `users/search/${ searchValue }` )
       .then( res => {
@@ -53,9 +52,7 @@ const ExploreSelect = props => {
 
   const searchShow = () => {
     let tempShowInfo;
-    setUserInfo( {} );
-    setShowInfo( {} );
-    setSeasonsInfo( [] );
+    setSearchValue("")
 
     axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
       .then(res =>{
@@ -126,14 +123,16 @@ const ExploreSelect = props => {
                   id="search-bar" 
                   type="text" 
                   placeholder="Enter a show name"
+                  value={searchValue}
                   onChange={ e => setSearchValue( e.target.value )}
                 />
-                <img 
+                { searchValue === "" && <img src="images/search.png" height="35px" width="35px"/> }
+                { searchValue !== "" && <img 
                   src="images/search.png" 
                   height="35px" 
                   width="35px"
-                  onClick={ searchShow } 
-                />
+                  onClick={ searchShow }
+                /> }
               </div>
             }
             { search === "user" &&
@@ -142,14 +141,16 @@ const ExploreSelect = props => {
                   id="search-bar" 
                   type="text" 
                   placeholder="Enter a username"
+                  value={searchValue}
                   onChange={ e => setSearchValue( e.target.value )}
                 />
-                <img 
+                { searchValue === "" && <img src="images/search.png" height="35px" width="35px"/> }
+                { searchValue !== "" && <img 
                   src="images/search.png" 
                   height="35px" 
                   width="35px"
-                  onClick={ searchUser } 
-                />
+                  onClick={ searchUser }
+                /> }
               </div>
             }
           </div>
@@ -166,6 +167,8 @@ const ExploreSelect = props => {
                   setSearch( e.target.value )
                   setSeasonsInfo([]);
                   setShowInfo([]);
+                  setUserInfo([]);
+                  setShowsInfo([]);
                 }}
                 checked={ search === "show" }
               />
@@ -181,6 +184,8 @@ const ExploreSelect = props => {
                   setSearch( e.target.value )
                   setSeasonsInfo([]);
                   setShowInfo([]);
+                  setUserInfo([]);
+                  setShowsInfo([]);
                 }}
                 checked={ search === "user" }
               />
@@ -192,7 +197,7 @@ const ExploreSelect = props => {
           <section className="show-results">
             <div className="show-search-results">
               <div className="show-name-results">
-                <span>SHOW:</span>
+                { seasonsInfo.length !== 0 && <span>SHOW:</span> }
                 <ul><li>{ showInfo.name }</li></ul>
               </div>
               { seasonsInfo.length !== 0 && 
@@ -209,13 +214,13 @@ const ExploreSelect = props => {
           <section className="user-results">
             <div className="user-search-results">
               <div className="users">
-                <span>USERS:</span>
+                { showsInfo.length !== 0 && <span>USERS:</span> }
                 <ul>
                   <li onClick={displayUser}>{ userInfo.username }</li>
                 </ul>
               </div>
               <div className="shows">
-                <span> SHOWS:</span>
+                { showsInfo.length !== 0 && <span> SHOWS:</span> }
                 { showsInfo.length !== 0 && <ul className="show-list">{ showItem }</ul> }
               </div>
             </div>
