@@ -2,53 +2,88 @@
 
 
 .user-results {
-  flex-grow: 3;
-  padding-top: 3em;
 
-  .user-search-results {
-    flex-grow: 1;
-    padding-bottom: 2em;
+  .users {
+    padding: 2.5em 0;
 
-    .users {
+    .users-name {
+      color: base.$font-dark-red;
+      font-size: 30px;
+      font-weight: bold;
       display: flex;
-      flex-direction: flex-start;
-      flex-grow: 1;
-      padding-bottom: 2em;
+    }
+  }
 
-      ul {
-        list-style-type: none;
-      }
+  .shows {
+    height: 600px;
+    overflow-y: scroll;
+    font-size: large;
+
+    .shows-name {
+      color: base.$font-dark-red;
+      font-weight: bold;
+      display: flex;
+      margin-bottom: 0.75em;
     }
 
-    .shows {
-      display: flex;
-      flex-direction: flex-start;
-      flex-grow: 1;
+    ul {
+      margin: 0;
+      padding-left: 1.25em;
+      line-height: 2em;
+      list-style: none;
+      text-align: start;
+    }
+    
+    ul li {
+      position: relative;
+    }
+    
+    ul li:before {
+      position: absolute;
+      left: -15px;
+      width: 12px;
+      height: 15px;
+      content: "";
+      border-bottom: 1px dotted base.$font-dark-red;
+      border-left: 1px dotted base.$font-dark-red;
+    }
 
-      ul {
-        list-style-type: none;
+    ul.tree > li:first-child:before {
+      border-left: none;
+    }
+    
+    ul li:after {
+      position: absolute;
+      top: 1.1em;
+      bottom: 1px;
+      left: -15px;
+      display: block;
+      content: "";
+      border-left: 1px dotted base.$font-dark-red;
+    }
+    
+    ul li:last-child:after {
+      display: none;
+    }
 
-        li {
-          padding-bottom: 0.5em;
-        }
-      }
+    .episode-item-by-user {
+      padding: 0.2em 0.3em;
+      margin: 0.5em 0;
+      width: auto;
+      background-color: whitesmoke;
+      border-radius: 0.5em;
+      color: base.$font-dark-red;
+      cursor: pointer;
+      box-shadow: 0px 3px 6px rgb(195 203 208);
+      font-size: medium;
 
-      .episode-item-by-user {
-        display: flex;
-        align-items: flex-start;
-        flex-direction: column;
-        padding: 0.5em;
-        width: 215px;
-        background-color: whitesmoke;
-        border-radius: 0.5em;
-        cursor: pointer;
-
-        .title {
-          font-size: large;
-          font-weight: bold;
-          color: base.$font-dark-red;
-        }
+      span {
+        margin-right: 1em;
       }
     }
+  }
+
+  .shows::-webkit-scrollbar {
+    color: transparent;
   }
 }

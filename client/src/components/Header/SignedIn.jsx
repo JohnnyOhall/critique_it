@@ -32,13 +32,15 @@ const SignedIn = props => {
   return (
     <div className="signed-in" >
       <div className="username-signout">
-        <div className="username">{ props.username } 🔒</div>
         <div>
-          <button className="signout-button" type="submit" onClick={ signOut }>Sign-Out</button>
+          <button className="signout-button" type="submit" onClick={ signOut }>
+            <img src="images/signout.png"/>
+          </button>
         </div>
-      </div>
-      <div className="avatar-image">
-        <img src={ avatarImage } width="100px" height="100px"></img>
+        <div className="avatar-image">
+          <img src={ avatarImage } width="150px" height="150px"></img>
+        </div>
+        <div className="username">{ props.username } 🔒</div>
       </div>
     </div>
   );
