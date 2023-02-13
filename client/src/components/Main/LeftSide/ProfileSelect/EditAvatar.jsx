@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import axios from 'axios';
+import Cookies from "js-cookie";
 
 import './EditAvatar.scss'
 
@@ -7,7 +9,13 @@ const EditAvatar = props => {
   const [ avatar, setAvatar ] = useState( props.current )
 
   const update = () => {
-
+    axios.patch(`/users/update/avatar/${avatar}`)
+      .then(res => {
+        Cookies.set( 'avatar', res.data.avatar);
+        props.mode( "share" );
+        props.set({...props.user, avatar: res.data.avatar})
+      })
+      .catch(console.log)
   }
 
   return (

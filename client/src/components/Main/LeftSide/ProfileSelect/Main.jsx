@@ -94,8 +94,21 @@ const Main = props => {
 
       <div className="profile-edit">
         { editUser === "share" && <ShareProfile /> }
-        { editUser === "avatar" && <EditAvatar mode={setEditUser} current={user.avatar}/> }
-        { editUser === "userInfo" && <EditUserInfo mode={setEditUser}/> }
+        { editUser === "avatar" && 
+          <EditAvatar 
+            mode={setEditUser} 
+            current={user.avatar} 
+            set={setUser} 
+            user={user}
+          /> 
+        }
+        { editUser === "userInfo" && 
+          <EditUserInfo 
+            mode={setEditUser}
+            current={user}
+            set={setUser} 
+            user={user}
+          /> }
       </div> 
 
     </div>
