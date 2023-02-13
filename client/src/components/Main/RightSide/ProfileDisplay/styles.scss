@@ -5,8 +5,9 @@
 
   .profile-display {
     height: base.$container-height;
+    font-family: base.$site-body-font;
     margin: 3em;
     border-style: solid;
-    border-color: black;
+    border-color: transparent;
   }
 }

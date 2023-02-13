@@ -1,0 +1,35 @@
+.register-instructions {
+  padding-top: 2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 100%;
+
+  .how-to {
+    flex-grow: 2;
+    padding: 0 3.5em;
+    font-size: larger;
+
+    h2 {
+      margin-bottom: 1em;
+    }
+
+    li {
+      text-align: start;
+    }
+  }
+
+  .terms {
+    flex-grow: 1;
+    padding: 0 3.5em;
+    font-size: larger;
+
+    h2 {
+      margin-bottom: 1em;
+    }
+
+    li {
+      text-align: start;
+    }
+  }
+}
