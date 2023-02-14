@@ -114,26 +114,66 @@ const Critique = props => {
 
     if (first_time) {
       axios.post('/votes/explore/add', votePackage)
-      .then(console.log)
+      .then(res => {
+        console.log(res)
+        return axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`)
+      })
+      .then(res => {
+        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
+      })
       .catch(console.log);
 
     } else {
       axios.patch('/votes/update', votePackage)
-      .then(console.log)
+      .then(res => {
+        console.log(res)
+        return axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`)
+      })
+      .then(res => {
+        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
+      })
       .catch(console.log);
     }
   
   };
 
   const voteDown = (first_time) => {
+    const votePackage = {
+      upvoted: false,
+      page_id: critiqueGlobal,
+      creator_id: CritiqueInfo.creator_id,
+      episode_id: CritiqueInfo.episode_id
+    }
 
+    if (first_time) {
+      axios.post('/votes/explore/add', votePackage)
+      .then(res => {
+        console.log(res)
+        return axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`)
+      })
+      .then(res => {
+        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
+      })
+      .catch(console.log);
+
+    } else {
+      axios.patch('/votes/update', votePackage)
+      .then(res => {
+        console.log(res)
+        return axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`)
+      })
+      .then(res => {
+        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
+      })
+      .catch(console.log);
+    }
   };
 
   return (
     <section className="edit-box" style={{backgroundColor: CritiqueInfo.color}}>
       <div className="nav">
         <div className="follow">
-            <img src="follow.png" height="50px" width="50px"/>
+          <img src="https://purepng.com/public/uploads/large/heart-icon-y1k.png" height="50px" width="50px"/>
         </div>
         <div className="page-avatar">
           <div className="avatar-container">
