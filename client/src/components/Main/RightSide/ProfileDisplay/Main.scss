@@ -1,0 +1,38 @@
+@use '../../../../styles/base.scss';
+
+.profile-display.page {
+
+  display:flex;
+  flex-direction: column;
+  font-family: base.$site-body-font;
+
+  .profile-headers{
+    flex-grow: 0;
+    display: flex;
+    align-items: center;
+
+    img {
+      padding-right: 2em
+    }
+
+    p {
+      border-top: 1px solid base.$font-dark-red;
+      width: 100%;
+    }
+
+    span {
+      font-size: 25px;
+      padding-right: 1em;
+      color: base.$font-dark-red
+    }
+  }
+
+  .profile-content-lists{
+    flex-grow: 1;
+
+    li {
+      padding: 4px;
+      list-style-type: none;
+    }
+  }
+}

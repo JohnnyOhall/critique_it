@@ -249,6 +249,30 @@ router.get( '/:email', ( req, res ) => {
 
 });
 
+router.get( '/explore/:id', ( req, res ) => {
+
+  const userQuery = `
+  SELECT email, avatar, username, bio, active FROM users
+  WHERE id = ${req.params.id};
+  `;
+
+  db.query( userQuery )
+  .then( data => {
+    const userData = data.rows[ 0 ];
+    
+    !userData.active ? 
+      res.send( 'User Inactive!' ) :
+      res.json({ userData });
+     
+  })
+  .catch( err => {
+    res
+      .status( 500 )
+      .json({ error: err.message });
+  });
+
+});
+
 router.get( '/search/:username', ( req, res ) => {
 
   const userQuery = `

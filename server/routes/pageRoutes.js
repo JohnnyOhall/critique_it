@@ -273,6 +273,46 @@ router.patch( '/update', ( req, res ) => {
   createPage( req.body );
 });
 
+router.patch( '/votes', ( req, res ) => {
+
+  if (!req.session.userID) {
+    return res.send('Invalid vote - please login!')
+  }
+
+  const type = req.query.type
+  const page_id = req.query.page_id
+
+  console.log('back-test', type, page_id)
+  
+  if (type === "upvote") {
+
+    const upVote = `
+      Update pages
+      SET votes = votes + 1
+      WHERE id = ${page_id}
+      RETURNING *;
+    `;
+
+    return db.query( upVote )
+      .then((data)=> res.json({data}))
+      .catch(console.log)
+  }
+
+  if (type === "downvote") {
+
+    const downVote = `
+      Update pages
+      SET votes = votes - 1
+      WHERE id = ${page_id}
+      RETURNING *;
+    `;
+
+    return db.query( downVote )
+      .then((data)=> res.json({data}))
+      .catch(console.log);
+  }
+
+})
 
 // Route to delete existing pages (not implimented yet)
 router.delete ( '/:id/delete', ( req, res ) => {
