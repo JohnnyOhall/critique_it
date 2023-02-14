@@ -23,7 +23,12 @@ const Main = props => {
   const [ editUser, setEditUser ] = useState("share");
   
   useEffect( () => {
-    let tempData;
+    let tempData, stats;
+    let admireData = {
+      admirers: 0,
+      admiring: 0
+    };
+
     const email = Cookies.get( 'email' );
 
     axios.get( `/users/${ email }` )
@@ -32,16 +37,30 @@ const Main = props => {
         return axios.get(`/pages/profile/userstats`);
       })
       .then( res => { 
-        const stats = res.data.results;
+        stats = res.data.results;
+
+        return axios.get(`/admire/find?method=p_admirer`)  
+      })
+      .then( res => {
+        admireData.admirers = res.data.data.rows.length;
+        return axios.get(`/admire/find?method=p_admiring`)
+      })
+      .then ( res => {
+        admireData.admiring = res.data.data.rows.length;
+
         return setUser({
           ...tempData, 
           score: stats.score, 
           shows: stats.shows, 
-          episodes: stats.episodes 
+          episodes: stats.episodes,
+          admirers: admireData.admirers,
+          admiring: admireData.admiring 
         });
       })
       .catch( console.log );
 
+
+      
   }, []);
 
   return (
@@ -87,8 +106,8 @@ const Main = props => {
         <p><b>Total shows added: </b>{ user.shows } </p>
         <p><b>Total Critiques: </b>{ user.episodes }</p>
         <p><b>Total score: </b>{ user.score }</p>
-        <p><b>Admirers: </b>12</p>
-        <p><b>Admiring: </b>5</p>
+        <p><b>Admirers: </b>{ user.admirers }</p>
+        <p><b>Admiring: </b>{ user.admiring }</p>
       </div>
 
 

@@ -159,9 +159,6 @@ const Critique = props => {
   return (
     <section className="edit-box" style={{backgroundColor: CritiqueInfo.color}}>
       <div className="nav">
-        <div className="follow">
-          <img src="https://purepng.com/public/uploads/large/heart-icon-y1k.png" height="50px" width="50px"/>
-        </div>
         <div className="page-avatar">
           <div className="avatar-container">
             <img src={ avatarImages[ CritiqueInfo.avatar ] } width="100px" height="100px"/>
