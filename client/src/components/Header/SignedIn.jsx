@@ -27,7 +27,7 @@ const SignedIn = props => {
       });
   };
 
-  const avatarImage = avatarImages[props.avatar];
+  // const avatarImage = avatarImages[props.avatar];
 
   return (
     <div className="signed-in" >
@@ -38,9 +38,9 @@ const SignedIn = props => {
           </button>
         </div>
         <div className="avatar-image">
-          <img src={ avatarImage } width="150px" height="150px"></img>
+          <img src={ avatarImages[Cookies.get('avatar')] } width="150px" height="150px"></img>
         </div>
-        <div className="username">{ props.username } 🔒</div>
+        <div className="username">{ Cookies.get('username') } 🔒</div>
       </div>
     </div>
   );

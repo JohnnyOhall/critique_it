@@ -13,6 +13,8 @@ const Add = props => {
     search 
   } = useAddShow(props);
 
+  console.log(Object.keys(show).length === 0)
+
   return (
     <div className="critique-select">
 
@@ -39,8 +41,8 @@ const Add = props => {
             </form>
           </div>
           
-          <div className="top-center">
-              <div>
+            <div className="top-center">
+            { Object.keys(show).length !== 0 && <> <div>
                 <span className="title">Show Title:</span>
                 <span className="content">{ show.name }</span>
               </div>
@@ -59,27 +61,27 @@ const Add = props => {
               <div>
                 <span className="title">Episodes:</span>
                 <span className="content">{ show.episodes }</span>
-              </div>
+              </div></> }
           </div>
 
           <div className="top-bottom">
-            <h2>Show Summary</h2>
-            <p>{ show.summary }</p>
-          </div>
-        </div>
+          { Object.keys(show).length !== 0 && <> <h2>Show Summary</h2>
+            <p>{ show.summary }</p> </> }
+          </div> 
+        </div> 
       
-
+        
         <div className="show-image box">
-          <img src={ show.image } />
+        { Object.keys(show).length !== 0 && <> <img src={ show.image } /> </>}
         </div>
 
         <div className="show-stats box">
-          <p>Show Stats</p>
-          <p>Users who added this show:</p>
-          <p>Average rating:</p>
-          <p>Average episodes critiqued:</p>
-          <p>Times searched:</p>
-        </div>
+        { Object.keys(show).length !== 0 && <> <p>Show Stats</p>
+          <p>Users who added this show: 12</p>
+          <p>Average rating:  6.5</p>
+          <p>Average episodes critiqued: 3.4</p>
+          <p>Times searched: 45 </p> </>}
+        </div> 
 
 
         <div className="show-buttons box">

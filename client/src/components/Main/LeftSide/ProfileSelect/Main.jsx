@@ -87,8 +87,8 @@ const Main = props => {
         <p><b>Total shows added: </b>{ user.shows } </p>
         <p><b>Total Critiques: </b>{ user.episodes }</p>
         <p><b>Total score: </b>{ user.score }</p>
-        <p><b>Admirers: </b></p>
-        <p><b>Admiring: </b></p>
+        <p><b>Admirers: </b>12</p>
+        <p><b>Admiring: </b>5</p>
       </div>
 
 

@@ -1,5 +1,5 @@
 // External imports
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 // Components & hooks
 import Header from './Header';
@@ -19,12 +19,40 @@ import ExploreProvider from '../providers/ExploreProvider';
 
 const App = () => { 
 
+  const [scrollTop, setScrollTop] = useState(false);
+
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.pageYOffset > 340) {
+        setScrollTop(true);
+      } else {
+        setScrollTop(false);
+      }
+    });
+  }, []);
+
+  const bottomToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+
   return (
     <LoginProvider>
       <RegisterProvider>
         <ExploreProvider>
           <CritiqueProvider>
             <div className="App">
+              { scrollTop && (
+                
+                <img
+                  onClick={bottomToTop} 
+                  className="backToTop" 
+                  src="https://ps.w.org/wpfront-scroll-top/assets/icon-256x256.png?rev=1534312"
+                  />
+            
+              )}
               <Header />
               <Nav />
               <Main />
