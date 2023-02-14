@@ -28,10 +28,18 @@ const CritiquesItem = props => {
   return (
     <li onClick={setGlobal}>
       <div className="critiques-list-show-item">
-        <span><b> ✏️ Critiquer: </b>{username}</span>
-        <span><b>✅ Votes: </b>{votes}</span>
-        <span><b>⭐ Rating: </b>{rating}</span>
-        <span><b>📺 Last Watched: </b>{watched}</span>
+        <span><b> ✏️ Critiquer: </b>
+          <span style={{ color: "black" }}>{ username }</span>
+        </span>
+        <span><b>✅ Votes: </b>
+          <span style={{ color: "black" }}>{ votes }</span>
+        </span>
+        <span><b>⭐ Rating: </b>
+          <span style={{ color: "black" }}>{ rating }</span>
+        </span>
+        <span><b>📺 Last Watched: </b>
+          <span style={{ color: "black" }}>{ watched }</span>
+        </span>
       </div>
     </li>
   );

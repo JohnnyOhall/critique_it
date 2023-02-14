@@ -19,11 +19,19 @@ const EpisodeItem = props => {
   return (
     <li onClick={setGlobal}>
       <div className="episode-item-by-user">
-        <span><b>Episode Title:</b> {show_title}</span>
+        <span><b>Episode Title: </b>
+          <span style={{ color: "black" }}>{ show_title }</span>
+        </span>
         <div>
-          <span><b>✅ Votes:</b> {votes}</span>
-          <span><b>⭐ Rating:</b> {rating}</span>
-          <span><b>📺 Last Watched:</b> {watched}</span>
+          <span><b>✅ Votes: </b>
+            <span style={{ color: "black" }}>{ votes }</span>
+          </span>
+          <span><b>⭐ Rating: </b>
+            <span style={{ color: "black" }}>{ rating }</span>
+          </span>
+          <span><b>📺 Last Watched: </b>
+            <span style={{ color: "black" }}>{ watched }</span>
+          </span>
         </div>
       </div>
     </li>
