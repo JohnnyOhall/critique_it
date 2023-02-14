@@ -6,6 +6,8 @@
   align-items: center;
   height: 100%;
   font-family: base.$site-body-font;
+  border-radius: 0.5em;
+  
 
   .nav {
     flex-grow: 0.25;
@@ -23,8 +25,8 @@
       .avatar-container {
         img {
           border-radius: 50%;
-          box-shadow: 0px 6px 12px rgb(40, 39, 39);
-          background-color: whitesmoke;
+          box-shadow: base.$box-shadow-medium;
+          background-color: base.$font-white;
         }
       }
     }
@@ -97,8 +99,8 @@
       border: none;
       outline: none;
       border-radius: 0.75em;
-      background-color: whitesmoke;
-      box-shadow: 0px 6px 12px rgb(40, 39, 39);
+      background-color: base.$font-white;
+      box-shadow: base.$box-shadow-medium;
       font-size: medium;
       line-height: 1;
     }

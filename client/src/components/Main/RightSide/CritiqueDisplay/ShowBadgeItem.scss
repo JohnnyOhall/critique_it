@@ -9,9 +9,9 @@
 
   .content-container {
     img {
-      background-color: whitesmoke;
+      background-color: base.$font-white;
       border-radius: 50%;
-      box-shadow: 0px 6px 12px rgb(3 3 3);
+      box-shadow: base.$box-shadow-medium;
     }
   }
 
@@ -29,16 +29,16 @@
 
     span {
       background-color: base.$font-dark-red;
-      color: whitesmoke;
-      box-shadow: 0px 3px 10px rgb(3 3 3);
+      color: base.$font-white;
       border-radius: 0.5em;
-      padding: 0.3em 0.5em;
+      padding: 0.4em 0.5em;
       font-weight: bold;
-      font-size: 14px;
+      font-size: 15px;
+      box-shadow: base.$box-shadow-medium;
     }
 
     img {
-      box-shadow: 0px 6px 12px rgb(3 3 3);
+      box-shadow: base.$box-shadow-medium;
     }
   }
 }
@@ -51,7 +51,7 @@
 
   .content-container {
     img {
-      background-color: whitesmoke;
+      background-color: base.$font-white;
       border-radius: 50%;
       box-shadow: 0px 6px 12px rgb(3 3 3);
     }
@@ -71,16 +71,16 @@
 
     span {
       background-color: base.$font-dark-red;
-      color: whitesmoke;
-      box-shadow: 0px 3px 10px rgb(3 3 3);
+      color: base.$font-white;
       border-radius: 0.5em;
       padding: 0.3em 0.5em;
       font-weight: bold;
       font-size: 14px;
+      box-shadow: base.$box-shadow-medium;
     }
 
     img {
-      box-shadow: 0px 3px 10px rgb(3 3 3);
+      box-shadow: base.$box-shadow-medium;
     }
   }
 
@@ -94,16 +94,16 @@
 
     span {
       background-color: base.$font-dark-red;
-      color: whitesmoke;
-      box-shadow: 0px 3px 10px rgb(3 3 3);
+      color: base.$font-white;
       border-radius: 0.5em;
       padding: 0.3em 0.5em;
       font-weight: bold;
       font-size: 14px;
+      box-shadow: base.$box-shadow-medium;
     }
 
     img {
-      box-shadow: 0px 3px 10px rgb(3 3 3);
+      box-shadow: base.$box-shadow-medium;
     }
   }
 }

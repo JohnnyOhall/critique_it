@@ -9,9 +9,8 @@
   .register-title {
     font-size: xx-large;
     font-weight: bold;
-    padding: 0.5em 0.3em 0 0;
     margin-bottom: 0.7em;
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: base.$site-body-font;
   }
 
   .form-item {
@@ -19,7 +18,7 @@
 
     label {
       padding-right: 0.5em;
-      font-family: 'Noto Sans Display', sans-serif;
+      font-family: base.$site-body-font;
     }
 
     input {
@@ -29,15 +28,15 @@
       border-radius: 0.6em;
       padding: 0.3em;
       background-color: whitesmoke;
-      box-shadow: 0px 1px 3px rgb(218, 222, 225);
+      box-shadow: base.$box-shadow-light;
       font-size: 15px;
-      font-family: 'Noto Sans Display', sans-serif;
+      font-family: base.$site-body-font;
     }
   }
 
   .password-box {
     padding: 0.5em 0;
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: base.$site-body-font;
 
     input {
       margin: 0.5em;
@@ -46,9 +45,9 @@
       border-radius: 0.6em;
       padding: 0.3em;
       background-color: whitesmoke;
-      box-shadow: 0px 1px 3px rgb(218, 222, 225);
+      box-shadow: base.$box-shadow-light;
       font-size: 15px;
-      font-family: 'Noto Sans Display', sans-serif;
+      font-family: base.$site-body-font;
     }
   }
 
@@ -63,7 +62,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: base.$site-body-font;
     padding-top: 0.6em;
 
     .bio-input {
@@ -76,9 +75,9 @@
       border-radius: 0.7em;
       padding: 0.3em;
       background-color: whitesmoke;
-      box-shadow: 0px 1px 3px rgb(218, 222, 225);
+      box-shadow: base.$box-shadow-light;
       font-size: 15px;
-      font-family: 'Noto Sans Display', sans-serif;
+      font-family: base.$site-body-font;
     }
   }
 
@@ -90,8 +89,8 @@
     padding: 0.3em 0.9em;
     font-size: 18px;
     cursor: pointer;
-    font-family: 'Noto Sans Display', sans-serif;
-    box-shadow: 0px 1px 3px rgb(218, 222, 225);
+    font-family: base.$site-body-font;
+    box-shadow: base.$box-shadow-light;
 
     a {
       text-decoration: none;
@@ -112,7 +111,7 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    font-family: 'Noto Sans Display', sans-serif;
+    font-family: base.$site-body-font;
 
     .avatar-row {
       display: flex;
