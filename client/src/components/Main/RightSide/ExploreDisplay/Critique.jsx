@@ -9,6 +9,7 @@ import ShowBadgeItem from "../CritiqueDisplay/ShowBadgeItem";
 
 // Providers
 import { ExploreContext } from "../../../../providers/ExploreProvider";
+import { LoginContext } from "../../../../providers/LoginProvider";
 
 // Constants
 import { avatarImages } from "../../../../constants/constants";
@@ -19,12 +20,8 @@ import './styles.scss'
 
 const Critique = props => {
 
-  const { 
-    DEFAULT, 
-    setDisplay, 
-    critiqueGlobal, 
-    setCritiqueGlobal
-  } = useContext(ExploreContext);
+  const { critiqueGlobal } = useContext(ExploreContext);
+  const { loggedIn } = useContext(LoginContext)
 
   const [ CritiqueInfo, setCritiqueInfo ] = useState({});
   const [ boxes, setBoxes ] = useState([]);
@@ -34,34 +31,44 @@ const Critique = props => {
   useEffect( () => {
     let extract, extractBox, extractBadge;
 
-    axios.get(`/pages/view/${critiqueGlobal || 1}`)
+    if (loggedIn) {
+      axios.get(`/pages/view/${critiqueGlobal}`)
       .then(res => {
-        extract = res.data.pageData        
+        extract = res.data.pageData   
         return axios.get( `/votes/${critiqueGlobal}` )
       })
       .then(res => {
 
         if (Object.keys(res.data).length === 0) {
-
           setVoteStatus('default')
           setCritiqueInfo(extract)
-
-        } else {
-          const upvoted = res.data.voteData.upvoted
-
-          if (upvoted) {
-            setVoteStatus('true')
-            setCritiqueInfo(extract)
-          } else {
-            setVoteStatus('false');
-            setCritiqueInfo(extract)
-          }
-
-        }
+        } 
         
+        else {
+          const upvoted = res.data.voteData.upvoted
+          upvoted ? setVoteStatus('true') : setVoteStatus('false'); 
+        }
+
+        return axios.get(`/users/avatar/${extract.creator_id}`)
+      })
+      .then( res => setCritiqueInfo({...extract, avatar: res.data.avatar}))
+      .catch( console.log );
+    } 
+    
+    else {
+      axios.get(`/pages/view/${critiqueGlobal}`)
+      .then(res => {
+        extract = res.data.pageData    
+
+        return axios.get(`/users/avatar/${extract.creator_id}`)
+      })
+      .then( res => {
+        
+        setCritiqueInfo({...extract, avatar: res.data.avatar})
       })
       .catch( console.log );
-
+    }
+    
     axios.get(`boxes/${critiqueGlobal}`)
       .then(res => {
         extractBox = res.data.data.rows;
@@ -114,25 +121,15 @@ const Critique = props => {
 
     if (first_time) {
       axios.post('/votes/explore/add', votePackage)
-      .then(res => {
-        console.log(res)
-        return axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`)
-      })
-      .then(res => {
-        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
-      })
-      .catch(console.log);
+        .then( () => axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`))
+        .then( res => setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes}))
+        .catch( console.log );
 
     } else {
       axios.patch('/votes/update', votePackage)
-      .then(res => {
-        console.log(res)
-        return axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`)
-      })
-      .then(res => {
-        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
-      })
-      .catch(console.log);
+        .then( () => axios.patch( `/pages/votes?type=upvote&page_id=${critiqueGlobal}`))
+        .then(res => setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes}))
+        .catch(console.log);
     }
   
   };
@@ -147,25 +144,15 @@ const Critique = props => {
 
     if (first_time) {
       axios.post('/votes/explore/add', votePackage)
-      .then(res => {
-        console.log(res)
-        return axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`)
-      })
-      .then(res => {
-        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
-      })
-      .catch(console.log);
+        .then( () => axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`))
+        .then( res => setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes}))
+        .catch( console.log );
 
     } else {
       axios.patch('/votes/update', votePackage)
-      .then(res => {
-        console.log(res)
-        return axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`)
-      })
-      .then(res => {
-        return setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes})
-      })
-      .catch(console.log);
+      .then( () => axios.patch( `/pages/votes?type=downvote&page_id=${critiqueGlobal}`))
+      .then( res => setCritiqueInfo({...CritiqueInfo, votes: res.data.data.rows[0].votes}))
+      .catch( console.log );
     }
   };
 
@@ -185,6 +172,9 @@ const Critique = props => {
           <p>Season: <b>{CritiqueInfo.season_num}</b>  |  Episode: <b>{CritiqueInfo.episode_num}</b></p>
         </div>
         <div className="voting">
+
+
+          { loggedIn && <>
             {voteStatus === "true" && <img src="images/upvote-active.png" height="25px" width="25px" /> }
             {voteStatus === "false" && 
               <img 
@@ -227,8 +217,22 @@ const Critique = props => {
                   voteDown(true);
                 }}
               /> 
-            }
-        </div>
+            } </> }
+
+
+            { !loggedIn && <>
+              <div>
+                <img 
+                  src="https://www.uidownload.com/files/795/808/908/thumb-up-outline-symbol-icon.png" 
+                  height="50px" 
+                  width="50px" 
+                />
+              </div>
+              <div> {CritiqueInfo.votes} </div>
+            </>}
+
+
+        </div> 
       </div>
 
 

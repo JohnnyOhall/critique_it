@@ -15,28 +15,17 @@ import './Profile.scss';
 
 const Profile = props => {
 
-  const { 
-    DEFAULT, 
-    setDisplay, 
-    profileGlobal, 
-    setProfileGlobal
-  } = useContext(ExploreContext);
+  const { profileGlobal } = useContext( ExploreContext );
 
-  const [ ProfileInfo, setProfileInfo ] = useState({})
-
-  
   const [ user, setUser ] = useState( {} );
 
   useEffect( () => {
     let tempData;
-    const email = Cookies.get( 'email' );
-
-    console.log(ProfileInfo)
 
     axios.get( `/users/explore/${ profileGlobal }` )
       .then( res => { 
         tempData = res.data.userData;
-        return axios.get(`/pages/profile/userstats`);
+        return axios.get(`/pages/explore/userstats/${profileGlobal}`);
       })
       .then( res => { 
         const stats = res.data.results;

@@ -98,6 +98,7 @@ const ExploreSelect = props => {
         show_title={ show.show_title }
         show_id={ show.show_id }
         user_id={ userInfo.id }
+        avatar={ userInfo.avatar }
       />
     ); 
   });

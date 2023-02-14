@@ -100,7 +100,7 @@ const Edit = props => {
   });
 
   const post = data => {
-    console.log('data on save', data)
+
     axios.patch( '/pages/update', data )
       .then( () => {
         return axios.patch( '/votes/update', data )

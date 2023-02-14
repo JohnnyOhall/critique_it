@@ -81,8 +81,6 @@ router.get( '/edit/:id', ( req, res ) => {
 
   values = [ req.session.userID, req.params.id ];
 
-  console.log('back-end:', values)
-
   db.query( pageQuery, values )
     .then( data => {
       const pageData = data.rows[0];
@@ -213,7 +211,6 @@ router.post( '/newpage', ( req, res ) => {
       1
     ];
 
-    console.log(values)
     return db.query( buildPage, values )
       .then((data) => res.json(data.rows))
       .catch(( err ) => {
@@ -281,8 +278,6 @@ router.patch( '/votes', ( req, res ) => {
 
   const type = req.query.type
   const page_id = req.query.page_id
-
-  console.log('back-test', type, page_id)
   
   if (type === "upvote") {
 
@@ -435,6 +430,52 @@ router.get( '/profile/userstats', (req, res)  => {
     SELECT COUNT(episode_id)
     FROM pages
     WHERE creator_id = ${req.session.userID}
+    AND episode_id IS NOT NULL;
+  `;
+
+  return db.query( getScoreQuery )
+    .then( res => {
+      results.score = res.rows[0].sum;
+      
+      return db.query( getShowsQuery );
+    })
+    .then( res => {
+      results.shows = res.rows[0].count;
+      
+      return db.query( getEpisodesQuery )
+    })
+    .then( data => {
+      results.episodes = data.rows[0].count;
+      
+      return res.json({results})
+    })
+    .catch(err => console.log(err))
+
+})
+
+router.get( '/explore/userstats/:id', (req, res)  => {
+  
+  const results = {
+    score: 0,
+    shows: 0,
+    episodes: 0
+  }
+  
+  const getScoreQuery =`
+    SELECT SUM(votes)
+    FROM pages
+    WHERE creator_id = ${req.params.id};
+  `;
+  const getShowsQuery = `
+    SELECT COUNT( DISTINCT show_id)
+    FROM pages
+    WHERE creator_id = ${req.params.id}
+    AND episode_id IS NULL;
+  `;
+  const getEpisodesQuery =`
+    SELECT COUNT(episode_id)
+    FROM pages
+    WHERE creator_id = ${req.params.id}
     AND episode_id IS NOT NULL;
   `;
 

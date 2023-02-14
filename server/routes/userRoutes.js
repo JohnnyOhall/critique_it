@@ -249,6 +249,29 @@ router.get( '/:email', ( req, res ) => {
 
 });
 
+//Get specific user ID (not for production - testing only)
+router.get( '/avatar/:id', ( req, res ) => {
+
+  const userQuery = `
+  SELECT avatar FROM users
+  WHERE id = ${ req.params.id };
+  `;
+
+  db.query( userQuery )
+  .then( data => {
+    const avatar = data.rows[ 0 ].avatar;
+
+    res.json({ avatar });
+     
+  })
+  .catch( err => {
+    res
+      .status( 500 )
+      .json({ error: err.message });
+  });
+
+});
+
 router.get( '/explore/:id', ( req, res ) => {
 
   const userQuery = `
@@ -259,7 +282,7 @@ router.get( '/explore/:id', ( req, res ) => {
   db.query( userQuery )
   .then( data => {
     const userData = data.rows[ 0 ];
-    
+   
     !userData.active ? 
       res.send( 'User Inactive!' ) :
       res.json({ userData });

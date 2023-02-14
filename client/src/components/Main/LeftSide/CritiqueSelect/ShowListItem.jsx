@@ -37,7 +37,6 @@ const ShowListItem = props => {
 
 
   const buildpage = data => {
-    console.log(data)
 
     let page_id, episode_id;
     const avatar = Cookies.get('avatar')

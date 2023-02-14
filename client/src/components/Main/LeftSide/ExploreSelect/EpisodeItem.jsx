@@ -8,12 +8,13 @@ const EpisodeItem = props => {
   const { 
     setDisplay, 
     CRITIQUE, 
-    setCritiqueGlobal 
-  } = useContext(ExploreContext)
+    setCritiqueGlobal,
+    critiqueGlobal 
+  } = useContext(ExploreContext);
 
   const setGlobal = () => {
-    setCritiqueGlobal(page_id)
-    setDisplay(CRITIQUE)
+    setCritiqueGlobal(page_id);
+    setDisplay(CRITIQUE);
   };
 
   return (

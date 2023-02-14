@@ -17,7 +17,7 @@ const EditUserInfo = props => {
 
     setMatch( false );
     newInfo === compare ? setMatch( true ) : setMatch( false );
-    console.log(match)
+
   },);
 
   const updateUser = () => {

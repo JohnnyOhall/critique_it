@@ -4,7 +4,7 @@ import axios from "axios";
 import EpisodeItem from "./EpisodeItem";
 
 const ShowItem = props => {
-  const { show_title, show_id, user_id } = props;
+  const { show_title, show_id, user_id, avatar } = props;
   const [ episodes, setEpisodes ] = useState( [] );
   const [ displayResults, setDisplayResults ] = useState(false)
 
@@ -33,6 +33,7 @@ const ShowItem = props => {
         rating={ episode.rating }
         votes={ episode.votes }
         watched={ episode.watched_on }
+        avatar={ avatar }
       />
     ); 
   });

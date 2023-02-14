@@ -80,7 +80,7 @@ router.patch( '/update', ( req, res ) => {
   `;
 
   const values = [ req.body.upvoted, req.body.page_id, req.session.userID ]
-  console.log('vote-vals', values)
+
   db.query( upvotePage, values )
   .then( () => res.send( 'success!' ))
   .catch( err => {
@@ -103,7 +103,6 @@ router.post( '/user', ( req, res ) => {
   `;
 
   const values = [ req.session.userID, req.body.page_id ]
-  console.log('here user')
 
   db.query( voteQuery, values )
     .then( data => {
@@ -121,7 +120,10 @@ router.post( '/user', ( req, res ) => {
 
 
 router.get( '/:id', ( req, res ) => {
-  console.log('here id')
+
+  if (!req.session.userID) {
+    return res.send('User not logged in')
+  }
 
   const voteQuery = `
   SELECT * FROM votes
@@ -130,7 +132,6 @@ router.get( '/:id', ( req, res ) => {
   `;
 
   const values = [ req.session.userID, req.params.id ]
-  console.log('back-end-votes: ', values)
 
   db.query( voteQuery, values )
     .then( data => {

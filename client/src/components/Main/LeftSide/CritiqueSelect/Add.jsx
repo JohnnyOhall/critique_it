@@ -13,8 +13,6 @@ const Add = props => {
     search 
   } = useAddShow(props);
 
-  console.log(Object.keys(show).length === 0)
-
   return (
     <div className="critique-select">
 
