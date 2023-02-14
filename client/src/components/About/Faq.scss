@@ -1,15 +1,16 @@
+@use '../../styles/base.scss';
+
 .faq {
   height: 100%;
   width: 100%;
-  color: whitesmoke;
+  color: base.$font-white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Noto Sans Display', sans-serif;
+  font-family: base.$site-body-font;
   border-radius: 1em;
-  border-color: rgba(245, 245, 245, 0.61);
   background-color: #716f9a69;
-  box-shadow: 0px 6px 12px rgb(3 3 3);
+  box-shadow: base.$box-shadow-dark;
   padding: 1.5em 0;
 
   .faq-button {
@@ -20,7 +21,7 @@
       background-color: transparent;
       border-style: none;
       cursor: pointer;
-      color: whitesmoke;
+      color: base.$font-white;
       font-size: x-large;
       margin-right: 1em;
     }
@@ -33,27 +34,28 @@
   .faq-item {
     flex-grow: 2;
     border-radius: 0.5em;
-    background-color: #7b799e6b;
     height: 45px;
     width: 600px;
     margin: 0.5em;
     padding: 0.26em;
     display: flex;
-    justify-content: center;
     align-items: center;
-    box-shadow: 0px 3px 10px rgb(47, 46, 46);
 
     button {
       background-color: transparent;
       border-style: none;
       cursor: pointer;
-      color: whitesmoke;
+      color: base.$font-white;
       font-weight: bold;
-      font-size: 25px;
+      font-size: 28px;
     }
   
     button:active {
       transform: scale(0.95);
+    }
+
+    button:hover {
+      text-shadow: base.$text-shadow;
     }
   }
 }
@@ -62,15 +64,14 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  text-align: start;
+
   height: 200px;
   width: 600px;
-  color: whitesmoke;
-  font-family: 'Noto Sans Display', sans-serif;
+  color: base.$font-white;
   border-radius: 1em;
-  border-color: rgba(245, 245, 245, 0.61);
   background-color: #738580;
-  box-shadow: 0px 6px 12px rgb(3 3 3);
+  box-shadow: base.$box-shadow-dark;
   margin-left: 3em;
 
   .faq-button {
@@ -82,9 +83,10 @@
       background-color: transparent;
       border-style: none;
       cursor: pointer;
-      color: whitesmoke;
+      color: base.$font-white;
       font-size: x-large;
       margin-right: 1em;
+      margin-top: 0.5em;
     }
   
     button:active {

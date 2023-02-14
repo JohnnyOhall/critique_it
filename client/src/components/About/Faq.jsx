@@ -24,7 +24,7 @@ const Faq = props => {
 
           <div className="faq-item">
             <button onClick={() => transition(Q1)}>
-              <span>Can other crITiquers search for my page?</span>
+              <span>Can other critiquers search for my page?</span>
             </button>
           </div>
 
@@ -78,7 +78,7 @@ const Faq = props => {
             <button onClick={() => transition(START)}>✖︎</button>
           </div>
           <div className="answer">
-            <p>Yes, you will need to create a profile to make a page. But don't worry, your information is safe with us.</p>
+            <p>Yes, you will need to create a profile. But don't worry, your information is safe with us.</p>
           </div>
         </div>
       }

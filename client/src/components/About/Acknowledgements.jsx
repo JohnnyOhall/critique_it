@@ -12,7 +12,8 @@ const links = {
   slider: "https://www.npmjs.com/package/rc-slider",
   stars: "https://github.com/awran5/react-simple-star-rating",
   carousel: "https://github.com/vadymshymko/react-simply-carousel",
-  pusheen: "https://pusheen.com/"
+  pusheen: "https://pusheen.com/",
+  menu: "https://www.npmjs.com/package/@szhsin/react-menu"
 }
 
 
@@ -115,6 +116,10 @@ const Acknowledgements = props => {
 
           <div className="carousel-item">
             <a href={ links.carousel }>Simply-carousel</a>
+          </div>
+
+          <div className="carousel-item">
+            <a href={ links.menu }>React-menu</a>
           </div>
 
           <div className="carousel-item">

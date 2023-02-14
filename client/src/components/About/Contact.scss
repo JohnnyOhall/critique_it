@@ -1,15 +1,16 @@
+@use '../../styles/base.scss';
+
 .contact {
   height: 100%;
   width: 100%;
-  color: whitesmoke;
+  color: base.$font-white;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: 'Noto Sans Display', sans-serif;
+  font-family: base.$site-body-font;
   border-radius: 1em;
-  border-color: rgba(245, 245, 245, 0.61);
   background-color: #716f9a69;
-  box-shadow: 0px 6px 12px rgb(3 3 3);
+  box-shadow: base.$box-shadow-dark;
   padding: 1.7em 0;
 
   .contact-top {
@@ -26,7 +27,7 @@
         cursor: pointer;
         margin-left: 1.5em;
         border-radius: 50%;
-        box-shadow: 0px 4px 10px rgb(13, 13, 13);
+        box-shadow: 0px 6px 12px rgb(34, 34, 34);
       }
     }
 
@@ -35,7 +36,7 @@
         background-color: transparent;
         border-style: none;
         cursor: pointer;
-        color: whitesmoke;
+        color: base.$font-white;
         font-size: x-large;
         margin-right: 1em;
       }
@@ -79,7 +80,7 @@
     }
 
     p:hover {
-      text-shadow: 0px 4px 3px rgba(0,0,0,0.4);
+      text-shadow: base.$text-shadow;
     }
   }
 }

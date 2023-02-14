@@ -1,13 +1,15 @@
+@use '../../styles/base.scss';
+
 .team {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
-  font-family: 'Noto Sans Display', sans-serif;
+  font-family: base.$site-body-font;
   border-radius: 1em;
   background-color: #716f9a69;
-  box-shadow: 0px 6px 12px rgb(3 3 3);
+  box-shadow: base.$box-shadow-dark;
   padding: 2em 0;
 
   .team-close-button {
@@ -17,7 +19,7 @@
       background-color: transparent;
       border-style: none;
       cursor: pointer;
-      color: whitesmoke;
+      color: base.$font-white;
       font-size: x-large;
       margin-right: 1em;
     }
@@ -48,14 +50,14 @@
       position: relative;
     
       .meet-team {
-        color: whitesmoke;
+        color: base.$font-white;
         font-size: 55px;
         font-weight: bold;
         margin-left: 0.25em;
       }
     
       .name {
-        color: whitesmoke;
+        color: base.$font-white;
         font-size: 15px;
         position: absolute;
         bottom: 10px;
@@ -75,7 +77,7 @@
       img {
         height: 175px;
         width: 175px;
-        background-color: whitesmoke;
+        background-color: base.$font-white;
         border-radius: 2em;
         margin-bottom: 1.5em;
         margin-left: 5em;

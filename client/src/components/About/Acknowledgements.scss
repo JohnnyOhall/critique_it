@@ -1,13 +1,15 @@
+@use '../../styles/base.scss';
+
 .acknowledgements {
   display: flex;
   flex-direction: column;
   align-items: center;
   height: 100%;
   width: 100%;
-  font-family: 'Noto Sans Display', sans-serif;
+  font-family: base.$site-body-font;
   border-radius: 1em;
   background-color: #716f9a69;
-  box-shadow: 0px 6px 12px rgb(3 3 3);
+  box-shadow: base.$box-shadow-dark;
   padding: 2em 0;
 
   .ack-close-button {
@@ -17,7 +19,7 @@
       background-color: transparent;
       border-style: none;
       cursor: pointer;
-      color: whitesmoke;
+      color: base.$font-white;
       font-size: x-large;
       margin-right: 1em;
     }
@@ -47,13 +49,13 @@
   
       a {
         text-decoration: none;
-        color: whitesmoke;
+        color: base.$font-white;
         font-size: 45px;
         font-weight: bold;
       }
 
       a:hover {
-        text-shadow: 0px 4px 3px rgba(0,0,0,0.4);
+        text-shadow: base.$text-shadow;
       }
     }
   }
