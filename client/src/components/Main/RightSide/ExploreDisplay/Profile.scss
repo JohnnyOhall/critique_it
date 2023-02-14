@@ -97,6 +97,23 @@
     span {
       padding-right: 1em;
     }
+
+    .admired-img {
+      box-shadow: base.$box-shadow-admire;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+    }
+
+    .default-img {
+      height: 47px;
+      width: 47px;
+      opacity: 0.80;
+    }
+
+    .default-img:hover {
+      opacity: 1;
+    }
   }
 
   .profile-share {

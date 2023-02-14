@@ -1,11 +1,13 @@
 //External Imports
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import axios from "axios";
 import Cookies from "js-cookie";
 
 // Styling
 import './Login.scss';
+import { ExploreContext } from "../../providers/ExploreProvider";
+
 
 
 const Login = props => {
@@ -14,6 +16,8 @@ const Login = props => {
     email: "",
     password: ""
   });
+
+  const { DEFAULT, setDisplay } = useContext(ExploreContext)
 
   const submitRequest = ( data ) => {
     axios.post( '/users/login', data )
@@ -27,7 +31,8 @@ const Login = props => {
         Cookies.set( 'email', res.data.email);
         Cookies.set( 'avatar', res.data.avatar);
         Cookies.set( 'username', res.data.username);
-
+        
+        setDisplay(DEFAULT);
         props.update( props.state );
       });
   }
