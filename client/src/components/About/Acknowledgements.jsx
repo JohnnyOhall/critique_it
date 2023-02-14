@@ -11,7 +11,8 @@ const links = {
   tvMaze: "https://www.tvmaze.com/",
   slider: "https://www.npmjs.com/package/rc-slider",
   stars: "https://github.com/awran5/react-simple-star-rating",
-  carousel: "https://github.com/vadymshymko/react-simply-carousel"
+  carousel: "https://github.com/vadymshymko/react-simply-carousel",
+  pusheen: "https://pusheen.com/"
 }
 
 
@@ -114,6 +115,10 @@ const Acknowledgements = props => {
 
           <div className="carousel-item">
             <a href={ links.carousel }>Simply-carousel</a>
+          </div>
+
+          <div className="carousel-item">
+            <a href={ links.pusheen }>Pusheen</a>
           </div>
 
           <div className="carousel-item">
