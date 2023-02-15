@@ -30,7 +30,8 @@ router.get( '/main', ( req, res ) => {
 
   const pageQuery = `
   SELECT * FROM pages
-  WHERE creator_id = $1;
+  WHERE creator_id = $1
+  AND episode_id IS NULL;
   `;
 
   values = [ req.session.userID ];
