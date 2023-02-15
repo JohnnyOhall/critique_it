@@ -12,20 +12,31 @@
   .profile-header {
     display: flex;
     flex-grow: 0;
-    background-color: #25234A;
+    background-color: base.$font-blue;
     border-radius: 1em;
+    box-shadow: base.$box-shadow-medium;
 
     .avatar-edit{
       flex-grow: 0;
       padding: 0.5em 0 0 0.5em;
+
+      img {
+        cursor: pointer;
+      }
+
+      img:active {
+        transform: scale(0.95);
+      }
     }
 
     .avatar-display {
       flex-grow: 0;
       margin: 0.75em 0;
+
       img {
         background-color: whitesmoke;
         border-radius: 50%;
+        box-shadow: base.$box-shadow-light;
       }
     }
     
@@ -46,6 +57,14 @@
 
     .user-edit {
       flex-grow: 0;
+
+      img {
+        cursor: pointer;
+      }
+
+      img:active {
+        transform: scale(0.95);
+      }
     }
 
     .user-content {
@@ -62,6 +81,8 @@
         .title{
           flex-grow: 0;
           width: 75px;
+          font-weight: bold;
+          color: base.$font-dark-red;
         }
 
         .content {
@@ -73,10 +94,14 @@
 
         .content.email {
           padding-bottom: 15px;
+          padding-top: 2px;
+          box-shadow: base.$box-shadow-light;
         }
 
         .content.bio {
           padding-bottom: 40px;
+          padding-top: 2px;
+          box-shadow: base.$box-shadow-light;
         }
       }
     }
@@ -108,6 +133,7 @@
     img {
       padding-top: 2em;
       margin: 0 2em;
+      cursor: pointer;
     }
   }
 }

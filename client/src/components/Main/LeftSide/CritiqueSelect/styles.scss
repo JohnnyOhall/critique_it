@@ -2,9 +2,8 @@
 
 .critique-left {
   background-color: #D2D4C8;
-  font-family: 'Noto Sans Display', sans-serif;
+  font-family: base.$site-body-font;
   color: rgb(34, 32, 32);
-  // display: none;
 
   .critique-select {
     height: base.$container-height;
@@ -41,12 +40,14 @@
             
             input {
               margin-right: 1em;
-              padding: 0.75em;
+              padding: 0.65em 0.75em;
               width: 30em;
               border-radius: 1em;
-              box-shadow: 0px 3px 6px rgb(195, 203, 208);
+              box-shadow: base.$box-shadow-light;
               border: none;
               outline: none;
+              font-family: base.$site-body-font;
+              font-size: 16px;
             }
 
             button {
@@ -100,6 +101,7 @@
         text-align: right;
         display: flex;
         justify-content: flex-end;
+        border-radius: 0.75em;
 
         img {
           max-width: 100%;
@@ -115,15 +117,15 @@
         flex-wrap: wrap;
         align-content: center;
         justify-content: center;
-        
-        img {
-          padding: 1em 1em 0 0;
-          cursor: pointer;
-        }
 
         .add-button, .close-button {
           display: flex;
           align-items: center;
+
+          img {
+            padding: 1em 0.5em;
+            cursor: pointer;
+          }
         }
 
         .add-button:active, .close-button:active {
@@ -134,18 +136,31 @@
       .show-stats {
         background-image: url("https://wallpapercave.com/wp/wp3286092.jpg");
         background-size: contain;
-        border-radius: 0.75em;
+        border-radius: 1em;
         box-shadow: 0px 6px 12px rgb(36, 40, 43);
         display: flex;
         flex-direction: column;
         justify-content: center;
-        color: whitesmoke
+        color: whitesmoke;
+        overflow: hidden;
+        
+        h2 {
+          margin-bottom: 0.4em;
+        }
+
+        p {
+          margin: 0.1em 0;
+        }
       }
     }
 
     .main {
       display: flex;
       flex-direction: column;
+
+      .add-button {
+        cursor: pointer;
+      }
 
       .add-button:active {
         transform: scale(0.95);

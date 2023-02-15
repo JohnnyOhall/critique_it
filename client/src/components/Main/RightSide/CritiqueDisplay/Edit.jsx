@@ -198,11 +198,11 @@ const Edit = props => {
       </div>
       
       <div className="buttons">
-        <button onClick={ ()=> post( pageInfo ) }>Save</button>
+        <button onClick={ ()=> post( pageInfo ) }>save</button>
         <button onClick={ ()=> {
           setDisplay( DEFAULT )
           setCreate( MAIN )
-        }}>Back</button>
+        }}>back</button>
       </div>
     </section>
   );

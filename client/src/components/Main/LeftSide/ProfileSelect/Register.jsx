@@ -193,12 +193,12 @@ const Register = props => {
             disabled={ !userInfo.password || !userInfo.username || !userInfo.email || !userInfo.avatar }
             onClick={ () => submitRequest( userInfo )} 
           > 
-            Register 
+            register 
           </button> 
         }
-        { (!passMatch || !emailMatch) && <button disabled> Register </button> }
+        { (!passMatch || !emailMatch) && <button disabled> register </button> }
         <button onClick={ () => setRegister( false )}>
-          <a href="#">Cancel</a>
+          <a href="#">cancel</a>
         </button>
 
 

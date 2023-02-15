@@ -21,6 +21,7 @@
         padding-bottom: 1em;
         font-size: 2em;
         font-weight: bold;
+        color: base.$font-dark-red;
       }
       
       .box-content {
@@ -118,7 +119,6 @@
         font-weight: bold;
         cursor: pointer;
         font-family: 'Noto Sans Display', sans-serif;
-        box-shadow: 0px 1px 3px rgb(102, 105, 105);
       }
 
       button:active {
