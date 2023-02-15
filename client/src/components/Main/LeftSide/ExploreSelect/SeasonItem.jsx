@@ -13,7 +13,7 @@ const SeasonItem = props => {
   const searchEpisode = () => {
 
     if (!displayResults) {
-      axios.get( `http://api.tvmaze.com/seasons/${ id }/episodes` )
+      axios.get( `https://api.tvmaze.com/seasons/${ id }/episodes` )
       .then( res => {
         setEpisodes( res.data )
         setDisplayResults(true)

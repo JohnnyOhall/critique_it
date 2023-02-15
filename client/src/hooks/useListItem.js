@@ -13,13 +13,13 @@ const useListItem = props => {
   const findShow = ( seasonNumber, episodeNumber ) => {
     let showData;
 
-    axios.get( `http://api.tvmaze.com/shows/${ props.show_id }/seasons` )
+    axios.get( `https://api.tvmaze.com/shows/${ props.show_id }/seasons` )
       .then( res => {
         showData = {
           seasonLength: res.data.length,
           seasonId: res.data[ seasonNumber - 1 ].id
         };
-        return axios.get( `http://api.tvmaze.com/seasons/${ showData.seasonId }/episodes` );
+        return axios.get( `https://api.tvmaze.com/seasons/${ showData.seasonId }/episodes` );
       })
 
       .then( res => {

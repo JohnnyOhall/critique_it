@@ -20,7 +20,7 @@ const Summary = props => {
   useEffect( () => {
     let getInfo;
 
-    axios.get( `http://api.tvmaze.com/shows/${ episodeInfoGlobal.show_id }` )
+    axios.get( `https://api.tvmaze.com/shows/${ episodeInfoGlobal.show_id }` )
     .then( res => {
 
       let { image, summary } = res.data

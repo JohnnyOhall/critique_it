@@ -56,7 +56,7 @@ const ExploreSelect = props => {
     setShowInfo( {} );
     setSearchValue("");
 
-    axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
+    axios.get( `https://api.tvmaze.com/search/shows?q=${ encodeURIComponent( searchValue )}` )
       .then(res =>{
         if ( res.data.length === 0 ) {
           alert('No results found')
@@ -78,7 +78,7 @@ const ExploreSelect = props => {
           return 
         }
 
-        return axios.get( `http://api.tvmaze.com/shows/${tempShowInfo.id}/seasons`)
+        return axios.get( `https://api.tvmaze.com/shows/${tempShowInfo.id}/seasons`)
       })
       .then( res => {
         if (tempShowInfo === "error") {

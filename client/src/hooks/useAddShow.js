@@ -14,7 +14,7 @@ const useAddShow = props => {
   const findShow = showName => {
     let showData;
   
-    axios.get( `http://api.tvmaze.com/search/shows?q=${ encodeURIComponent( showName )}` )
+    axios.get( `https://api.tvmaze.com/search/shows?q=${ encodeURIComponent( showName )}` )
       .then( res => {
         let { name, id, image, rating, summary } = res.data[ 0 ].show;
   
@@ -32,7 +32,7 @@ const useAddShow = props => {
           episodes: 0
         };
   
-        return axios.get( `http://api.tvmaze.com/shows/${id}/seasons` );
+        return axios.get( `https://api.tvmaze.com/shows/${id}/seasons` );
       })
       .then( res => {
         showData.seasons = res.data.length;
