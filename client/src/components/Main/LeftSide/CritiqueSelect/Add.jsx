@@ -44,10 +44,10 @@ const Add = props => {
                 <span className="title">Show Title:</span>
                 <span className="content">{ show.name }</span>
               </div>
-              <div>
+              {/* <div>
                 <span className="title">Show ID:</span>
                 <span className="content">{ show.id }</span>
-              </div>
+              </div> */}
               <div>
                 <span className="title">Rating:</span>
                 <span className="content">{ show.rating } / 10</span>
@@ -74,7 +74,7 @@ const Add = props => {
         </div>
 
         <div className="show-stats box">
-        { Object.keys(show).length !== 0 && <> <p>Show Stats</p>
+        { Object.keys(show).length !== 0 && <> <h2>Show Stats</h2>
           <p>Users who added this show: 12</p>
           <p>Average rating:  6.5</p>
           <p>Average episodes critiqued: 3.4</p>

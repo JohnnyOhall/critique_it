@@ -13,9 +13,9 @@
       @include base.slider;
   
       .season-title {
-        font-family: 'Noto Sans Display', sans-serif;
+        font-family: base.$site-body-font;
         font-weight: bold;
-        color: rgb(82, 7, 7);
+        color: base.$font-dark-red;
         font-size: 20px;
       }
   
@@ -43,19 +43,15 @@
       input[type=range]:focus {
         outline: none;
       }
-      
-      // input[type=range]:focus::-webkit-slider-runnable-track {
-      //   background: whitesmoke;
-      // }
     }
   
     .slider-episode {
       @include base.slider;
   
       .episode-title {
-        font-family: 'Noto Sans Display', sans-serif;
+        font-family: base.$site-body-font;
         font-weight: bold;
-        color: rgb(82, 7, 7);
+        color: base.$font-dark-red;
         font-size: 20px;
       }
   
@@ -83,10 +79,6 @@
       input[type=range]:focus {
         outline: none;
       }
-      
-      // input[type=range]:focus::-webkit-slider-runnable-track {
-      //   background: whitesmoke;
-      // }
     }
   
     .episode-info {
@@ -96,15 +88,17 @@
       padding-left: 2em;
   
       span {
-        font-family: 'Noto Sans Display', sans-serif;
+        font-family: base.$site-body-font;
         font-weight: bold;
-        color: rgb(60, 58, 58);
+        color: base.$font-grey;
         padding-right: 1em;
+        font-size: 16.5px;
       }
       
       .add-show-button {
         height: 45px;
         width: 45px;
+        cursor: pointer;
       }
 
       .add-show-button:active {
@@ -114,6 +108,11 @@
       .added-show-button {
         height: 45px;
         width: 45px;
+        cursor: pointer;
+      }
+
+      .added-show-button:active {
+        transform: scale(0.95);
       }
     }
   }
@@ -125,9 +124,11 @@
       cursor: pointer;
       background-color: transparent;
       border: none;
-      font-size: x-large;
+      font-size: 26px;
       font-weight: bold;
-      color: rgb(82, 7, 7);
+      color: base.$font-dark-red;
+      padding-top: 0.4em;
+      padding-left: 0.5em;
     }
 
     button:active {
@@ -141,7 +142,7 @@
     
     img {
       border-radius: 50%;
-      box-shadow: 0px 6px 12px rgb(3, 3, 3);
+      box-shadow: base.$box-shadow-dark;
       border: none;
       outline: none;
       margin-top: 0.35em;

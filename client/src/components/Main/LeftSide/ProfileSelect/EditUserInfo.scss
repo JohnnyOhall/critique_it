@@ -10,6 +10,7 @@
   background-color: #C5CBD3;
   border-radius: 1em;
   box-shadow: 0px 3px 6px rgb(37, 37, 37);
+  font-family: base.$site-body-font;
   
   .edit-title {
     flex-grow: 0.25;
@@ -37,7 +38,6 @@
     flex-direction: column;
     justify-content: center;
     
-
     .form-title {
       flex-grow: 1;
       display: flex;
@@ -61,9 +61,11 @@
         input {
           margin-top: 1em;
           border: none;
-          padding: 0.25em 0;
-          padding-left: 0.5em;
+          outline: none;
+          padding: 0.5em;
           border-radius: 0.75em;
+          box-shadow: base.$box-shadow-light;
+          font-family: base.$site-body-font;
         }
       }
       
@@ -72,6 +74,9 @@
         border-radius: 1em;
         resize: none;
         padding-left: 1em;
+        outline: none;
+        font-family: base.$site-body-font;
+        box-shadow: base.$box-shadow-light;
       }
     }
 
@@ -87,7 +92,7 @@
         border-radius: 1em;
         border-style: none;
         text-align: center;
-        padding: 0em 0.9em;
+        padding: 0.2em 0.8em;
         font-size: 18px;
         cursor: pointer;
         font-family: 'Noto Sans Display', sans-serif;

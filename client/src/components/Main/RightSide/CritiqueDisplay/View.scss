@@ -16,6 +16,14 @@
 
     .edit {
       flex-grow: 1;
+
+      img {
+        cursor: pointer;
+      }
+
+      img:active {
+        transform: scale(0.95);
+      }
     }
 
     .page-avatar {

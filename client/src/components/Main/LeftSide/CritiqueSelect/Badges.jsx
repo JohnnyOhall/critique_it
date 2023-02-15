@@ -56,7 +56,7 @@ const Badges = props => {
 
         <div className="select-badge">
           <div className="badge-title">
-            <span> Select a Badge: </span>
+            <span> Select a Badge </span>
           </div>
           <div className="badge-content" onChange={ e => {
             setBadge_id( e.target.value )
@@ -206,7 +206,7 @@ const Badges = props => {
 
         { badge_id === "4" && 
           <div className="badge-input">
-            <p>The character you are or are going to miss!</p>
+            <p>The character you're going to miss!</p>
             <input 
               type="text"
               className="short"
@@ -368,8 +368,8 @@ const Badges = props => {
         }
 
         <div className="badge-buttons">
-          <button onClick={post}>Add</button>
-          <button onClick={()=> setCreate(MAIN)}>Back</button>
+          <button onClick={post}>add</button>
+          <button onClick={()=> setCreate(MAIN)}>back</button>
         </div>
 
       </div>

@@ -114,20 +114,20 @@ const EditUserInfo = props => {
         </div>
         <div className="form-inputs">
           <div className="pass-sections">
-            <label>Enter new email</label>
+            <label>Enter new email:</label>
             <input 
               type="email" 
-              placeholder="please enter your new email address"
+              placeholder="Enter your new email address"
               value={newInfo}
               size={30}
               onChange={e => setNewInfo(e.target.value)}
             />
           </div>
           <div className="pass-sections">
-            <label>Confirm new email</label>
+            <label>Confirm new email:</label>
             <input 
               type="email" 
-              placeholder="please enter your new email address"
+              placeholder="Enter your new email address"
               value={compare}
               size={30}
               onChange={e => setCompare(e.target.value)}
@@ -139,10 +139,10 @@ const EditUserInfo = props => {
             <button 
               onClick={ updateUser }
               disabled={ !newInfo }
-            >Save</button>
+            >save</button>
           }
-          { !match && <button disabled>Save</button>}
-          <button onClick={ cancelForm }>Cancel</button>
+          { !match && <button disabled>save</button>}
+          <button onClick={ cancelForm }>cancel</button>
         </div>
       </div>}
 
@@ -153,10 +153,10 @@ const EditUserInfo = props => {
         </div>
         <div className="form-inputs">
           <div className="pass-sections">
-            <label>Current password</label>
+            <label>Current password:</label>
             <input 
               type="password" 
-              placeholder="enter current password"
+              placeholder="Enter current password"
               value={currentPass}
               size={30}
               onChange={e => setCurrentPass(e.target.value)}
@@ -164,20 +164,20 @@ const EditUserInfo = props => {
           </div>
           <div className="pass-sections">
             <div>
-              <label>New Password</label>
+              <label>New Password:</label>
               <input 
                 type="password" 
-                placeholder="type new password" 
+                placeholder="Type new password" 
                 value={newInfo}
                 size={30}
                 onChange={ e => setNewInfo(e.target.value)}
               />
             </div>
             <div> 
-              <label>Confirm Password</label>
+              <label>Confirm Password:</label>
               <input 
                 type="password" 
-                placeholder="confirm new password" 
+                placeholder="Confirm new password" 
                 value={compare}
                 size={30}
                 onChange={e => setCompare(e.target.value)}
@@ -190,10 +190,10 @@ const EditUserInfo = props => {
             <button 
               onClick={ updateUser }
               disabled={ !newInfo ||!currentPass}
-            >Save</button>
+            >save</button>
           }
-          { !match && <button disabled>Save</button>}
-          <button onClick={ cancelForm }>Cancel</button>
+          { !match && <button disabled>save</button>}
+          <button onClick={ cancelForm }>cancel</button>
         </div>
       </div>}
 
@@ -204,20 +204,20 @@ const EditUserInfo = props => {
         </div>
         <div className="form-inputs">
           <div className="pass-sections">
-            <label>Enter new username</label>
+            <label>Enter new username:</label>
             <input 
               type="text" 
-              placeholder="please enter your new username"
+              placeholder="Enter your new username"
               value={newInfo}
               size={30}
               onChange={e => setNewInfo(e.target.value)}
             />
           </div>
           <div className="pass-sections">
-            <label>Confirm new username</label>
+            <label>Confirm new username:</label>
             <input 
               type="text" 
-              placeholder="please enter your new username"
+              placeholder="Enter your new username"
               value={compare}
               size={30}
               onChange={e => setCompare(e.target.value)}
@@ -229,10 +229,10 @@ const EditUserInfo = props => {
             <button 
               onClick={ updateUser }
               disabled={ !newInfo }
-            >Save</button>
+            >save</button>
           }
-          { !match && <button disabled>Save</button>}
-          <button onClick={ cancelForm }>Cancel</button>
+          { !match && <button disabled>save</button>}
+          <button onClick={ cancelForm }>cancel</button>
         </div>
       </div>}
 
@@ -253,8 +253,8 @@ const EditUserInfo = props => {
         </div>
         <div></div>
         <div className="form-buttons">
-          <button disabled={ !newInfo } onClick={ updateUser }>Save</button>
-          <button onClick={ cancelForm }>Cancel</button>
+          <button disabled={ !newInfo } onClick={ updateUser }>save</button>
+          <button onClick={ cancelForm }>cancel</button>
         </div>
       </div>}
     </div>

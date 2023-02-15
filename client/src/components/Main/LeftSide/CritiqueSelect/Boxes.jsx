@@ -56,7 +56,7 @@ const Boxes = props => {
 
         <div className="select-box">
           <div className="box-title">
-            <span> Select a Layout: </span>
+            <span>Select a Layout</span>
           </div>
           <div className="box-content" onChange={ e => {
             setStyle( e.target.value )
@@ -143,8 +143,8 @@ const Boxes = props => {
 
 
         <div className="box-buttons">
-          <button onClick={post}>Add</button>
-          <button onClick={()=> setCreate(MAIN)}>Back</button>
+          <button onClick={post}>add</button>
+          <button onClick={()=> setCreate(MAIN)}>back</button>
         </div>
 
       </div>
