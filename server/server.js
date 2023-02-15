@@ -4,6 +4,7 @@ require( 'dotenv' ).config();
 //External Imports
 const express = require( 'express' );
 const morgan = require( 'morgan' );
+const path = require( 'path' )
 const BUILD_PATH = path.resolve('./public');
 
 
