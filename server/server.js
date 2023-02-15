@@ -4,6 +4,7 @@ require( 'dotenv' ).config();
 //External Imports
 const express = require( 'express' );
 const morgan = require( 'morgan' );
+const BUILD_PATH = path.resolve('./public');
 
 
 const app = express();
@@ -17,7 +18,7 @@ const cookieSession = require( 'cookie-session' );
 app.use( morgan( 'dev' ));
 app.use( express.urlencoded({ extended: true }));
 app.use( express.json());
-app.use(express.static( 'public' ));
+app.use( express.static(BUILD_PATH));
 
 
 // Cookie Session
@@ -31,6 +32,23 @@ app.use(cookieSession({
 
 }));
 
+
+app.get('/', (req, res) => {
+
+  filePath = BUILD_PATH + '/index.html'
+
+  if (fs.existsSync(filePath))
+  {
+      res.sendFile(filePath);
+  }
+  else
+  {
+     res.statusCode = 404;
+     res.write('404 sorry not found');
+     res.end();
+  }
+
+})
 
 // Separated Routes for each Resource
 const pageRoutes = require( './routes/pageRoutes' );
