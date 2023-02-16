@@ -20,3 +20,9 @@ Back-end:
 Front-end:
   - open cd into client
   - npm start
+
+
+new build: 
+  - git pull (if req.) on main
+  - cd client
+  - npm run build
