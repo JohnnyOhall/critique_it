@@ -60,6 +60,6 @@ Other enhancements include a full restructure of html and css responsive design.
 
 !["Profile"](https://github.com/JohnnyOhall/critique_it/blob/main/docs/profile.png)
 
-!["Footer"](https://github.com/JohnnyOhall/critique_it/blob/main/docs/user.png)
+!["Footer"](https://github.com/JohnnyOhall/critique_it/blob/main/docs/footer.png)
 
-!["About us"](https://github.com/JohnnyOhall/critique_it/blob/main/docs/profile.png)
+!["About us"](https://github.com/JohnnyOhall/critique_it/blob/main/docs/about-us.png)
