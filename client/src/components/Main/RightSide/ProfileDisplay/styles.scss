@@ -9,5 +9,10 @@
     margin: 3em;
     border-style: solid;
     border-color: transparent;
+    overflow-y: scroll;
+  }
+
+  .profile-display::-webkit-scrollbar {
+    color: transparent;
   }
 }

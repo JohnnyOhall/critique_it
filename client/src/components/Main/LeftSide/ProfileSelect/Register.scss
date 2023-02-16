@@ -9,7 +9,6 @@
   .register-title {
     font-size: xx-large;
     font-weight: bold;
-    margin-bottom: 0.7em;
     font-family: base.$site-body-font;
   }
 
@@ -22,7 +21,7 @@
     }
 
     input {
-      margin: 0.5em;
+      margin: 0.25em;
       outline: none;
       border: none;
       border-radius: 0.6em;
@@ -39,7 +38,7 @@
     font-family: base.$site-body-font;
 
     input {
-      margin: 0.5em;
+      margin: 0.25em;
       outline: none;
       border: none;
       border-radius: 0.6em;
@@ -69,7 +68,7 @@
       margin-top: 1em;
       width: 30em;
       height: 4em;
-      margin: 0.5em;
+      margin: 0.25em;
       outline: none;
       border: none;
       border-radius: 0.7em;
