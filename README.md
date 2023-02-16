@@ -2,7 +2,7 @@
 
 Critique-it is a single page social media app for TV lovers! Users can create critiques (reviews of episodes) with customized options like badges and boxes, explore other's profiles and critiques, admire others with our admire system, and much more. 
 
-This app was built by Jacqui Koroll and John O'Halloran for their final project at the Lighthouse Labs Web Development bootmap using React, Express, and PostgreSQL.
+This app was built by Jacqui Koroll and John O'Halloran for their final project at the Lighthouse Labs Web Development bootmap using React, Express, and PostgreSQL. TV Maze API is used to obtain the show data.
 
 UI future enhancements include a chat system, more customization and filtering options, genres and much more!
 
