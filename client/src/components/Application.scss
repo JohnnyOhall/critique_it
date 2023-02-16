@@ -9,6 +9,7 @@
 .App {
   height: 100vh;
   text-align: center;
+  // overflow-x: hidden;
 }
 
 
@@ -23,6 +24,7 @@
   border-radius: 50%;
   background:transparent;
   opacity: 0.2;
+  z-index: 1;
 }
 
 .backToTop:hover {

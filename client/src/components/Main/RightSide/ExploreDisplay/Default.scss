@@ -5,14 +5,10 @@
   display: flex;
   justify-content: center;
   padding-top: 2em;
-  font-size: 60px;
+  font-size: 58px;
   font-family: base.$site-body-font;
   font-weight: bolder;
   color: base.$font-dark-red;
-
-  .pre-wave {
-    padding-right: 0.20em;
-  }
 
   .dot {
     padding: 0 0.10em;
@@ -46,4 +42,10 @@
 .explore-display-img {
   flex-grow: 1;
   padding-top: 2em;
+  
+  img {
+    align-self: center;
+    height: 100%;
+    width: 100%;
+  }
 }

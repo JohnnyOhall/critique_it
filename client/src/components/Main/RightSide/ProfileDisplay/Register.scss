@@ -6,7 +6,6 @@
   .how-to {
     flex-grow: 0;
     font-size: large;
-    margin-bottom: 0.5em;
 
     h2 {
       margin-bottom: 1em;
@@ -19,12 +18,16 @@
 
   .register-image {
     flex-grow: 1;
+    
+    img {
+      align-self: center;
+      width: 100%;
+    }
   }
 
   .terms {
     flex-grow: 0;
     font-size: large;
-    margin-top: 0.5em;
 
     h2 {
       margin-bottom: 1em;

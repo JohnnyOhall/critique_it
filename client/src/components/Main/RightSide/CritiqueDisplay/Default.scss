@@ -9,14 +9,10 @@
     display: flex;
     justify-content: center;
     padding-top: 1.5em;
-    font-size: 60px;
+    font-size: 58px;
     font-family: base.$site-body-font;
     font-weight: bolder;
     color: rgb(51, 51, 51);
-
-    .pre-wave {
-      padding-right: 0.20em;
-    }
 
     .dot {
       padding: 0 0.10em;
@@ -45,6 +41,10 @@
         transform: translateY(-15px);
       }
     }
+  }
+
+  .default-gif {
+    align-self: center;
   }
 
   .default-button {

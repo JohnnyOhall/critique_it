@@ -30,9 +30,10 @@
         .search-area {
           display: flex;
           align-items: center;
+          width: 100%;
 
           input {
-            width: 450px;
+            width: 100%;
             margin: 1em;
             padding: 0.5em 0.75em;
             border-radius: 1em;

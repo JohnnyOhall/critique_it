@@ -15,8 +15,9 @@ const Default = props => {
   return (
     <section className="default-index">
       <div className="default-title">
-        <div className="pre-wave">WAITING FOR PAGE</div>
         <div className="wave">
+          WAITING FOR PAGE
+          <span> </span>
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>

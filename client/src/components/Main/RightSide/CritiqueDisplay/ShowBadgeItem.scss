@@ -107,3 +107,36 @@
     }
   }
 }
+
+@media screen and (max-width: 1546px) {
+  .single-box {
+    span {
+      padding: 0.3em 0.4em;
+      font-size: 13px;
+    }
+  
+    .character {
+      span {
+        padding: 0.3em 0.4em;
+        font-size: 13px;
+      }
+    }
+  }
+  
+  .single-box-dual {
+    .character-1 {
+
+      span {
+        padding: 0.2em 0.4em;
+        font-size: 13px;
+      }
+    }
+  
+    .character-2 {
+      span {
+        padding: 0.2em 0.4em;
+        font-size: 13px;
+      }
+    }
+  }
+}

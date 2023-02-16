@@ -13,8 +13,9 @@ const Default = props => {
         <img src="https://cdn.custom-cursor.com/packs/1206/pack1432.png" />
       </div>
       <div className="default-title">
-        <div className="pre-wave">WAITING FOR SEARCH</div>
         <div className="wave">
+          WAITING FOR SEARCH
+          <span> </span>
           <span className="dot"></span>
           <span className="dot"></span>
           <span className="dot"></span>

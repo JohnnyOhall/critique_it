@@ -242,7 +242,7 @@ const Critique = props => {
             initialValue={ CritiqueInfo.rating }
           />
         </div>
-        <div className="watched-on">
+        <div className="watched-on-view">
           <span className="watched-on-title">Watched on: </span><span className="watched-on-content">{CritiqueInfo.watched_on}</span>  
         </div>
       </div>
