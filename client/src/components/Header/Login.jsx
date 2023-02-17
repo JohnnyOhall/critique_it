@@ -42,7 +42,7 @@ const Login = props => {
       <form autoComplete="off" onSubmit={ e => e.preventDefault( )} >
         <div className="login-username">
           <input 
-            placeholder="username"
+            placeholder="Please enter email"
             type="text" 
             value={login.username}
             onChange={ e => setLogin({ ...login, email: e.target.value })}
