@@ -43,6 +43,7 @@ Other enhancements include a full restructure of html and css responsive design.
 - Rc-slider
 - react-simple-star-rating
 - react-simply-carousel
+-
 
 ## Screenshots
 
